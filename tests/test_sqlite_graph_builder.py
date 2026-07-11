@@ -32,28 +32,6 @@ class TestSQLiteGraphBuilder(unittest.TestCase):
         print(f"Dung lượng graph theo MB: {graph_size / (1024 * 1024):.2f} MB")
         print(f"Hàm build_graph tốn thêm: {mem_used / (1024 * 1024):.2f} MB RAM")
 
-        plt.figure(figsize=(50, 50))
-
-        # 2. Gọi hàm vẽ của rustworkx như bình thể
-        mpl_draw(
-            graph._viz_graph,
-            with_labels=True,
-            labels=lambda x: graph._nodes_names.get(x, str(x)),
-            node_color="#1f78b4",
-            node_size=1000,
-            font_size=10,
-            edge_color="gray",
-        )
-
-        # 3. Lưu đồ thị ra file ảnh (hỗ trợ .png, .jpg, .svg, .pdf...)
-        # bbox_inches='tight' giúp cắt bỏ các khoảng trắng thừa xung quanh ảnh
-        plt.savefig(
-            "data/northwind-graph.png", format="png", dpi=300, bbox_inches="tight"
-        )
-
-        # 4. Xóa khung vẽ hiện tại để giải phóng bộ nhớ (rất quan trọng nếu bạn vẽ nhiều ảnh trong vòng lặp)
-        plt.close()
-
     def test__build_links(self):
         _ = self.graph_builder._build_assets()
         links = self.graph_builder._build_links()

@@ -22,8 +22,8 @@ class DatabaseGraph:
         self._edges_data = {i: link for i, link in enumerate(self.links)}
         links_tuples = [
             (
-                self._nodes_idx[link.source.asset_id],
-                self._nodes_idx[link.destination.asset_id],
+                self._nodes_idx[link.source_id],
+                self._nodes_idx[link.destination_id],
                 link,
             )
             for link in self.links
@@ -36,7 +36,10 @@ class DatabaseGraph:
         node_idx = self._nodes_idx[asset_id]
         links: dict[int, Link] = self._graph.adj(node_idx)
         target_links = [link for link in links.values() if link.type == link_type]
-        return [link.destination for link in target_links]
+        return [
+            self._nodes_data[self._nodes_idx[link.destination_id]]
+            for link in target_links
+        ]
 
     def find_shortest_paths(
         self, src_id: str, dst_id: str, visiting_ids: set[str]

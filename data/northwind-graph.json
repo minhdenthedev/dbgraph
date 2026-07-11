@@ -1,0 +1,3680 @@
+{
+  "assets": [
+    {
+      "asset_id": "72bcecae-cfd9-4f88-b9a2-ecb426981323",
+      "name": "Categories",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Categories_table_schema",
+          "pks": ["CategoryID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Categories_table_stats",
+          "num_columns": 4,
+          "num_rows": 8
+        }
+      }
+    },
+    {
+      "asset_id": "9116abbe-efeb-4c85-a712-20c063b48d52",
+      "name": "CustomerCustomerDemo",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerCustomerDemo_table_schema",
+          "pks": ["CustomerID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "CustomerCustomerDemo_table_stats",
+          "num_columns": 2,
+          "num_rows": 0
+        }
+      }
+    },
+    {
+      "asset_id": "169f5af2-389f-4db4-8895-95fc306d290c",
+      "name": "CustomerDemographics",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerDemographics_table_schema",
+          "pks": ["CustomerTypeID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "CustomerDemographics_table_stats",
+          "num_columns": 2,
+          "num_rows": 0
+        }
+      }
+    },
+    {
+      "asset_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "name": "Customers",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Customers_table_schema",
+          "pks": ["CustomerID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Customers_table_stats",
+          "num_columns": 11,
+          "num_rows": 93
+        }
+      }
+    },
+    {
+      "asset_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "name": "Employees",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Employees_table_schema",
+          "pks": ["EmployeeID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Employees_table_stats",
+          "num_columns": 18,
+          "num_rows": 9
+        }
+      }
+    },
+    {
+      "asset_id": "3f49e81c-c983-4055-85c2-084704bcffef",
+      "name": "EmployeeTerritories",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "EmployeeTerritories_table_schema",
+          "pks": ["EmployeeID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "EmployeeTerritories_table_stats",
+          "num_columns": 2,
+          "num_rows": 49
+        }
+      }
+    },
+    {
+      "asset_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "name": "Order Details",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Order Details_table_schema",
+          "pks": ["OrderID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Order Details_table_stats",
+          "num_columns": 5,
+          "num_rows": 609283
+        }
+      }
+    },
+    {
+      "asset_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "name": "Orders",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Orders_table_schema",
+          "pks": ["OrderID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Orders_table_stats",
+          "num_columns": 14,
+          "num_rows": 16282
+        }
+      }
+    },
+    {
+      "asset_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "name": "Products",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Products_table_schema",
+          "pks": ["ProductID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Products_table_stats",
+          "num_columns": 10,
+          "num_rows": 77
+        }
+      }
+    },
+    {
+      "asset_id": "244c9c9e-a14a-45f0-a290-50efe88a720a",
+      "name": "Regions",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Regions_table_schema",
+          "pks": ["RegionID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Regions_table_stats",
+          "num_columns": 2,
+          "num_rows": 4
+        }
+      }
+    },
+    {
+      "asset_id": "390f010b-46e4-434a-be57-1b2af51b09ff",
+      "name": "Shippers",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Shippers_table_schema",
+          "pks": ["ShipperID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Shippers_table_stats",
+          "num_columns": 3,
+          "num_rows": 3
+        }
+      }
+    },
+    {
+      "asset_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "name": "Suppliers",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Suppliers_table_schema",
+          "pks": ["SupplierID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Suppliers_table_stats",
+          "num_columns": 12,
+          "num_rows": 29
+        }
+      }
+    },
+    {
+      "asset_id": "ff19a427-19cb-4c0e-a5a8-5e0ddbb42e2b",
+      "name": "Territories",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Territories_table_schema",
+          "pks": ["TerritoryID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Territories_table_stats",
+          "num_columns": 3,
+          "num_rows": 53
+        }
+      }
+    },
+    {
+      "asset_id": "dcd6f627-6ac7-4da5-b6a1-6aff1807ef1e",
+      "name": "CategoryID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CategoryID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "CategoryID_column_stats",
+          "non_null_count": 8,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 4.5,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 8
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "fbc7c2d4-a1e0-4baa-ad96-465de62043f7",
+      "name": "CategoryName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CategoryName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "CategoryName_column_stats",
+          "non_null_count": 8,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Seafood": 1,
+              "Produce": 1,
+              "Meat/Poultry": 1,
+              "Grains/Cereals": 1,
+              "Dairy Products": 1,
+              "Confections": 1,
+              "Condiments": 1,
+              "Beverages": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "c2fbe33d-44f6-4aa3-9b61-af33180806fe",
+      "name": "Description",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Description_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Description_column_stats",
+          "non_null_count": 8,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Sweet and savory sauces, relishes, spreads, and seasonings": 1,
+              "Soft drinks, coffees, teas, beers, and ales": 1,
+              "Seaweed and fish": 1,
+              "Prepared meats": 1,
+              "Dried fruit and bean curd": 1,
+              "Desserts, candies, and sweet breads": 1,
+              "Cheeses": 1,
+              "Breads, crackers, pasta, and cereal": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "ad08bd19-fc7e-4e0f-8180-18093db6eb21",
+      "name": "Picture",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Picture_column_schema",
+          "dtype": "BLOB",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Picture_column_stats",
+          "non_null_count": 8,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "679fb700-1909-45c6-bba8-ce23836fde9c",
+      "name": "CustomerID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerID_column_schema",
+          "dtype": "TEXT",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "CustomerID_column_stats",
+          "non_null_count": 0,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {}
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "fa10c028-60fb-4552-9ab2-975fff83df9e",
+      "name": "CustomerTypeID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerTypeID_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "CustomerTypeID_column_stats",
+          "non_null_count": 0,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {}
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "0214b436-55f5-4e20-8624-cec8da4deabf",
+      "name": "CustomerTypeID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerTypeID_column_schema",
+          "dtype": "TEXT",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "CustomerTypeID_column_stats",
+          "non_null_count": 0,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {}
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "46e79540-73d8-4014-9099-3a832864f2a4",
+      "name": "CustomerDesc",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerDesc_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "CustomerDesc_column_stats",
+          "non_null_count": 0,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {}
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "826ed103-7197-4425-b5b4-7aa79f42913c",
+      "name": "CustomerID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerID_column_schema",
+          "dtype": "TEXT",
+          "is_pk": true,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "CustomerID_column_stats",
+          "non_null_count": 93,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "ALFKI": 1,
+              "ANATR": 1,
+              "ANTON": 1,
+              "AROUT": 1,
+              "BERGS": 1,
+              "BLAUS": 1,
+              "BLONP": 1,
+              "BOLID": 1,
+              "BONAP": 1,
+              "BOTTM": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "057aa9fd-343a-48ab-95a1-ed466106162c",
+      "name": "CompanyName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CompanyName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "CompanyName_column_stats",
+          "non_null_count": 93,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "IT": 2,
+              "Wolski  Zajazd": 1,
+              "Wilman Kala": 1,
+              "White Clover Markets": 1,
+              "Wellington Importadora": 1,
+              "Wartian Herkku": 1,
+              "Vins et alcools Chevalier": 1,
+              "Victuailles en stock": 1,
+              "Vaffeljernet": 1,
+              "Trail's Head Gourmet Provisioners": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "8534dfa2-43d9-4085-ae16-67824f74ee40",
+      "name": "ContactName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ContactName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ContactName_column_stats",
+          "non_null_count": 93,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Zbyszek Piestrzeniewicz": 1,
+              "Yvonne Moncada": 1,
+              "Yoshi Tannamuri": 1,
+              "Yoshi Latimer": 1,
+              "Yang Wang": 1,
+              "Victoria Ashworth": 1,
+              "Valon Hoti": 1,
+              "Val2": 1,
+              "Thomas Hardy": 1,
+              "Sven Ottlieb": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "4931712e-f5ba-4cbd-8e2f-cc0ef5b384ec",
+      "name": "ContactTitle",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ContactTitle_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ContactTitle_column_stats",
+          "non_null_count": 93,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Sales Representative": 17,
+              "Owner": 17,
+              "Marketing Manager": 12,
+              "Sales Manager": 11,
+              "Accounting Manager": 10,
+              "Sales Associate": 7,
+              "Marketing Assistant": 6,
+              "Sales Agent": 5,
+              "Order Administrator": 2,
+              "IT": 2
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "e22be2b6-aa4a-44d8-b204-c072e75cf612",
+      "name": "Address",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Address_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Address_column_stats",
+          "non_null_count": 91,
+          "null_count": 2,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "\u00c5kergatan 24": 1,
+              "ul. Filtrowa 68": 1,
+              "Walserweg 21": 1,
+              "Vinb\u00e6ltet 34": 1,
+              "Via Monte Bianco 34": 1,
+              "Via Ludovico il Moro 22": 1,
+              "Torikatu 38": 1,
+              "Taucherstra\u00dfe 10": 1,
+              "Strada Provinciale 124": 1,
+              "South House 300 Queensbridge": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "36056b81-9e93-4cbd-9917-eafbf2c9d3d4",
+      "name": "City",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "City_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "City_column_stats",
+          "non_null_count": 91,
+          "null_count": 2,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "London": 6,
+              "M\u00e9xico D.F.": 5,
+              "Sao Paulo": 4,
+              "Rio de Janeiro": 3,
+              "Madrid": 3,
+              "Buenos Aires": 3,
+              "Portland": 2,
+              "Paris": 2,
+              "Nantes": 2,
+              "Lisboa": 2
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "32e3467c-1d0e-47ca-8c53-b7f16a30107d",
+      "name": "Region",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Region_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Region_column_stats",
+          "non_null_count": 91,
+          "null_count": 2,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Western Europe": 28,
+              "South America": 16,
+              "North America": 16,
+              "Southern Europe": 10,
+              "British Isles": 8,
+              "Central America": 5,
+              "Northern Europe": 4,
+              "Scandinavia": 3,
+              "Eastern Europe": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "05856ff7-8522-4e71-95af-9771bddf1671",
+      "name": "PostalCode",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "PostalCode_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "PostalCode_column_stats",
+          "non_null_count": 90,
+          "null_count": 3,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "1010": 3,
+              "44000": 2,
+              "05033": 2,
+              "WX3 6FW": 1,
+              "WX1 6LT": 1,
+              "WA1 1DP": 1,
+              "V3F 2K1": 1,
+              "T2F 8M4": 1,
+              "SW7 1RZ": 1,
+              "S-958 22": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "63f70ca5-2ef7-4f87-ba1c-b0b5337646fe",
+      "name": "Country",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Country_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Country_column_stats",
+          "non_null_count": 91,
+          "null_count": 2,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "USA": 13,
+              "Germany": 11,
+              "France": 11,
+              "Brazil": 9,
+              "UK": 7,
+              "Spain": 5,
+              "Mexico": 5,
+              "Venezuela": 4,
+              "Italy": 3,
+              "Canada": 3
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "e4c356f1-8382-4be2-bedd-3d2498e868c0",
+      "name": "Phone",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Phone_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Phone_column_stats",
+          "non_null_count": 91,
+          "null_count": 2,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "981-443655": 1,
+              "91.24.45.40": 1,
+              "90-224 8858": 1,
+              "88.60.15.31": 1,
+              "86 21 32 43": 1,
+              "78.32.54.86": 1,
+              "7675-3425": 1,
+              "6562-9722": 1,
+              "61.77.61.10": 1,
+              "40.67.88.88": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "a3980eeb-78ac-4053-8675-38ae15cb4d18",
+      "name": "Fax",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Fax_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Fax_column_stats",
+          "non_null_count": 69,
+          "null_count": 24,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "981-443655": 1,
+              "91.24.45.41": 1,
+              "90-224 8858": 1,
+              "88.60.15.32": 1,
+              "86 22 33 44": 1,
+              "78.32.54.87": 1,
+              "7675-3426": 1,
+              "6562-9723": 1,
+              "61.77.61.11": 1,
+              "40.67.89.89": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "32b00e68-04b7-4e9f-bc32-2a9a8b59946a",
+      "name": "EmployeeID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "EmployeeID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "EmployeeID_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 5.0,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 9
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "860cc838-1904-4b88-9d31-0f95722626ef",
+      "name": "LastName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "LastName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "LastName_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Suyama": 1,
+              "Peacock": 1,
+              "Leverling": 1,
+              "King": 1,
+              "Fuller": 1,
+              "Dodsworth": 1,
+              "Davolio": 1,
+              "Callahan": 1,
+              "Buchanan": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "0f396c6a-8694-4954-9257-026a36e73d1b",
+      "name": "FirstName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "FirstName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "FirstName_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Steven": 1,
+              "Robert": 1,
+              "Nancy": 1,
+              "Michael": 1,
+              "Margaret": 1,
+              "Laura": 1,
+              "Janet": 1,
+              "Anne": 1,
+              "Andrew": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "8a0c35e4-e7a3-4359-a8ad-2a68c3a50690",
+      "name": "Title",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Title_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Title_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Sales Representative": 6,
+              "Vice President, Sales": 1,
+              "Sales Manager": 1,
+              "Inside Sales Coordinator": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "b202c5be-5b98-4d85-ae06-8e12d620d654",
+      "name": "TitleOfCourtesy",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "TitleOfCourtesy_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "TitleOfCourtesy_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Ms.": 4,
+              "Mr.": 3,
+              "Mrs.": 1,
+              "Dr.": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "ab8262cf-16ae-4c93-95d3-07143c8efbf9",
+      "name": "BirthDate",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "BirthDate_column_schema",
+          "dtype": "DATE",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "BirthDate_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "7d7dfac5-8d99-4307-9b3f-e5d3b364bbf4",
+      "name": "HireDate",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "HireDate_column_schema",
+          "dtype": "DATE",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "HireDate_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "2f4c3fce-81e7-4cc1-b714-5f07a33c6a43",
+      "name": "Address",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Address_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Address_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Edgeham Hollow\nWinchester Way": 1,
+              "Coventry House\nMiner Rd.": 1,
+              "908 W. Capital Way": 1,
+              "722 Moss Bay Blvd.": 1,
+              "7 Houndstooth Rd.": 1,
+              "507 - 20th Ave. E.Apt. 2A": 1,
+              "4726 - 11th Ave. N.E.": 1,
+              "4110 Old Redmond Rd.": 1,
+              "14 Garrett Hill": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "ed53499f-a7b5-4e10-ba57-92e3ade9109a",
+      "name": "City",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "City_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "City_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "London": 4,
+              "Seattle": 2,
+              "Tacoma": 1,
+              "Redmond": 1,
+              "Kirkland": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "a979b1b3-dbb1-464d-94e1-6f47ad05ce3b",
+      "name": "Region",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Region_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Region_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "North America": 5,
+              "British Isles": 4
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "9c42f05f-1f96-44bd-8e8f-15150599b578",
+      "name": "PostalCode",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "PostalCode_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "PostalCode_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "WG2 7LT": 1,
+              "SW1 8JR": 1,
+              "RG1 9SP": 1,
+              "EC2 7JR": 1,
+              "98401": 1,
+              "98122": 1,
+              "98105": 1,
+              "98052": 1,
+              "98033": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "21a3add7-6c5c-424a-966b-b233a2ebf13b",
+      "name": "Country",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Country_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Country_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "USA": 5,
+              "UK": 4
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "22b05fdf-f38c-4c35-8c34-6697eab8c68e",
+      "name": "HomePhone",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "HomePhone_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "HomePhone_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "(71) 555-7773": 1,
+              "(71) 555-5598": 1,
+              "(71) 555-4848": 1,
+              "(71) 555-4444": 1,
+              "(206) 555-9857": 1,
+              "(206) 555-9482": 1,
+              "(206) 555-8122": 1,
+              "(206) 555-3412": 1,
+              "(206) 555-1189": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "87762e86-3b37-43f4-b1e9-bf8a7d25411f",
+      "name": "Extension",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Extension_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Extension_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "5467": 1,
+              "5176": 1,
+              "465": 1,
+              "452": 1,
+              "428": 1,
+              "3457": 1,
+              "3453": 1,
+              "3355": 1,
+              "2344": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "f336d8fa-1387-44d3-ab4a-7d1c43ac7aa4",
+      "name": "Photo",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Photo_column_schema",
+          "dtype": "BLOB",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Photo_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "7f02f249-f156-41da-a2a2-dc6efb05099f",
+      "name": "Notes",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Notes_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Notes_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree in 1976.  Upon joining the company as a sales representative in 1992, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London.  He was promoted to sales manager in March 1993.  Mr. Buchanan has completed the courses \"Successful Telemarketing\" and \"International Sales Management.\"  He is fluent in French.": 1,
+              "Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan in 1992, the year he joined the company.  After completing a course entitled \"Selling in Europe,\" he was transferred to the London office in March 1993.": 1,
+              "Michael is a graduate of Sussex University (MA, economics, 1983) and the University of California at Los Angeles (MBA, marketing, 1986).  He has also taken the courses \"Multi-Cultural Selling\" and \"Time Management for the Sales Professional.\"  He is fluent in Japanese and can read and write French, Portuguese, and Spanish.": 1,
+              "Margaret holds a BA in English literature from Concordia College (1958) and an MA from the American Institute of Culinary Arts (1966).  She was assigned to the London office temporarily from July through November 1992.": 1,
+              "Laura received a BA in psychology from the University of Washington.  She has also completed a course in business French.  She reads and writes French.": 1,
+              "Janet has a BS degree in chemistry from Boston College (1984).  She has also completed a certificate program in food retailing management.  Janet was hired as a sales associate in 1991 and promoted to sales representative in February 1992.": 1,
+              "Education includes a BA in psychology from Colorado State University in 1970.  She also completed \"The Art of the Cold Call.\"  Nancy is a member of Toastmasters International.": 1,
+              "Anne has a BA degree in English from St. Lawrence College.  She is fluent in French and German.": 1,
+              "Andrew received his BTS commercial in 1974 and a Ph.D. in international marketing from the University of Dallas in 1981.  He is fluent in French and Italian and reads German.  He joined the company as a sales representative, was promoted to sales manager in January 1992 and to vice president of sales in March 1993.  Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "7f40a6b6-9f99-47b8-a1d7-2ab72f58bfd2",
+      "name": "ReportsTo",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ReportsTo_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ReportsTo_column_stats",
+          "non_null_count": 8,
+          "null_count": 1,
+          "numerical_stats": {
+            "mean": 3.125,
+            "std": null,
+            "min": 2,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 5
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "993544fe-4d97-499b-ac8d-5e504ed0ddf3",
+      "name": "PhotoPath",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "PhotoPath_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "PhotoPath_column_stats",
+          "non_null_count": 9,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "http://accweb/emmployees/davolio.bmp": 5,
+              "http://accweb/emmployees/peacock.bmp": 1,
+              "http://accweb/emmployees/leverling.bmp": 1,
+              "http://accweb/emmployees/fuller.bmp": 1,
+              "http://accweb/emmployees/buchanan.bmp": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "c17656e4-8310-4d74-84e4-2d7f72a78a40",
+      "name": "EmployeeID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "EmployeeID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "EmployeeID_column_stats",
+          "non_null_count": 49,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 5.510204081632653,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 9
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "3d0d04d7-5006-4fd5-8d42-3c476ce2e38a",
+      "name": "TerritoryID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "TerritoryID_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "TerritoryID_column_stats",
+          "non_null_count": 49,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "98104": 1,
+              "98052": 1,
+              "98004": 1,
+              "95060": 1,
+              "95054": 1,
+              "95008": 1,
+              "94105": 1,
+              "94025": 1,
+              "90405": 1,
+              "85251": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "ad80ee04-41da-4c42-b551-5250a2e29fe5",
+      "name": "OrderID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "OrderID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "OrderID_column_stats",
+          "non_null_count": 609283,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 18785.56068526448,
+            "std": null,
+            "min": 10248,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 26529
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "3d999840-b696-4559-a7cf-07c0d4ece8a2",
+      "name": "ProductID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ProductID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "ProductID_column_stats",
+          "non_null_count": 609283,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 38.99956342126729,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 77
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "05d2bb5a-cdd0-425a-af7b-bc23f96ef638",
+      "name": "UnitPrice",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "UnitPrice_column_schema",
+          "dtype": "NUMERIC",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "UnitPrice_column_stats",
+          "non_null_count": 609283,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "910752a1-162e-46f6-9609-be83c4259835",
+      "name": "Quantity",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Quantity_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "Quantity_column_stats",
+          "non_null_count": 609283,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 25.503094621054583,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 130
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "347153d3-1276-45df-b3d5-786baf41e3ab",
+      "name": "Discount",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Discount_column_schema",
+          "dtype": "REAL",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "Discount_column_stats",
+          "non_null_count": 609283,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 0.00019865973611605774,
+            "std": null,
+            "min": 0.0,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 0.25
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "95a0f10f-6a51-4ea9-a14f-96820fc92411",
+      "name": "OrderID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "OrderID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "OrderID_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 18388.5,
+            "std": null,
+            "min": 10248,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 26529
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "92f18c28-415e-4a1c-856f-43b276baf1f0",
+      "name": "CustomerID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CustomerID_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "CustomerID_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "BSBEV": 210,
+              "RICAR": 203,
+              "LILAS": 203,
+              "GOURL": 202,
+              "PRINI": 200,
+              "HUNGC": 198,
+              "TORTU": 197,
+              "FOLIG": 195,
+              "ANATR": 195,
+              "RANCH": 194
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "61c193ff-1e9d-45c4-8531-5bb7030d219a",
+      "name": "EmployeeID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "EmployeeID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "EmployeeID_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 4.96886131924825,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 9
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "4147c8fe-74f0-494d-bae1-1160ee155ab6",
+      "name": "OrderDate",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "OrderDate_column_schema",
+          "dtype": "DATETIME",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "OrderDate_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "5fb8fec3-51ac-46ee-b3a0-b9f9c050f3bc",
+      "name": "RequiredDate",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "RequiredDate_column_schema",
+          "dtype": "DATETIME",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "RequiredDate_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "4ce37bb4-d88b-44ae-bce8-c6f77b9bfd9d",
+      "name": "ShippedDate",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShippedDate_column_schema",
+          "dtype": "DATETIME",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShippedDate_column_stats",
+          "non_null_count": 16261,
+          "null_count": 21,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "984570f3-693b-4f07-a0ca-c12cad7694a7",
+      "name": "ShipVia",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipVia_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShipVia_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 2.007738607050731,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 3
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "0a6ab311-5ec7-4b34-b3ce-48d75bd046b9",
+      "name": "Freight",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Freight_column_schema",
+          "dtype": "NUMERIC",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Freight_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "67423387-9336-43ce-90f9-eadf3d716080",
+      "name": "ShipName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShipName_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Ernst Handel": 217,
+              "Wolski Zajazd": 213,
+              "Ana Trujillo Emparedados y helados": 209,
+              "Queen Cozinha": 207,
+              "Folk och f\u00e4 HB": 205,
+              "Save-a-lot Markets": 204,
+              "Consolidated Holdings": 203,
+              "HILARION-Abastos": 202,
+              "Wartian Herkku": 201,
+              "Seven Seas Imports": 199
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "c9f70d46-2546-4ad4-8bf4-f4c586d683d2",
+      "name": "ShipAddress",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipAddress_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShipAddress_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Obere Str. 57": 376,
+              "Kirchgasse 6": 217,
+              "ul. Filtrowa 68": 213,
+              "Avda. de la Constituci\u00f3n 2222": 209,
+              "Alameda dos Can\u00e0rios, 891": 207,
+              "\u00c5kergatan 24": 205,
+              "187 Suffolk Ln.": 204,
+              "Berkeley Gardens 12 \u00a0Brewery": 203,
+              "Carrera 22 con Ave. Carlos Soublette #8-35": 202,
+              "Torikatu 38": 201
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "3dfce488-3e6a-4ed8-b24e-7086c8dec5b3",
+      "name": "ShipCity",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipCity_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShipCity_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "London": 921,
+              "M\u00e9xico D.F.": 899,
+              "Sao Paulo": 773,
+              "Rio de Janeiro": 545,
+              "Buenos Aires": 535,
+              "Berlin": 376,
+              "Nantes": 360,
+              "Lisboa": 357,
+              "Madrid": 345,
+              "Portland": 340
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "cbe96559-b244-4412-b67b-c6dcfd4667e7",
+      "name": "ShipRegion",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipRegion_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShipRegion_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Western Europe": 5056,
+              "South America": 2925,
+              "North America": 2875,
+              "Southern Europe": 1586,
+              "British Isles": 1452,
+              "Central America": 899,
+              "Northern Europe": 743,
+              "Scandinavia": 533,
+              "Eastern Europe": 213
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "5ed96825-95ac-4032-a533-0035a332e410",
+      "name": "ShipPostalCode",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipPostalCode_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShipPostalCode_column_stats",
+          "non_null_count": 16110,
+          "null_count": 172,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "1010": 535,
+              "12209": 376,
+              "5022": 360,
+              "44000": 360,
+              "5033": 351,
+              "8010": 217,
+              "01-012": 213,
+              "5021": 209,
+              "05487-020": 207,
+              "S-844 67": 205
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "46debb71-fafe-43de-ab19-461280689622",
+      "name": "ShipCountry",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipCountry_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ShipCountry_column_stats",
+          "non_null_count": 16282,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "USA": 2328,
+              "Germany": 2193,
+              "France": 1778,
+              "Brazil": 1683,
+              "UK": 1280,
+              "Mexico": 899,
+              "Venezuela": 707,
+              "Spain": 691,
+              "Canada": 547,
+              "Italy": 538
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "8f1e9f4d-2fb6-4168-8334-5fd77b3abe55",
+      "name": "ProductID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ProductID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "ProductID_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 39.0,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 77
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "b2bbb6ee-24c8-48c6-8822-4483f33cde21",
+      "name": "ProductName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ProductName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "ProductName_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Zaanse koeken": 1,
+              "Wimmers gute Semmelkn\u00f6del": 1,
+              "Vegie-spread": 1,
+              "Valkoinen suklaa": 1,
+              "Uncle Bob's Organic Dried Pears": 1,
+              "Tunnbr\u00f6d": 1,
+              "Tourti\u00e8re": 1,
+              "Tofu": 1,
+              "Th\u00fcringer Rostbratwurst": 1,
+              "Teatime Chocolate Biscuits": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "ca815e71-8182-4848-86d5-86ebfb5089fc",
+      "name": "SupplierID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "SupplierID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "SupplierID_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 13.64935064935065,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 29
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "7c89bb95-bef8-4971-ab34-7821e465d60f",
+      "name": "CategoryID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CategoryID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "CategoryID_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 4.116883116883117,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 8
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "3300477c-c7ae-41d6-961c-1234653e2787",
+      "name": "QuantityPerUnit",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "QuantityPerUnit_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "QuantityPerUnit_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "24 - 12 oz bottles": 4,
+              "5 kg pkg.": 2,
+              "24 - 250 g pkgs.": 2,
+              "24 - 200 g pkgs.": 2,
+              "10 - 500 g pkgs.": 2,
+              "750 cc per bottle": 1,
+              "500 ml": 1,
+              "500 g": 1,
+              "50 bags x 30 sausgs.": 1,
+              "50 - 300 g pkgs.": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "4bdaa0c6-36ac-4e7b-9964-da01a539d115",
+      "name": "UnitPrice",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "UnitPrice_column_schema",
+          "dtype": "NUMERIC",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "UnitPrice_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "6dae16c3-e908-49fa-91ed-781c6c5c5cf7",
+      "name": "UnitsInStock",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "UnitsInStock_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "UnitsInStock_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 40.506493506493506,
+            "std": null,
+            "min": 0,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 125
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "445da398-0555-40c3-98ce-5593e403b5ed",
+      "name": "UnitsOnOrder",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "UnitsOnOrder_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "UnitsOnOrder_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 10.12987012987013,
+            "std": null,
+            "min": 0,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 100
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "ebd198bf-b686-45f8-9379-fccc2fa14288",
+      "name": "ReorderLevel",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ReorderLevel_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ReorderLevel_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 12.467532467532468,
+            "std": null,
+            "min": 0,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 30
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "da253236-a325-40bf-8029-09fe17b12771",
+      "name": "Discontinued",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Discontinued_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "Discontinued_column_stats",
+          "non_null_count": 77,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "0": 69,
+              "1": 8
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "dde04ae1-9dca-41bb-8613-ba8807a26eca",
+      "name": "RegionID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "RegionID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "RegionID_column_stats",
+          "non_null_count": 4,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 2.5,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 4
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "0964cd94-1b9e-4cdc-9bf1-e7e3f45d8d9a",
+      "name": "RegionDescription",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "RegionDescription_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "RegionDescription_column_stats",
+          "non_null_count": 4,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Western": 1,
+              "Southern": 1,
+              "Northern": 1,
+              "Eastern": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "021e17b0-e420-45e5-be24-d9f94c689b48",
+      "name": "ShipperID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ShipperID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "ShipperID_column_stats",
+          "non_null_count": 3,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 2.0,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 3
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "28341e82-9244-45e4-8337-562a6a677de4",
+      "name": "CompanyName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CompanyName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "CompanyName_column_stats",
+          "non_null_count": 3,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "United Package": 1,
+              "Speedy Express": 1,
+              "Federal Shipping": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "2f52288e-4a49-494b-9ce6-8a4001b3173a",
+      "name": "Phone",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Phone_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Phone_column_stats",
+          "non_null_count": 3,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "(503) 555-9931": 1,
+              "(503) 555-9831": 1,
+              "(503) 555-3199": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "cceb17e8-8716-4c7d-ac1c-9595033d4403",
+      "name": "SupplierID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "SupplierID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "SupplierID_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 15.0,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 29
+          },
+          "categorical_stats": null
+        }
+      }
+    },
+    {
+      "asset_id": "20aa530a-f05e-4882-a47b-30d94dfc24a1",
+      "name": "CompanyName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "CompanyName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "CompanyName_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Zaanse Snoepfabriek": 1,
+              "Tokyo Traders": 1,
+              "Svensk Sj\u00f6f\u00f6da AB": 1,
+              "Specialty Biscuits, Ltd.": 1,
+              "Refrescos Americanas LTDA": 1,
+              "Plutzer Lebensmittelgro\u00dfm\u00e4rkte AG": 1,
+              "Pavlova, Ltd.": 1,
+              "Pasta Buttini s.r.l.": 1,
+              "PB Kn\u00e4ckebr\u00f6d AB": 1,
+              "Norske Meierier": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "9dff024c-b33a-45ad-9eb8-28edf4a1abfc",
+      "name": "ContactName",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ContactName_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ContactName_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Yoshi Nagase": 1,
+              "Wendy Mackenzie": 1,
+              "Sven Petersen": 1,
+              "Shelley Burke": 1,
+              "Robb Merchant": 1,
+              "Regina Murphy": 1,
+              "Petra Winkler": 1,
+              "Peter Wilson": 1,
+              "Niels Petersen": 1,
+              "Michael Bj\u00f6rn": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "6b10f287-c613-416d-b659-64218a912f5c",
+      "name": "ContactTitle",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "ContactTitle_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "ContactTitle_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Sales Representative": 6,
+              "Marketing Manager": 5,
+              "Sales Manager": 4,
+              "Order Administrator": 2,
+              "Accounting Manager": 2,
+              "Wholesale Account Agent": 1,
+              "Sales Agent": 1,
+              "Regional Account Rep.": 1,
+              "Purchasing Manager": 1,
+              "Product Manager": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "24e16664-cf40-4603-adee-cb7f140e3dc5",
+      "name": "Address",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Address_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Address_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Viale Dante, 75": 1,
+              "Via dei Gelsomini, 153": 1,
+              "Verkoop\nRijnweg 22": 1,
+              "Valtakatu 12": 1,
+              "Tiergartenstra\u00dfe 5": 1,
+              "P.O. Box 78934": 1,
+              "Order Processing Dept.\n2100 Paul Revere Blvd.": 1,
+              "Lyngbysild\nFiskebakken 10": 1,
+              "Kaloadagatan 13": 1,
+              "Hatlevegen 5": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "0e33504c-0860-4449-8e57-ae6b408d9aad",
+      "name": "City",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "City_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "City_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Zaandam": 1,
+              "Tokyo": 1,
+              "S\u00e3o Paulo": 1,
+              "Sydney": 1,
+              "Stockholm": 1,
+              "Ste-Hyacinthe": 1,
+              "Singapore": 1,
+              "Sandvika": 1,
+              "Salerno": 1,
+              "Ravenna": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "7bc97bba-9211-476b-a7ca-730d3bc8dc14",
+      "name": "Region",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Region_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Region_column_stats",
+          "non_null_count": 28,
+          "null_count": 1,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Western Europe": 6,
+              "North America": 6,
+              "Southern Europe": 3,
+              "Northern Europe": 3,
+              "Scandinavia": 2,
+              "Eastern Asia": 2,
+              "British Isles": 2,
+              "Victoria": 1,
+              "South-East Asia": 1,
+              "South America": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "b8488a50-d9a8-4aad-9590-2c38ddbb6adf",
+      "name": "PostalCode",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "PostalCode_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "PostalCode_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "S-345 67": 1,
+              "S-123 45": 1,
+              "M14 GSD": 1,
+              "J2S 7S8": 1,
+              "H1J 1C3": 1,
+              "EC1 4SD": 1,
+              "9999 ZZ": 1,
+              "97101": 1,
+              "84100": 1,
+              "75004": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "c2c489ef-eef9-46a6-971b-0dac22d57d1d",
+      "name": "Country",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Country_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Country_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "USA": 4,
+              "Germany": 3,
+              "France": 3,
+              "UK": 2,
+              "Japan": 2,
+              "Italy": 2,
+              "Canada": 2,
+              "Australia": 2,
+              "Sweden ": 1,
+              "Sweden": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "14c6c334-3f46-44fd-a3e6-f5888aaaff01",
+      "name": "Phone",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Phone_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Phone_column_stats",
+          "non_null_count": 29,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "85.57.00.07": 1,
+              "555-8787": 1,
+              "43844108": 1,
+              "38.76.98.06": 1,
+              "08-123 45 67": 1,
+              "031-987 65 43": 1,
+              "(98) 598 76 54": 1,
+              "(953) 10956": 1,
+              "(617) 555-3267": 1,
+              "(514) 555-9022": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "bef68c86-6034-4777-8219-dfbf3e49c91f",
+      "name": "Fax",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "Fax_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "Fax_column_stats",
+          "non_null_count": 13,
+          "null_count": 16,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "43844115": 1,
+              "38.76.98.58": 1,
+              "031-987 65 91": 1,
+              "(617) 555-3389": 1,
+              "(514) 555-2921": 1,
+              "(313) 555-3349": 1,
+              "(12345) 1210": 1,
+              "(1) 03.83.00.62": 1,
+              "(089) 6547667": 1,
+              "(0544) 60603": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "8fee891e-e59e-4a84-b090-c24a37027adb",
+      "name": "HomePage",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "HomePage_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": true
+        },
+        "statistical_properties": {
+          "name": "HomePage_column_stats",
+          "non_null_count": 5,
+          "null_count": 24,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "Plutzer (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/plutzer.htm#": 1,
+              "Mayumi's (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/mayumi.htm#": 1,
+              "G'day Mate (on the World Wide Web)#http://www.microsoft.com/accessdev/sampleapps/gdaymate.htm#": 1,
+              "#FORMAGGI.HTM#": 1,
+              "#CAJUN.HTM#": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "e6aa14ef-60ee-4ebb-9c8b-83bcb7aa4b76",
+      "name": "TerritoryID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "TerritoryID_column_schema",
+          "dtype": "TEXT",
+          "is_pk": true,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "TerritoryID_column_stats",
+          "non_null_count": 53,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "01581": 1,
+              "01730": 1,
+              "01833": 1,
+              "02116": 1,
+              "02139": 1,
+              "02184": 1,
+              "02903": 1,
+              "03049": 1,
+              "03801": 1,
+              "06897": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "a8b8ddf0-7b59-4591-b2e2-3789771b88c5",
+      "name": "TerritoryDescription",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "TerritoryDescription_column_schema",
+          "dtype": "TEXT",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "TerritoryDescription_column_stats",
+          "non_null_count": 53,
+          "null_count": 0,
+          "numerical_stats": null,
+          "categorical_stats": {
+            "value_counts": {
+              "New York": 2,
+              "Wilton": 1,
+              "Westboro": 1,
+              "Troy": 1,
+              "Tampa": 1,
+              "Southfield": 1,
+              "Seattle": 1,
+              "Scottsdale": 1,
+              "Savannah": 1,
+              "Santa Monica": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "asset_id": "22bbd680-b0b4-4338-9ee8-84bd49e34c81",
+      "name": "RegionID",
+      "type": "column",
+      "aspects": {
+        "schema_properties": {
+          "name": "RegionID_column_schema",
+          "dtype": "INTEGER",
+          "is_pk": false,
+          "is_nullable": false
+        },
+        "statistical_properties": {
+          "name": "RegionID_column_stats",
+          "non_null_count": 53,
+          "null_count": 0,
+          "numerical_stats": {
+            "mean": 2.150943396226415,
+            "std": null,
+            "min": 1,
+            "q2": null,
+            "median": null,
+            "q3": null,
+            "max": 4
+          },
+          "categorical_stats": null
+        }
+      }
+    }
+  ],
+  "links": [
+    {
+      "link_id": "6f0326ec-406b-4d7f-a049-adb6f57b050b",
+      "name": "Categories_CategoryID",
+      "type": "contain",
+      "source_id": "72bcecae-cfd9-4f88-b9a2-ecb426981323",
+      "destination_id": "dcd6f627-6ac7-4da5-b6a1-6aff1807ef1e",
+      "aspects": {}
+    },
+    {
+      "link_id": "cf1bd972-cc9e-45b8-b14a-9b1f01c497d4",
+      "name": "Categories_CategoryName",
+      "type": "contain",
+      "source_id": "72bcecae-cfd9-4f88-b9a2-ecb426981323",
+      "destination_id": "fbc7c2d4-a1e0-4baa-ad96-465de62043f7",
+      "aspects": {}
+    },
+    {
+      "link_id": "50daf545-416d-4cc2-a18c-ddde4df822d9",
+      "name": "Categories_Description",
+      "type": "contain",
+      "source_id": "72bcecae-cfd9-4f88-b9a2-ecb426981323",
+      "destination_id": "c2fbe33d-44f6-4aa3-9b61-af33180806fe",
+      "aspects": {}
+    },
+    {
+      "link_id": "89272876-17f7-4c19-bb56-0bb3a9df937f",
+      "name": "Categories_Picture",
+      "type": "contain",
+      "source_id": "72bcecae-cfd9-4f88-b9a2-ecb426981323",
+      "destination_id": "ad08bd19-fc7e-4e0f-8180-18093db6eb21",
+      "aspects": {}
+    },
+    {
+      "link_id": "68880852-cd49-4b75-b513-da884fee2fc9",
+      "name": "CustomerCustomerDemo_CustomerID",
+      "type": "contain",
+      "source_id": "9116abbe-efeb-4c85-a712-20c063b48d52",
+      "destination_id": "679fb700-1909-45c6-bba8-ce23836fde9c",
+      "aspects": {}
+    },
+    {
+      "link_id": "1bab7841-8aa9-4270-ba4e-bf5695b5cf35",
+      "name": "CustomerCustomerDemo_CustomerTypeID",
+      "type": "contain",
+      "source_id": "9116abbe-efeb-4c85-a712-20c063b48d52",
+      "destination_id": "fa10c028-60fb-4552-9ab2-975fff83df9e",
+      "aspects": {}
+    },
+    {
+      "link_id": "05b50dd1-ca2f-40c1-a6a8-dae931627121",
+      "name": "CustomerDemographics_CustomerTypeID",
+      "type": "contain",
+      "source_id": "169f5af2-389f-4db4-8895-95fc306d290c",
+      "destination_id": "0214b436-55f5-4e20-8624-cec8da4deabf",
+      "aspects": {}
+    },
+    {
+      "link_id": "a653a8d5-5ffe-42b4-a3c8-da78b4536b11",
+      "name": "CustomerDemographics_CustomerDesc",
+      "type": "contain",
+      "source_id": "169f5af2-389f-4db4-8895-95fc306d290c",
+      "destination_id": "46e79540-73d8-4014-9099-3a832864f2a4",
+      "aspects": {}
+    },
+    {
+      "link_id": "2aa4f78e-c907-4f22-b65f-2f77cd60e38c",
+      "name": "Customers_CustomerID",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "826ed103-7197-4425-b5b4-7aa79f42913c",
+      "aspects": {}
+    },
+    {
+      "link_id": "652dd390-522a-44a0-b88f-3eb27d1a1c02",
+      "name": "Customers_CompanyName",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "057aa9fd-343a-48ab-95a1-ed466106162c",
+      "aspects": {}
+    },
+    {
+      "link_id": "76a59dce-bd64-4bca-8b10-b4201c0b4c91",
+      "name": "Customers_ContactName",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "8534dfa2-43d9-4085-ae16-67824f74ee40",
+      "aspects": {}
+    },
+    {
+      "link_id": "9d5fba75-f999-4080-bed0-3e2eae17e2b8",
+      "name": "Customers_ContactTitle",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "4931712e-f5ba-4cbd-8e2f-cc0ef5b384ec",
+      "aspects": {}
+    },
+    {
+      "link_id": "06dad65a-0de8-46f5-ba56-8bf85fcc564a",
+      "name": "Customers_Address",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "e22be2b6-aa4a-44d8-b204-c072e75cf612",
+      "aspects": {}
+    },
+    {
+      "link_id": "19e0d8bc-de30-42f6-b08d-90da80aba6b5",
+      "name": "Customers_City",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "36056b81-9e93-4cbd-9917-eafbf2c9d3d4",
+      "aspects": {}
+    },
+    {
+      "link_id": "e6518872-aa41-4925-b510-83145d162760",
+      "name": "Customers_Region",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "32e3467c-1d0e-47ca-8c53-b7f16a30107d",
+      "aspects": {}
+    },
+    {
+      "link_id": "604c01cb-f4d2-4c46-964c-4a50df016827",
+      "name": "Customers_PostalCode",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "05856ff7-8522-4e71-95af-9771bddf1671",
+      "aspects": {}
+    },
+    {
+      "link_id": "cac7823b-fc3b-4c35-94db-d5ea51b8b961",
+      "name": "Customers_Country",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "63f70ca5-2ef7-4f87-ba1c-b0b5337646fe",
+      "aspects": {}
+    },
+    {
+      "link_id": "2e94c38d-8735-4941-b7df-1c96ac3e640e",
+      "name": "Customers_Phone",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "e4c356f1-8382-4be2-bedd-3d2498e868c0",
+      "aspects": {}
+    },
+    {
+      "link_id": "2ff68fd2-3475-49ef-9922-b7a49dab42c9",
+      "name": "Customers_Fax",
+      "type": "contain",
+      "source_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "destination_id": "a3980eeb-78ac-4053-8675-38ae15cb4d18",
+      "aspects": {}
+    },
+    {
+      "link_id": "63223099-c0cb-48c3-9015-833fc803a591",
+      "name": "Employees_EmployeeID",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "32b00e68-04b7-4e9f-bc32-2a9a8b59946a",
+      "aspects": {}
+    },
+    {
+      "link_id": "a00cb122-9de8-43c5-949a-1e55eae41442",
+      "name": "Employees_LastName",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "860cc838-1904-4b88-9d31-0f95722626ef",
+      "aspects": {}
+    },
+    {
+      "link_id": "564af69b-dd4c-493e-875f-bcc9f1ddde71",
+      "name": "Employees_FirstName",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "0f396c6a-8694-4954-9257-026a36e73d1b",
+      "aspects": {}
+    },
+    {
+      "link_id": "eb00a26f-0830-4579-abc4-7e74ce914aab",
+      "name": "Employees_Title",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "8a0c35e4-e7a3-4359-a8ad-2a68c3a50690",
+      "aspects": {}
+    },
+    {
+      "link_id": "4cdf1694-81ff-4418-940e-b73a8644528d",
+      "name": "Employees_TitleOfCourtesy",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "b202c5be-5b98-4d85-ae06-8e12d620d654",
+      "aspects": {}
+    },
+    {
+      "link_id": "2bbfb8ca-9f63-466c-bc29-1ad18111caf2",
+      "name": "Employees_BirthDate",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "ab8262cf-16ae-4c93-95d3-07143c8efbf9",
+      "aspects": {}
+    },
+    {
+      "link_id": "6d738649-6770-483c-9090-3d5175af851a",
+      "name": "Employees_HireDate",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "7d7dfac5-8d99-4307-9b3f-e5d3b364bbf4",
+      "aspects": {}
+    },
+    {
+      "link_id": "622cd51c-6e62-4718-bee3-e73901c0faa1",
+      "name": "Employees_Address",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "2f4c3fce-81e7-4cc1-b714-5f07a33c6a43",
+      "aspects": {}
+    },
+    {
+      "link_id": "02913c2d-c495-47ae-a961-926e5874f647",
+      "name": "Employees_City",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "ed53499f-a7b5-4e10-ba57-92e3ade9109a",
+      "aspects": {}
+    },
+    {
+      "link_id": "dfb6a3e8-3e99-4e44-8aa0-58314c8d597c",
+      "name": "Employees_Region",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "a979b1b3-dbb1-464d-94e1-6f47ad05ce3b",
+      "aspects": {}
+    },
+    {
+      "link_id": "33c95a77-53b3-4af7-ac64-74c05ea16e16",
+      "name": "Employees_PostalCode",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "9c42f05f-1f96-44bd-8e8f-15150599b578",
+      "aspects": {}
+    },
+    {
+      "link_id": "f88d7294-d3dd-4d94-a1e3-98d4da4c0be7",
+      "name": "Employees_Country",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "21a3add7-6c5c-424a-966b-b233a2ebf13b",
+      "aspects": {}
+    },
+    {
+      "link_id": "d41f3147-4c89-429b-9e6a-22cd690a88dd",
+      "name": "Employees_HomePhone",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "22b05fdf-f38c-4c35-8c34-6697eab8c68e",
+      "aspects": {}
+    },
+    {
+      "link_id": "e3e857e4-ac8e-41e3-9e0d-6fc4a57be63d",
+      "name": "Employees_Extension",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "87762e86-3b37-43f4-b1e9-bf8a7d25411f",
+      "aspects": {}
+    },
+    {
+      "link_id": "75138b66-17f2-4a4d-8e61-3b9bf8d0f0f3",
+      "name": "Employees_Photo",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "f336d8fa-1387-44d3-ab4a-7d1c43ac7aa4",
+      "aspects": {}
+    },
+    {
+      "link_id": "4687ec81-743a-4d19-a32b-f86ac43214c8",
+      "name": "Employees_Notes",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "7f02f249-f156-41da-a2a2-dc6efb05099f",
+      "aspects": {}
+    },
+    {
+      "link_id": "15cf28f8-4c94-462a-92f5-83cbe18be302",
+      "name": "Employees_ReportsTo",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "7f40a6b6-9f99-47b8-a1d7-2ab72f58bfd2",
+      "aspects": {}
+    },
+    {
+      "link_id": "55179c40-6473-4b85-b474-96b893c7cb10",
+      "name": "Employees_PhotoPath",
+      "type": "contain",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "993544fe-4d97-499b-ac8d-5e504ed0ddf3",
+      "aspects": {}
+    },
+    {
+      "link_id": "d98046db-110b-4190-bf5f-fd82d97c2589",
+      "name": "EmployeeTerritories_EmployeeID",
+      "type": "contain",
+      "source_id": "3f49e81c-c983-4055-85c2-084704bcffef",
+      "destination_id": "c17656e4-8310-4d74-84e4-2d7f72a78a40",
+      "aspects": {}
+    },
+    {
+      "link_id": "64ce7565-98e3-4b42-9ac3-60a68e84081b",
+      "name": "EmployeeTerritories_TerritoryID",
+      "type": "contain",
+      "source_id": "3f49e81c-c983-4055-85c2-084704bcffef",
+      "destination_id": "3d0d04d7-5006-4fd5-8d42-3c476ce2e38a",
+      "aspects": {}
+    },
+    {
+      "link_id": "91798bdd-fc1f-4b6d-b179-bd79adfe42d3",
+      "name": "Order Details_OrderID",
+      "type": "contain",
+      "source_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "destination_id": "ad80ee04-41da-4c42-b551-5250a2e29fe5",
+      "aspects": {}
+    },
+    {
+      "link_id": "4e851b00-104e-4862-b8e6-3f445c9dc6e7",
+      "name": "Order Details_ProductID",
+      "type": "contain",
+      "source_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "destination_id": "3d999840-b696-4559-a7cf-07c0d4ece8a2",
+      "aspects": {}
+    },
+    {
+      "link_id": "44122c7c-a7d6-44ce-9d10-f336e616969d",
+      "name": "Order Details_UnitPrice",
+      "type": "contain",
+      "source_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "destination_id": "05d2bb5a-cdd0-425a-af7b-bc23f96ef638",
+      "aspects": {}
+    },
+    {
+      "link_id": "62b59f7f-44a2-48d5-be81-f2ad271144bd",
+      "name": "Order Details_Quantity",
+      "type": "contain",
+      "source_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "destination_id": "910752a1-162e-46f6-9609-be83c4259835",
+      "aspects": {}
+    },
+    {
+      "link_id": "4be9cdb6-6582-42bc-b5d6-5134e42c1d93",
+      "name": "Order Details_Discount",
+      "type": "contain",
+      "source_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "destination_id": "347153d3-1276-45df-b3d5-786baf41e3ab",
+      "aspects": {}
+    },
+    {
+      "link_id": "95a454a9-e0ec-4162-88c7-4fd515196e84",
+      "name": "Orders_OrderID",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "95a0f10f-6a51-4ea9-a14f-96820fc92411",
+      "aspects": {}
+    },
+    {
+      "link_id": "4f15dc45-59af-468a-aa24-727c7b5396df",
+      "name": "Orders_CustomerID",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "92f18c28-415e-4a1c-856f-43b276baf1f0",
+      "aspects": {}
+    },
+    {
+      "link_id": "d3697c49-6117-413f-904c-be9c7eea6694",
+      "name": "Orders_EmployeeID",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "61c193ff-1e9d-45c4-8531-5bb7030d219a",
+      "aspects": {}
+    },
+    {
+      "link_id": "512f2d69-ab09-458f-8066-cb634ab44456",
+      "name": "Orders_OrderDate",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "4147c8fe-74f0-494d-bae1-1160ee155ab6",
+      "aspects": {}
+    },
+    {
+      "link_id": "a5b5aa76-2148-41c4-af0e-cdac19e17745",
+      "name": "Orders_RequiredDate",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "5fb8fec3-51ac-46ee-b3a0-b9f9c050f3bc",
+      "aspects": {}
+    },
+    {
+      "link_id": "d945e457-e7fc-456d-8760-12671b8a08be",
+      "name": "Orders_ShippedDate",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "4ce37bb4-d88b-44ae-bce8-c6f77b9bfd9d",
+      "aspects": {}
+    },
+    {
+      "link_id": "23ca9207-b3d7-40a2-b8c0-4fe3166296d9",
+      "name": "Orders_ShipVia",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "984570f3-693b-4f07-a0ca-c12cad7694a7",
+      "aspects": {}
+    },
+    {
+      "link_id": "8cec2ea5-3797-4d6f-8182-b0bd7da95a80",
+      "name": "Orders_Freight",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "0a6ab311-5ec7-4b34-b3ce-48d75bd046b9",
+      "aspects": {}
+    },
+    {
+      "link_id": "99fc2a8e-ca59-4abc-b3a6-7d658b2f19aa",
+      "name": "Orders_ShipName",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "67423387-9336-43ce-90f9-eadf3d716080",
+      "aspects": {}
+    },
+    {
+      "link_id": "5e7a03ca-4987-4038-9413-acbfc03562c5",
+      "name": "Orders_ShipAddress",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "c9f70d46-2546-4ad4-8bf4-f4c586d683d2",
+      "aspects": {}
+    },
+    {
+      "link_id": "a53a5d48-e9e2-4d19-a6c7-4c2b02e75414",
+      "name": "Orders_ShipCity",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "3dfce488-3e6a-4ed8-b24e-7086c8dec5b3",
+      "aspects": {}
+    },
+    {
+      "link_id": "1ec13159-e554-4cd2-a8b7-9e6c30153f0a",
+      "name": "Orders_ShipRegion",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "cbe96559-b244-4412-b67b-c6dcfd4667e7",
+      "aspects": {}
+    },
+    {
+      "link_id": "772bae76-d590-4c63-ba79-e270413eaa55",
+      "name": "Orders_ShipPostalCode",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "5ed96825-95ac-4032-a533-0035a332e410",
+      "aspects": {}
+    },
+    {
+      "link_id": "f9990513-16c5-4cfd-8283-bcd0d31d9f6f",
+      "name": "Orders_ShipCountry",
+      "type": "contain",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "46debb71-fafe-43de-ab19-461280689622",
+      "aspects": {}
+    },
+    {
+      "link_id": "2c2dd8a3-6289-4179-ab0a-39bb9156c249",
+      "name": "Products_ProductID",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "8f1e9f4d-2fb6-4168-8334-5fd77b3abe55",
+      "aspects": {}
+    },
+    {
+      "link_id": "26b6ddb8-a40e-45e5-8499-026a1561ae8b",
+      "name": "Products_ProductName",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "b2bbb6ee-24c8-48c6-8822-4483f33cde21",
+      "aspects": {}
+    },
+    {
+      "link_id": "7f33715a-315b-44e6-a922-4b56da9fb34b",
+      "name": "Products_SupplierID",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "ca815e71-8182-4848-86d5-86ebfb5089fc",
+      "aspects": {}
+    },
+    {
+      "link_id": "e8a04b6e-31f3-4691-adae-533d0da74a59",
+      "name": "Products_CategoryID",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "7c89bb95-bef8-4971-ab34-7821e465d60f",
+      "aspects": {}
+    },
+    {
+      "link_id": "62ac5755-591d-4e1d-8511-8658eddf97ee",
+      "name": "Products_QuantityPerUnit",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "3300477c-c7ae-41d6-961c-1234653e2787",
+      "aspects": {}
+    },
+    {
+      "link_id": "d9eb01d8-8efd-47f2-ae98-5c88fa67f9b8",
+      "name": "Products_UnitPrice",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "4bdaa0c6-36ac-4e7b-9964-da01a539d115",
+      "aspects": {}
+    },
+    {
+      "link_id": "36af6b1b-89e2-465c-8631-5054ba49a80d",
+      "name": "Products_UnitsInStock",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "6dae16c3-e908-49fa-91ed-781c6c5c5cf7",
+      "aspects": {}
+    },
+    {
+      "link_id": "6972fe2e-8a8e-495a-9e2b-1b478b0ca24f",
+      "name": "Products_UnitsOnOrder",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "445da398-0555-40c3-98ce-5593e403b5ed",
+      "aspects": {}
+    },
+    {
+      "link_id": "5ee70321-131f-45cb-99e9-8b01e0710780",
+      "name": "Products_ReorderLevel",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "ebd198bf-b686-45f8-9379-fccc2fa14288",
+      "aspects": {}
+    },
+    {
+      "link_id": "81ad4f5b-91b2-4b00-8e66-96b008099310",
+      "name": "Products_Discontinued",
+      "type": "contain",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "da253236-a325-40bf-8029-09fe17b12771",
+      "aspects": {}
+    },
+    {
+      "link_id": "b5a15612-9c8a-480e-acae-0c55f0be2f63",
+      "name": "Regions_RegionID",
+      "type": "contain",
+      "source_id": "244c9c9e-a14a-45f0-a290-50efe88a720a",
+      "destination_id": "dde04ae1-9dca-41bb-8613-ba8807a26eca",
+      "aspects": {}
+    },
+    {
+      "link_id": "9e94dd4c-7207-4f1f-9e14-562c4a574666",
+      "name": "Regions_RegionDescription",
+      "type": "contain",
+      "source_id": "244c9c9e-a14a-45f0-a290-50efe88a720a",
+      "destination_id": "0964cd94-1b9e-4cdc-9bf1-e7e3f45d8d9a",
+      "aspects": {}
+    },
+    {
+      "link_id": "ee311c1c-fbbb-4025-b067-ca9be3da1a5f",
+      "name": "Shippers_ShipperID",
+      "type": "contain",
+      "source_id": "390f010b-46e4-434a-be57-1b2af51b09ff",
+      "destination_id": "021e17b0-e420-45e5-be24-d9f94c689b48",
+      "aspects": {}
+    },
+    {
+      "link_id": "cd130d37-de89-4bab-9ce0-ae6a82fd2cf1",
+      "name": "Shippers_CompanyName",
+      "type": "contain",
+      "source_id": "390f010b-46e4-434a-be57-1b2af51b09ff",
+      "destination_id": "28341e82-9244-45e4-8337-562a6a677de4",
+      "aspects": {}
+    },
+    {
+      "link_id": "97d9c7ac-053d-4202-925d-fe405327746a",
+      "name": "Shippers_Phone",
+      "type": "contain",
+      "source_id": "390f010b-46e4-434a-be57-1b2af51b09ff",
+      "destination_id": "2f52288e-4a49-494b-9ce6-8a4001b3173a",
+      "aspects": {}
+    },
+    {
+      "link_id": "8432efc6-d145-439a-82fd-a495834cd703",
+      "name": "Suppliers_SupplierID",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "cceb17e8-8716-4c7d-ac1c-9595033d4403",
+      "aspects": {}
+    },
+    {
+      "link_id": "ae78185b-d808-4958-958f-507322b804a6",
+      "name": "Suppliers_CompanyName",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "20aa530a-f05e-4882-a47b-30d94dfc24a1",
+      "aspects": {}
+    },
+    {
+      "link_id": "dc0f5995-c766-471b-be72-c856c8fc25bf",
+      "name": "Suppliers_ContactName",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "9dff024c-b33a-45ad-9eb8-28edf4a1abfc",
+      "aspects": {}
+    },
+    {
+      "link_id": "937e6199-f064-47f0-974f-9dd9dd57baa7",
+      "name": "Suppliers_ContactTitle",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "6b10f287-c613-416d-b659-64218a912f5c",
+      "aspects": {}
+    },
+    {
+      "link_id": "c1bef507-12a3-4219-9b39-cf39e4105b84",
+      "name": "Suppliers_Address",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "24e16664-cf40-4603-adee-cb7f140e3dc5",
+      "aspects": {}
+    },
+    {
+      "link_id": "37045dbd-3129-43b9-b5f8-901b3dd8bbc2",
+      "name": "Suppliers_City",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "0e33504c-0860-4449-8e57-ae6b408d9aad",
+      "aspects": {}
+    },
+    {
+      "link_id": "d5c64d80-7553-4a62-8cce-c9deeb76567f",
+      "name": "Suppliers_Region",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "7bc97bba-9211-476b-a7ca-730d3bc8dc14",
+      "aspects": {}
+    },
+    {
+      "link_id": "2c48e80b-5cf6-4c2e-b0c3-57f8af60a8ad",
+      "name": "Suppliers_PostalCode",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "b8488a50-d9a8-4aad-9590-2c38ddbb6adf",
+      "aspects": {}
+    },
+    {
+      "link_id": "9cb9e1cc-69d1-4ec2-b699-c16d8c05f77c",
+      "name": "Suppliers_Country",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "c2c489ef-eef9-46a6-971b-0dac22d57d1d",
+      "aspects": {}
+    },
+    {
+      "link_id": "a248853e-3c98-4b0b-ab99-b2c03393d676",
+      "name": "Suppliers_Phone",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "14c6c334-3f46-44fd-a3e6-f5888aaaff01",
+      "aspects": {}
+    },
+    {
+      "link_id": "ed1e2464-a267-43b3-8b7e-b40509f3d357",
+      "name": "Suppliers_Fax",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "bef68c86-6034-4777-8219-dfbf3e49c91f",
+      "aspects": {}
+    },
+    {
+      "link_id": "1dfa343d-b8e6-44bd-965b-1f93af02e780",
+      "name": "Suppliers_HomePage",
+      "type": "contain",
+      "source_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "destination_id": "8fee891e-e59e-4a84-b090-c24a37027adb",
+      "aspects": {}
+    },
+    {
+      "link_id": "e29839f4-8f01-4166-93a7-6f1a4ca24720",
+      "name": "Territories_TerritoryID",
+      "type": "contain",
+      "source_id": "ff19a427-19cb-4c0e-a5a8-5e0ddbb42e2b",
+      "destination_id": "e6aa14ef-60ee-4ebb-9c8b-83bcb7aa4b76",
+      "aspects": {}
+    },
+    {
+      "link_id": "d40f8d0c-17b3-4100-8741-ae2ef208e08a",
+      "name": "Territories_TerritoryDescription",
+      "type": "contain",
+      "source_id": "ff19a427-19cb-4c0e-a5a8-5e0ddbb42e2b",
+      "destination_id": "a8b8ddf0-7b59-4591-b2e2-3789771b88c5",
+      "aspects": {}
+    },
+    {
+      "link_id": "97196d98-870e-4524-b147-3d1274f2614d",
+      "name": "Territories_RegionID",
+      "type": "contain",
+      "source_id": "ff19a427-19cb-4c0e-a5a8-5e0ddbb42e2b",
+      "destination_id": "22bbd680-b0b4-4338-9ee8-84bd49e34c81",
+      "aspects": {}
+    },
+    {
+      "link_id": "02b40a00-232b-4823-bee9-d13cf0348b4d",
+      "name": "CustomerCustomerDemo_CustomerDemographics_fk",
+      "type": "foreign-key",
+      "source_id": "9116abbe-efeb-4c85-a712-20c063b48d52",
+      "destination_id": "169f5af2-389f-4db4-8895-95fc306d290c",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "CustomerCustomerDemo_CustomerDemographics_fk",
+          "from_column": "CustomerTypeID",
+          "to_column": "CustomerTypeID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "b47d03bd-90fa-437e-8142-cdd689d237c1",
+      "name": "CustomerCustomerDemo_Customers_fk",
+      "type": "foreign-key",
+      "source_id": "9116abbe-efeb-4c85-a712-20c063b48d52",
+      "destination_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "CustomerCustomerDemo_Customers_fk",
+          "from_column": "CustomerID",
+          "to_column": "CustomerID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "3f8dada7-1ec4-4ab9-b356-29f9191480ea",
+      "name": "Employees_Employees_fk",
+      "type": "foreign-key",
+      "source_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "destination_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Employees_Employees_fk",
+          "from_column": "ReportsTo",
+          "to_column": "EmployeeID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "74239a73-9a3a-4099-a5df-ed6c721813cb",
+      "name": "EmployeeTerritories_Territories_fk",
+      "type": "foreign-key",
+      "source_id": "3f49e81c-c983-4055-85c2-084704bcffef",
+      "destination_id": "ff19a427-19cb-4c0e-a5a8-5e0ddbb42e2b",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "EmployeeTerritories_Territories_fk",
+          "from_column": "TerritoryID",
+          "to_column": "TerritoryID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "3679d2fd-731c-4a3c-9035-ceb55dc92596",
+      "name": "EmployeeTerritories_Employees_fk",
+      "type": "foreign-key",
+      "source_id": "3f49e81c-c983-4055-85c2-084704bcffef",
+      "destination_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "EmployeeTerritories_Employees_fk",
+          "from_column": "EmployeeID",
+          "to_column": "EmployeeID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "374af384-9670-45cd-b2c6-d92430ae190c",
+      "name": "Order Details_Products_fk",
+      "type": "foreign-key",
+      "source_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "destination_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Order Details_Products_fk",
+          "from_column": "ProductID",
+          "to_column": "ProductID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "d11e3ae7-4271-4493-af88-759cbd659993",
+      "name": "Order Details_Orders_fk",
+      "type": "foreign-key",
+      "source_id": "0e8f752b-d6bf-4696-a75a-12357897fbfc",
+      "destination_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Order Details_Orders_fk",
+          "from_column": "OrderID",
+          "to_column": "OrderID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "ab77af26-06b8-4aa5-80e4-5c0034f67317",
+      "name": "Orders_Shippers_fk",
+      "type": "foreign-key",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "390f010b-46e4-434a-be57-1b2af51b09ff",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Orders_Shippers_fk",
+          "from_column": "ShipVia",
+          "to_column": "ShipperID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "7fbf1f7a-b6dc-460d-aa2e-a6600f73739e",
+      "name": "Orders_Customers_fk",
+      "type": "foreign-key",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "c1103fcb-76d5-45a7-9fe1-a81610a04cc7",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Orders_Customers_fk",
+          "from_column": "CustomerID",
+          "to_column": "CustomerID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "fa31dfff-7550-461a-9d2b-828eb6ca4772",
+      "name": "Orders_Employees_fk",
+      "type": "foreign-key",
+      "source_id": "3ac933b4-be03-4897-8242-2db966cc571b",
+      "destination_id": "369ae1f9-a280-46d9-ae2d-f4352ce28941",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Orders_Employees_fk",
+          "from_column": "EmployeeID",
+          "to_column": "EmployeeID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "16dc1854-785a-424b-ad75-908f5a360297",
+      "name": "Products_Suppliers_fk",
+      "type": "foreign-key",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "f17cdc95-41ff-4fa2-8fbe-8add063d82ee",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Products_Suppliers_fk",
+          "from_column": "SupplierID",
+          "to_column": "SupplierID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "2844ae6c-1696-47f8-9123-23f44b440947",
+      "name": "Products_Categories_fk",
+      "type": "foreign-key",
+      "source_id": "80963604-f927-4c29-9733-d52619f24b9d",
+      "destination_id": "72bcecae-cfd9-4f88-b9a2-ecb426981323",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Products_Categories_fk",
+          "from_column": "CategoryID",
+          "to_column": "CategoryID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    },
+    {
+      "link_id": "da00c1f5-eb50-43ca-898d-b07463a9bac3",
+      "name": "Territories_Regions_fk",
+      "type": "foreign-key",
+      "source_id": "ff19a427-19cb-4c0e-a5a8-5e0ddbb42e2b",
+      "destination_id": "244c9c9e-a14a-45f0-a290-50efe88a720a",
+      "aspects": {
+        "foreign_key_properties": {
+          "name": "Territories_Regions_fk",
+          "from_column": "RegionID",
+          "to_column": "RegionID",
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      }
+    }
+  ]
+}

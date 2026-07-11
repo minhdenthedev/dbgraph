@@ -99,7 +99,7 @@ class SQLiteGraphBuilder(GraphBuilder):
             raise ValueError("Input asset is not RCOLUMN type.")
         if "schema_properties" in column_asset.aspects:
             aspect_name = f"{column_asset.name}_column_stats"
-            nulls, non_null = self._get_column_null_metrics(
+            non_null, nulls = self._get_column_null_metrics(
                 column_asset.name, table_name
             )
             if isinstance(
@@ -230,8 +230,8 @@ class SQLiteGraphBuilder(GraphBuilder):
                 link = Link(
                     link_id=str(uuid4()),
                     name=f"{table_asset.name}_{column_asset.name}",
-                    source=table_asset,
-                    destination=column_asset,
+                    source_id=table_asset.asset_id,
+                    destination_id=column_asset.asset_id,
                     type=LinkType.CONTAIN,
                 )
                 contain_links.append(link)
@@ -256,8 +256,8 @@ class SQLiteGraphBuilder(GraphBuilder):
                     link = Link(
                         link_id=str(uuid4()),
                         name=name,
-                        source=self.tables_assets[from_table],
-                        destination=self.tables_assets[to_table],
+                        source_id=self.tables_assets[from_table].asset_id,
+                        destination_id=self.tables_assets[to_table].asset_id,
                         type=LinkType.FOREIGN_KEY,
                         aspects={
                             "foreign_key_properties": RForeignKeyAspect(
