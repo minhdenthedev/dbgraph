@@ -71,7 +71,7 @@ class DatabaseGraph:
         return DatabaseGraph(assets, target_links)
 
     def find_shortest_paths_sub_graphs(
-        self, src_id: str, dst_id: str, visiting_ids: set[str]
+        self, src_id: str, dst_id: str, visiting_ids: set[str] = set()
     ) -> list[DatabaseGraph]:
         src_idx = self._nodes_idx[src_id]
         dst_idx = self._nodes_idx[dst_id]
