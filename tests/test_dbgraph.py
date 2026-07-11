@@ -19,15 +19,15 @@ class TestDBGraph(unittest.TestCase):
                 link_id="1",
                 name="12",
                 type=LinkType.FOREIGN_KEY,
-                source=assets[0],
-                destination=assets[1],
+                source_id=assets[0].asset_id,
+                destination_id=assets[1].asset_id,
             ),
             Link(
                 link_id="1",
                 name="12",
                 type=LinkType.FOREIGN_KEY,
-                source=assets[1],
-                destination=assets[2],
+                source_id=assets[1].asset_id,
+                destination_id=assets[2].asset_id,
             ),
         ]
         self.dbgraph = DatabaseGraph(assets, links)

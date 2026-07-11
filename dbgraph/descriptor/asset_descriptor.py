@@ -4,7 +4,7 @@ from dbgraph.entity.dbgraph import DatabaseGraph
 
 
 class AssetDescriptor(ABC):
-    """Interface for class that generate semantic aspects for a database graph"""
+    """Interface for class that generate semantic aspects for a database graph or a sub-graph"""
 
     @abstractmethod
     def fill_semantic_aspects(self, graph: DatabaseGraph) -> DatabaseGraph:

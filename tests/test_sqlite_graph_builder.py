@@ -2,9 +2,7 @@ import os
 import unittest
 from pathlib import Path
 
-import matplotlib.pyplot as plt
 import psutil
-from rustworkx.visualization import mpl_draw
 
 from dbgraph.builder.sqlite.sqlite_graph_builder import SQLiteGraphBuilder
 
@@ -61,6 +59,11 @@ class TestSQLiteGraphBuilder(unittest.TestCase):
                 "Territories",
             ],
         )
+
+    def test_to_markdown(self):
+        graph = self.graph_builder.build_graph()
+        md = graph.to_markdown()
+        print(md)
 
 
 if __name__ == "__main__":
