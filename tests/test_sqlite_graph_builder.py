@@ -31,6 +31,7 @@ class TestSQLiteGraphBuilder(unittest.TestCase):
         print(f"Hàm build_graph tốn thêm: {mem_used / (1024 * 1024):.2f} MB RAM")
         md = graph.to_markdown()
         self.assertIsInstance(md, str)
+        print(md)
 
     def test__build_links(self):
         _ = self.graph_builder._build_assets()
