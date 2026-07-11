@@ -32,7 +32,6 @@ class JSONGraphLoader(GraphLoader):
         links = []
         for data in assets_data:
             if data["type"] == "table":
-                print(data)
                 asset = self._parse_table_asset(data)
             elif data["type"] == "column":
                 asset = self._parse_column_asset(data)

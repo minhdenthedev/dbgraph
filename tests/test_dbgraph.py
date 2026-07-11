@@ -34,7 +34,7 @@ class TestDBGraph(unittest.TestCase):
 
     def test_shortest_paths(self):
         assets = self.dbgraph.find_shortest_paths("hello1", "hello3", set())
-        print(assets)
+        self.assertEqual(len(assets), 1)
 
 
 if __name__ == "__main__":

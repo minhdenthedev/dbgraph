@@ -29,6 +29,8 @@ class TestSQLiteGraphBuilder(unittest.TestCase):
         graph_size = asizeof.asizeof(graph)
         print(f"Dung lượng graph theo MB: {graph_size / (1024 * 1024):.2f} MB")
         print(f"Hàm build_graph tốn thêm: {mem_used / (1024 * 1024):.2f} MB RAM")
+        md = graph.to_markdown()
+        self.assertIsInstance(md, str)
 
     def test__build_links(self):
         _ = self.graph_builder._build_assets()
@@ -59,11 +61,6 @@ class TestSQLiteGraphBuilder(unittest.TestCase):
                 "Territories",
             ],
         )
-
-    def test_to_markdown(self):
-        graph = self.graph_builder.build_graph()
-        md = graph.to_markdown()
-        print(md)
 
 
 if __name__ == "__main__":
