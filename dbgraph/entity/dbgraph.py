@@ -65,9 +65,12 @@ class DatabaseGraph:
         links: dict[int, Link] = self._graph.adj(node_idx)
         target_links = [link for link in links.values() if link.type == link_type]
         assets_ids = {self._nodes_idx[link.destination_id] for link in target_links}
-        assets_ids.update({self._nodes_idx[link.source_id] for link in target_links})
+        if link_type == LinkType.FOREIGN_KEY:
+            assets_ids.update(
+                {self._nodes_idx[link.source_id] for link in target_links}
+            )
+        assets_ids.add(self._nodes_idx[asset_id])
         assets = [self._nodes_data[i] for i in assets_ids]
-        assets.append(self._nodes_data[node_idx])
         return DatabaseGraph(assets, target_links)
 
     def find_shortest_paths_sub_graphs(
@@ -112,10 +115,15 @@ class DatabaseGraph:
         node_idx = self._nodes_idx[asset_id]
         links: dict[int, Link] = self._graph.adj(node_idx)
         target_links = [link for link in links.values() if link.type == link_type]
-        return [
-            self._nodes_data[self._nodes_idx[link.destination_id]]
-            for link in target_links
-        ]
+        assets_ids = {self._nodes_idx[link.destination_id] for link in target_links}
+        if link_type == LinkType.FOREIGN_KEY:
+            assets_ids.update(
+                {self._nodes_idx[link.source_id] for link in target_links}
+            )
+            assets_ids.remove(self._nodes_idx[asset_id])
+        assets = [self._nodes_data[i] for i in assets_ids]
+
+        return assets
 
     def find_shortest_paths(
         self, src_id: str, dst_id: str, visiting_ids: set[str]

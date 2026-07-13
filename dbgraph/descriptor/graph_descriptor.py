@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
-from dbgraph.entity.dbgraph import DatabaseGraph
+from dbgraph.entity.rdbgraph import RDatabaseGraph
 
 
-class AssetDescriptor(ABC):
+class GraphDescriptor(ABC):
     """Interface for class that generate semantic aspects for a database graph or a sub-graph"""
 
     @abstractmethod
-    def fill_semantic_aspects(self, graph: DatabaseGraph) -> DatabaseGraph:
+    def rfill_semantic_aspects(self, graph: RDatabaseGraph) -> RDatabaseGraph:
         pass

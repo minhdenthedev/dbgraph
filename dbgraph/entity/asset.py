@@ -24,14 +24,15 @@ class Asset:
 
     def _table_markdown(self) -> str:
         markdown = f"## Table: `{self.name}`\n"
-        markdown += f"- ID: {self.asset_id}\n"
+        kws_str = ""
         if "semantic_properties" in self.aspects and isinstance(
             self.aspects["semantic_properties"], SemanticAspect
         ):
             markdown += f"{self.aspects['semantic_properties'].description}\n\n"
             kws_str = ", ".join(self.aspects["semantic_properties"].keywords)
-            if kws_str.strip() != "":
-                markdown += f"- Keywords: {kws_str}"
+        markdown += f"- ID: {self.asset_id}\n"
+        if kws_str.strip() != "":
+            markdown += f"- Keywords: {kws_str}"
         if "schema_properties" in self.aspects and isinstance(
             self.aspects["schema_properties"], RTableSchemaAspect
         ):
@@ -47,14 +48,16 @@ class Asset:
 
     def _column_markdown(self) -> str:
         markdown = f"### Column: `{self.name}`\n"
-        markdown += f"- ID: {self.asset_id}\n"
+        kws_str = ""
         if "semantic_properties" in self.aspects and isinstance(
             self.aspects["semantic_properties"], SemanticAspect
         ):
             markdown += f"{self.aspects['semantic_properties'].description}\n\n"
             kws_str = ", ".join(self.aspects["semantic_properties"].keywords)
-            if kws_str.strip() != "":
-                markdown += f"- Keywords: {kws_str}"
+        markdown += f"- ID: {self.asset_id}\n"
+
+        if kws_str.strip() != "":
+            markdown += f"- Keywords: {kws_str}"
         if "schema_properties" in self.aspects and isinstance(
             self.aspects["schema_properties"], RColumnSchemaAspect
         ):

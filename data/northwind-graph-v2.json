@@ -14,6 +14,17 @@
           "name": "Categories_table_stats",
           "num_columns": 4,
           "num_rows": 8
+        },
+        "semantic_properties": {
+          "name": "Categories_semantic",
+          "description": "Stores product category definitions and metadata, serving as a lookup table for classifying products in the inventory system.",
+          "keywords": [
+            "categories",
+            "product classification",
+            "category definitions",
+            "inventory groups",
+            "product types"
+          ]
         }
       }
     },
@@ -31,6 +42,17 @@
           "name": "CustomerCustomerDemo_table_stats",
           "num_columns": 2,
           "num_rows": 0
+        },
+        "semantic_properties": {
+          "name": "CustomerCustomerDemo_semantic",
+          "description": "Associative table linking customer entities to demographic profiles, facilitating many-to-many relationships between customers and customer types.",
+          "keywords": [
+            "customer demographics",
+            "linking table",
+            "many-to-many",
+            "customer type mapping",
+            "relational data"
+          ]
         }
       }
     },
@@ -48,6 +70,18 @@
           "name": "CustomerDemographics_table_stats",
           "num_columns": 2,
           "num_rows": 0
+        },
+        "semantic_properties": {
+          "name": "CustomerDemographics_semantic",
+          "description": "Stores descriptive characteristics and demographic profiles associated with customer types. This table defines the categories of customers and their corresponding descriptions, serving as a lookup table for customer classification.",
+          "keywords": [
+            "customer demographics",
+            "customer types",
+            "customer profiles",
+            "demographic data",
+            "customer classification",
+            "lookup table"
+          ]
         }
       }
     },
@@ -65,6 +99,18 @@
           "name": "Customers_table_stats",
           "num_columns": 11,
           "num_rows": 93
+        },
+        "semantic_properties": {
+          "name": "Customers_semantic",
+          "description": "A table storing detailed information about customers, including contact details, demographics, and shipping addresses.",
+          "keywords": [
+            "customer",
+            "client",
+            "contact information",
+            "company details",
+            "shipping address",
+            "demographics"
+          ]
         }
       }
     },
@@ -82,6 +128,20 @@
           "name": "Employees_table_stats",
           "num_columns": 18,
           "num_rows": 9
+        },
+        "semantic_properties": {
+          "name": "Employees_semantic",
+          "description": "A table containing detailed information about the company's employees, including personal details, contact information, job titles, and organizational hierarchy.",
+          "keywords": [
+            "employee",
+            "staff",
+            "hr",
+            "personnel",
+            "contact",
+            "hierarchy",
+            "job title",
+            "personal info"
+          ]
         }
       }
     },
@@ -99,6 +159,19 @@
           "name": "EmployeeTerritories_table_stats",
           "num_columns": 2,
           "num_rows": 49
+        },
+        "semantic_properties": {
+          "name": "EmployeeTerritories_semantic",
+          "description": "A junction table linking employees to their assigned sales territories, enabling many-to-many relationships between staff and geographic regions.",
+          "keywords": [
+            "employee",
+            "territory",
+            "mapping",
+            "sales",
+            "junction",
+            "assignment",
+            "relationship"
+          ]
         }
       }
     },
@@ -116,6 +189,19 @@
           "name": "Order Details_table_stats",
           "num_columns": 5,
           "num_rows": 609283
+        },
+        "semantic_properties": {
+          "name": "Order Details_semantic",
+          "description": "Stores individual line items for each order, linking products to orders with specific pricing, quantities, and discounts. This table captures the details of items purchased in a single order transaction.",
+          "keywords": [
+            "order items",
+            "line items",
+            "product sales",
+            "order details",
+            "sales transactions",
+            "inventory sales",
+            "order breakdown"
+          ]
         }
       }
     },
@@ -133,6 +219,21 @@
           "name": "Orders_table_stats",
           "num_columns": 14,
           "num_rows": 16282
+        },
+        "semantic_properties": {
+          "name": "Orders_semantic",
+          "description": "Stores details about customer orders including dates, shipping information, assigned employees, and shipping carriers.",
+          "keywords": [
+            "orders",
+            "sales",
+            "transactions",
+            "shipping",
+            "logistics",
+            "customer",
+            "employee",
+            "date",
+            "freight"
+          ]
         }
       }
     },
@@ -150,6 +251,18 @@
           "name": "Products_table_stats",
           "num_columns": 10,
           "num_rows": 77
+        },
+        "semantic_properties": {
+          "name": "Products_semantic",
+          "description": "A master table storing details for all products in the inventory, linking to categories and suppliers to manage product information, pricing, and stock levels.",
+          "keywords": [
+            "products",
+            "inventory",
+            "catalog",
+            "items",
+            "goods",
+            "merchandise"
+          ]
         }
       }
     },
@@ -167,6 +280,17 @@
           "name": "Regions_table_stats",
           "num_columns": 2,
           "num_rows": 4
+        },
+        "semantic_properties": {
+          "name": "Regions_semantic",
+          "description": "Stores distinct geographical region definitions used to categorize territories.",
+          "keywords": [
+            "regions",
+            "geography",
+            "classification",
+            "location",
+            "zones"
+          ]
         }
       }
     },
@@ -184,6 +308,18 @@
           "name": "Shippers_table_stats",
           "num_columns": 3,
           "num_rows": 3
+        },
+        "semantic_properties": {
+          "name": "Shippers_semantic",
+          "description": "Stores information about shipping companies used for delivering orders.",
+          "keywords": [
+            "shippers",
+            "logistics",
+            "delivery",
+            "transport",
+            "companies",
+            "shipping providers"
+          ]
         }
       }
     },
@@ -201,6 +337,19 @@
           "name": "Suppliers_table_stats",
           "num_columns": 12,
           "num_rows": 29
+        },
+        "semantic_properties": {
+          "name": "Suppliers_semantic",
+          "description": "Stores detailed information about product suppliers, including company details, contact persons, and geographical data.",
+          "keywords": [
+            "suppliers",
+            "vendors",
+            "providers",
+            "company",
+            "contact",
+            "business",
+            "source"
+          ]
         }
       }
     },
@@ -218,6 +367,18 @@
           "name": "Territories_table_stats",
           "num_columns": 3,
           "num_rows": 53
+        },
+        "semantic_properties": {
+          "name": "Territories_semantic",
+          "description": "Contains geographic territory definitions including descriptions and their associated regions for sales or distribution tracking.",
+          "keywords": [
+            "territory",
+            "geography",
+            "region",
+            "sales",
+            "distribution",
+            "location"
+          ]
         }
       }
     },
@@ -246,6 +407,17 @@
             "max": 8
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "CategoryID_semantic",
+          "description": "Unique integer identifier for each product category, acting as the primary key for the Categories table.",
+          "keywords": [
+            "category id",
+            "primary key",
+            "unique identifier",
+            "integer",
+            "classification key"
+          ]
         }
       }
     },
@@ -277,6 +449,11 @@
               "Beverages": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "CategoryName_semantic",
+          "description": "Textual name representing the category group, such as Seafood, Dairy Products, or Beverages.",
+          "keywords": ["category name", "label", "title", "text", "group name"]
         }
       }
     },
@@ -308,6 +485,17 @@
               "Breads, crackers, pasta, and cereal": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Description_semantic",
+          "description": "Detailed text explaining the contents or characteristics of the product category.",
+          "keywords": [
+            "category description",
+            "details",
+            "definition",
+            "explanation",
+            "text"
+          ]
         }
       }
     },
@@ -328,6 +516,18 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "Picture_semantic",
+          "description": "Binary large object storing the visual representation or icon associated with a specific product category.",
+          "keywords": [
+            "image",
+            "icon",
+            "visual",
+            "blob",
+            "binary data",
+            "category picture"
+          ]
         }
       }
     },
@@ -350,6 +550,17 @@
           "categorical_stats": {
             "value_counts": {}
           }
+        },
+        "semantic_properties": {
+          "name": "CustomerID_semantic",
+          "description": "Unique identifier referencing a specific customer record from the Customers table.",
+          "keywords": [
+            "customer ID",
+            "foreign key",
+            "customer reference",
+            "primary key reference",
+            "customer identifier"
+          ]
         }
       }
     },
@@ -372,6 +583,17 @@
           "categorical_stats": {
             "value_counts": {}
           }
+        },
+        "semantic_properties": {
+          "name": "CustomerTypeID_semantic",
+          "description": "Unique identifier referencing a specific demographic type from the CustomerDemographics table.",
+          "keywords": [
+            "customer type ID",
+            "foreign key",
+            "demographic type reference",
+            "category identifier",
+            "demographic mapping"
+          ]
         }
       }
     },
@@ -394,6 +616,17 @@
           "categorical_stats": {
             "value_counts": {}
           }
+        },
+        "semantic_properties": {
+          "name": "CustomerTypeID_semantic",
+          "description": "Unique identifier for a specific customer type or demographic category. Acts as the primary key for the CustomerDemographics table and is referenced by the CustomerCustomerDemo table to link customers to their demographic groups.",
+          "keywords": [
+            "customer type ID",
+            "primary key",
+            "demographic category",
+            "identifier",
+            "foreign key reference"
+          ]
         }
       }
     },
@@ -416,6 +649,17 @@
           "categorical_stats": {
             "value_counts": {}
           }
+        },
+        "semantic_properties": {
+          "name": "CustomerDesc_semantic",
+          "description": "Descriptive text providing details about the specific customer type or demographic segment. This field offers context on the characteristics or attributes defining the customer category.",
+          "keywords": [
+            "customer description",
+            "demographic details",
+            "category description",
+            "customer attributes",
+            "profile details"
+          ]
         }
       }
     },
@@ -449,6 +693,16 @@
               "BOTTM": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "CustomerID_semantic",
+          "description": "A unique identifier for each customer, serving as the primary key.",
+          "keywords": [
+            "unique ID",
+            "primary key",
+            "identifier",
+            "customer reference"
+          ]
         }
       }
     },
@@ -482,6 +736,16 @@
               "Trail's Head Gourmet Provisioners": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "CompanyName_semantic",
+          "description": "The name of the customer's business or organization.",
+          "keywords": [
+            "business name",
+            "company",
+            "enterprise",
+            "organization name"
+          ]
         }
       }
     },
@@ -515,6 +779,16 @@
               "Sven Ottlieb": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ContactName_semantic",
+          "description": "The name of the primary contact person for the customer.",
+          "keywords": [
+            "contact person",
+            "individual name",
+            "representative",
+            "point of contact"
+          ]
         }
       }
     },
@@ -548,6 +822,11 @@
               "IT": 2
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ContactTitle_semantic",
+          "description": "The job title or role of the contact person within the company.",
+          "keywords": ["job title", "role", "position", "designation"]
         }
       }
     },
@@ -581,6 +860,16 @@
               "South House 300 Queensbridge": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Address_semantic",
+          "description": "The street address of the customer's location.",
+          "keywords": [
+            "street address",
+            "location",
+            "street",
+            "premise address"
+          ]
         }
       }
     },
@@ -614,6 +903,11 @@
               "Lisboa": 2
             }
           }
+        },
+        "semantic_properties": {
+          "name": "City_semantic",
+          "description": "The city where the customer is located.",
+          "keywords": ["city", "urban area", "municipality", "location city"]
         }
       }
     },
@@ -646,6 +940,17 @@
               "Eastern Europe": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Region_semantic",
+          "description": "The region or state/province where the customer is located.",
+          "keywords": [
+            "region",
+            "state",
+            "province",
+            "area",
+            "geographic region"
+          ]
         }
       }
     },
@@ -679,6 +984,11 @@
               "S-958 22": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "PostalCode_semantic",
+          "description": "The postal or zip code associated with the customer's address.",
+          "keywords": ["zip code", "postal code", "PIN code", "address code"]
         }
       }
     },
@@ -712,6 +1022,16 @@
               "Canada": 3
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Country_semantic",
+          "description": "The country where the customer is located.",
+          "keywords": [
+            "country",
+            "nation",
+            "geographic location",
+            "nationality"
+          ]
         }
       }
     },
@@ -745,6 +1065,11 @@
               "40.67.88.88": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Phone_semantic",
+          "description": "The telephone number of the customer.",
+          "keywords": ["telephone", "phone number", "contact", "voice number"]
         }
       }
     },
@@ -778,6 +1103,11 @@
               "40.67.89.89": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Fax_semantic",
+          "description": "The fax number of the customer.",
+          "keywords": ["fax", "facsimile", "fax number", "fax machine"]
         }
       }
     },
@@ -806,6 +1136,17 @@
             "max": 9
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "EmployeeID_semantic",
+          "description": "Unique identifier for each employee, serving as the primary key for the Employees table and referenced by other tables for relationships.",
+          "keywords": [
+            "id",
+            "primary key",
+            "unique identifier",
+            "employee id",
+            "key"
+          ]
         }
       }
     },
@@ -838,6 +1179,11 @@
               "Buchanan": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "LastName_semantic",
+          "description": "The surname or family name of the employee.",
+          "keywords": ["surname", "last name", "family name", "name"]
         }
       }
     },
@@ -870,6 +1216,11 @@
               "Andrew": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "FirstName_semantic",
+          "description": "The given name or first name of the employee.",
+          "keywords": ["first name", "given name", "name"]
         }
       }
     },
@@ -897,6 +1248,11 @@
               "Inside Sales Coordinator": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Title_semantic",
+          "description": "The job title or position held by the employee within the organization.",
+          "keywords": ["job title", "position", "role", "designation"]
         }
       }
     },
@@ -924,6 +1280,11 @@
               "Dr.": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "TitleOfCourtesy_semantic",
+          "description": "The honorific or courtesy title used when addressing the employee (e.g., Mr., Ms., Mrs., Dr.).",
+          "keywords": ["honorific", "courtesy title", "salutation", "prefix"]
         }
       }
     },
@@ -944,6 +1305,11 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "BirthDate_semantic",
+          "description": "The date of birth of the employee.",
+          "keywords": ["dob", "date of birth", "birthday", "age", "birthdate"]
         }
       }
     },
@@ -964,6 +1330,16 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "HireDate_semantic",
+          "description": "The date when the employee was hired by the company.",
+          "keywords": [
+            "start date",
+            "hiring date",
+            "onboarding",
+            "employment date"
+          ]
         }
       }
     },
@@ -996,6 +1372,11 @@
               "14 Garrett Hill": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Address_semantic",
+          "description": "The home street address of the employee.",
+          "keywords": ["home address", "street", "residence", "location"]
         }
       }
     },
@@ -1024,6 +1405,11 @@
               "Kirkland": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "City_semantic",
+          "description": "The city where the employee resides.",
+          "keywords": ["city", "residence city", "location"]
         }
       }
     },
@@ -1049,6 +1435,11 @@
               "British Isles": 4
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Region_semantic",
+          "description": "The geographical region or state where the employee is located.",
+          "keywords": ["region", "state", "province", "area"]
         }
       }
     },
@@ -1081,6 +1472,11 @@
               "98033": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "PostalCode_semantic",
+          "description": "The postal or zip code associated with the employee's home address.",
+          "keywords": ["zip code", "postal code", "postcode"]
         }
       }
     },
@@ -1106,6 +1502,11 @@
               "UK": 4
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Country_semantic",
+          "description": "The country where the employee resides.",
+          "keywords": ["country", "nation", "location"]
         }
       }
     },
@@ -1138,6 +1539,11 @@
               "(206) 555-1189": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "HomePhone_semantic",
+          "description": "The home telephone number of the employee.",
+          "keywords": ["phone", "home phone", "telephone", "contact"]
         }
       }
     },
@@ -1170,6 +1576,11 @@
               "2344": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Extension_semantic",
+          "description": "The internal telephone extension number for the employee.",
+          "keywords": ["extension", "phone extension", "dial extension"]
         }
       }
     },
@@ -1190,6 +1601,17 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "Photo_semantic",
+          "description": "A binary large object (BLOB) containing the employee's photograph.",
+          "keywords": [
+            "photo",
+            "image",
+            "picture",
+            "profile photo",
+            "binary data"
+          ]
         }
       }
     },
@@ -1222,6 +1644,11 @@
               "Andrew received his BTS commercial in 1974 and a Ph.D. in international marketing from the University of Dallas in 1981.  He is fluent in French and Italian and reads German.  He joined the company as a sales representative, was promoted to sales manager in January 1992 and to vice president of sales in March 1993.  Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Notes_semantic",
+          "description": "Additional text notes or biographical details about the employee.",
+          "keywords": ["notes", "biography", "comments", "details"]
         }
       }
     },
@@ -1250,6 +1677,17 @@
             "max": 5
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "ReportsTo_semantic",
+          "description": "The EmployeeID of the manager to whom this employee reports, indicating the organizational reporting line.",
+          "keywords": [
+            "manager",
+            "reporting line",
+            "supervisor",
+            "hierarchy",
+            "foreign key"
+          ]
         }
       }
     },
@@ -1278,6 +1716,11 @@
               "http://accweb/emmployees/buchanan.bmp": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "PhotoPath_semantic",
+          "description": "A text string containing the URL or file path to the employee's photograph.",
+          "keywords": ["photo path", "url", "image path", "link"]
         }
       }
     },
@@ -1306,6 +1749,18 @@
             "max": 9
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "EmployeeID_semantic",
+          "description": "Unique identifier for the employee assigned to a specific territory.",
+          "keywords": [
+            "employee",
+            "ID",
+            "identifier",
+            "primary key",
+            "staff",
+            "worker"
+          ]
         }
       }
     },
@@ -1339,6 +1794,18 @@
               "85251": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "TerritoryID_semantic",
+          "description": "Unique identifier for the sales territory or geographic region associated with an employee.",
+          "keywords": [
+            "territory",
+            "ID",
+            "identifier",
+            "region",
+            "geography",
+            "sales area"
+          ]
         }
       }
     },
@@ -1367,6 +1834,17 @@
             "max": 26529
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "OrderID_semantic",
+          "description": "Unique identifier for the order that this line item belongs to. Links the detail record back to the main Orders table.",
+          "keywords": [
+            "order identifier",
+            "foreign key",
+            "order reference",
+            "link to orders",
+            "transaction ID"
+          ]
         }
       }
     },
@@ -1395,6 +1873,17 @@
             "max": 77
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "ProductID_semantic",
+          "description": "Unique identifier for the product included in this order detail. Links the detail record back to the Products table.",
+          "keywords": [
+            "product identifier",
+            "foreign key",
+            "product reference",
+            "SKU reference",
+            "item ID"
+          ]
         }
       }
     },
@@ -1415,6 +1904,17 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "UnitPrice_semantic",
+          "description": "The price of a single unit of the product at the time of the order. This price is recorded statically to preserve historical accuracy of the transaction.",
+          "keywords": [
+            "price per unit",
+            "cost",
+            "sale price",
+            "unit cost",
+            "transaction price"
+          ]
         }
       }
     },
@@ -1443,6 +1943,17 @@
             "max": 130
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "Quantity_semantic",
+          "description": "The number of units of the specific product ordered in this line item.",
+          "keywords": [
+            "amount",
+            "count",
+            "volume",
+            "number of units",
+            "quantity ordered"
+          ]
         }
       }
     },
@@ -1471,6 +1982,17 @@
             "max": 0.25
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "Discount_semantic",
+          "description": "The discount percentage applied to this specific line item. A value of 0 indicates no discount, while higher values indicate greater discounts up to the maximum allowed.",
+          "keywords": [
+            "discount rate",
+            "price reduction",
+            "promo",
+            "sales discount",
+            "reduction percentage"
+          ]
         }
       }
     },
@@ -1499,6 +2021,11 @@
             "max": 26529
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "OrderID_semantic",
+          "description": "The unique identifier for each sales order.",
+          "keywords": ["order ID", "primary key", "order number", "identifier"]
         }
       }
     },
@@ -1532,6 +2059,16 @@
               "RANCH": 194
             }
           }
+        },
+        "semantic_properties": {
+          "name": "CustomerID_semantic",
+          "description": "The unique identifier linking the order to a specific customer.",
+          "keywords": [
+            "customer ID",
+            "foreign key",
+            "customer reference",
+            "account ID"
+          ]
         }
       }
     },
@@ -1560,6 +2097,11 @@
             "max": 9
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "EmployeeID_semantic",
+          "description": "The unique identifier linking the order to the employee who processed it.",
+          "keywords": ["employee ID", "foreign key", "sales rep", "staff ID"]
         }
       }
     },
@@ -1580,6 +2122,16 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "OrderDate_semantic",
+          "description": "The date and time when the order was placed.",
+          "keywords": [
+            "order date",
+            "timestamp",
+            "creation date",
+            "purchase date"
+          ]
         }
       }
     },
@@ -1600,6 +2152,16 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "RequiredDate_semantic",
+          "description": "The date by which the customer expects the order to be delivered.",
+          "keywords": [
+            "required date",
+            "delivery deadline",
+            "due date",
+            "expected delivery"
+          ]
         }
       }
     },
@@ -1620,6 +2182,16 @@
           "null_count": 21,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "ShippedDate_semantic",
+          "description": "The date and time when the order was actually shipped.",
+          "keywords": [
+            "shipped date",
+            "dispatch date",
+            "shipping date",
+            "fulfillment date"
+          ]
         }
       }
     },
@@ -1648,6 +2220,17 @@
             "max": 3
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "ShipVia_semantic",
+          "description": "The identifier for the shipping carrier or company used to deliver the order.",
+          "keywords": [
+            "ship via",
+            "shipping carrier",
+            "transporter",
+            "logistics provider",
+            "shipper ID"
+          ]
         }
       }
     },
@@ -1668,6 +2251,11 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "Freight_semantic",
+          "description": "The cost of freight or shipping charged for the order.",
+          "keywords": ["freight", "cost", "shipping", "expense", "price", "fee"]
         }
       }
     },
@@ -1701,6 +2289,17 @@
               "Seven Seas Imports": 199
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ShipName_semantic",
+          "description": "The name of the customer or company to whom the order is being shipped.",
+          "keywords": [
+            "ship name",
+            "recipient",
+            "customer name",
+            "company name",
+            "billing name"
+          ]
         }
       }
     },
@@ -1734,6 +2333,17 @@
               "Torikatu 38": 201
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ShipAddress_semantic",
+          "description": "The street address where the order is to be delivered.",
+          "keywords": [
+            "shipping address",
+            "address",
+            "street",
+            "delivery location",
+            "recipient address"
+          ]
         }
       }
     },
@@ -1767,6 +2377,11 @@
               "Portland": 340
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ShipCity_semantic",
+          "description": "The city where the order is to be delivered.",
+          "keywords": ["shipping city", "city", "location", "destination city"]
         }
       }
     },
@@ -1799,6 +2414,17 @@
               "Eastern Europe": 213
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ShipRegion_semantic",
+          "description": "The region, state, or province where the order is to be delivered.",
+          "keywords": [
+            "shipping region",
+            "state",
+            "province",
+            "area",
+            "geographic region"
+          ]
         }
       }
     },
@@ -1832,6 +2458,11 @@
               "S-844 67": 205
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ShipPostalCode_semantic",
+          "description": "The postal or zip code for the shipping destination.",
+          "keywords": ["postal code", "zip code", "postcode", "mailing code"]
         }
       }
     },
@@ -1865,6 +2496,16 @@
               "Italy": 538
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ShipCountry_semantic",
+          "description": "The country where the order is to be delivered.",
+          "keywords": [
+            "shipping country",
+            "country",
+            "destination",
+            "geographic location"
+          ]
         }
       }
     },
@@ -1893,6 +2534,11 @@
             "max": 77
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "ProductID_semantic",
+          "description": "The unique identifier for each product in the system.",
+          "keywords": ["product", "id", "primary key", "identifier", "unique"]
         }
       }
     },
@@ -1926,6 +2572,11 @@
               "Teatime Chocolate Biscuits": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ProductName_semantic",
+          "description": "The name or title of the product.",
+          "keywords": ["product", "name", "title", "description", "label"]
         }
       }
     },
@@ -1954,6 +2605,11 @@
             "max": 29
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "SupplierID_semantic",
+          "description": "The identifier linking the product to its supplier in the Suppliers table.",
+          "keywords": ["supplier", "id", "foreign key", "vendor", "provider"]
         }
       }
     },
@@ -1982,6 +2638,17 @@
             "max": 8
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "CategoryID_semantic",
+          "description": "The identifier linking the product to its category in the Categories table.",
+          "keywords": [
+            "category",
+            "id",
+            "foreign key",
+            "classification",
+            "group"
+          ]
         }
       }
     },
@@ -2015,6 +2682,11 @@
               "50 - 300 g pkgs.": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "QuantityPerUnit_semantic",
+          "description": "The packaging unit quantity or size description for the product.",
+          "keywords": ["quantity", "unit", "packaging", "size", "measure"]
         }
       }
     },
@@ -2035,6 +2707,11 @@
           "null_count": 0,
           "numerical_stats": null,
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "UnitPrice_semantic",
+          "description": "The selling price for a single unit of the product.",
+          "keywords": ["price", "unit", "cost", "value", "monetary"]
         }
       }
     },
@@ -2063,6 +2740,11 @@
             "max": 125
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "UnitsInStock_semantic",
+          "description": "The current number of units of the product available in inventory.",
+          "keywords": ["stock", "inventory", "quantity", "units", "available"]
         }
       }
     },
@@ -2091,6 +2773,11 @@
             "max": 100
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "UnitsOnOrder_semantic",
+          "description": "The number of units of the product that are currently ordered from the supplier but not yet received.",
+          "keywords": ["order", "pending", "shipment", "incoming", "stock"]
         }
       }
     },
@@ -2119,6 +2806,11 @@
             "max": 30
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "ReorderLevel_semantic",
+          "description": "The minimum quantity of the product in stock that triggers a reorder notification.",
+          "keywords": ["reorder", "level", "threshold", "min", "stock"]
         }
       }
     },
@@ -2144,6 +2836,11 @@
               "1": 8
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Discontinued_semantic",
+          "description": "A flag indicating whether the product is discontinued (active or inactive status).",
+          "keywords": ["discontinued", "status", "active", "inactive", "flag"]
         }
       }
     },
@@ -2172,6 +2869,17 @@
             "max": 4
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "RegionID_semantic",
+          "description": "Unique integer identifier for each geographical region.",
+          "keywords": [
+            "region_id",
+            "primary_key",
+            "identifier",
+            "integer",
+            "unique_id"
+          ]
         }
       }
     },
@@ -2199,6 +2907,17 @@
               "Eastern": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "RegionDescription_semantic",
+          "description": "Textual name or label describing the geographical region.",
+          "keywords": [
+            "region_name",
+            "description",
+            "label",
+            "text",
+            "geographical_name"
+          ]
         }
       }
     },
@@ -2227,6 +2946,11 @@
             "max": 3
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "ShipperID_semantic",
+          "description": "Unique identifier for each shipping company.",
+          "keywords": ["shipper_id", "identifier", "key", "pk", "primary key"]
         }
       }
     },
@@ -2253,6 +2977,17 @@
               "Federal Shipping": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "CompanyName_semantic",
+          "description": "Name of the shipping company.",
+          "keywords": [
+            "company_name",
+            "name",
+            "business",
+            "enterprise",
+            "carrier"
+          ]
         }
       }
     },
@@ -2279,6 +3014,17 @@
               "(503) 555-3199": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Phone_semantic",
+          "description": "Contact phone number for the shipping company.",
+          "keywords": [
+            "phone",
+            "telephone",
+            "contact",
+            "number",
+            "communication"
+          ]
         }
       }
     },
@@ -2307,6 +3053,17 @@
             "max": 29
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "SupplierID_semantic",
+          "description": "The unique identifier for each supplier.",
+          "keywords": [
+            "supplier id",
+            "primary key",
+            "id",
+            "unique",
+            "identifier"
+          ]
         }
       }
     },
@@ -2340,6 +3097,11 @@
               "Norske Meierier": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "CompanyName_semantic",
+          "description": "The legal or trading name of the supplier company.",
+          "keywords": ["company name", "business name", "name", "supplier name"]
         }
       }
     },
@@ -2373,6 +3135,17 @@
               "Michael Bj\u00f6rn": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ContactName_semantic",
+          "description": "The name of the primary contact person at the supplier.",
+          "keywords": [
+            "contact name",
+            "person",
+            "name",
+            "employee",
+            "representative"
+          ]
         }
       }
     },
@@ -2406,6 +3179,11 @@
               "Product Manager": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "ContactTitle_semantic",
+          "description": "The job title or role of the contact person within the supplier company.",
+          "keywords": ["title", "role", "job title", "position", "designation"]
         }
       }
     },
@@ -2439,6 +3217,11 @@
               "Hatlevegen 5": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Address_semantic",
+          "description": "The street address of the supplier's location.",
+          "keywords": ["address", "street", "location", "place"]
         }
       }
     },
@@ -2472,6 +3255,11 @@
               "Ravenna": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "City_semantic",
+          "description": "The city where the supplier is located.",
+          "keywords": ["city", "location", "town", "urban"]
         }
       }
     },
@@ -2505,6 +3293,11 @@
               "South America": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Region_semantic",
+          "description": "The region or state/province of the supplier's location.",
+          "keywords": ["region", "state", "province", "area", "zone"]
         }
       }
     },
@@ -2538,6 +3331,11 @@
               "75004": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "PostalCode_semantic",
+          "description": "The postal or zip code for the supplier's address.",
+          "keywords": ["postal code", "zip code", "postcode", "address"]
         }
       }
     },
@@ -2571,6 +3369,11 @@
               "Sweden": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Country_semantic",
+          "description": "The country where the supplier is based.",
+          "keywords": ["country", "nation", "location", "geography"]
         }
       }
     },
@@ -2604,6 +3407,11 @@
               "(514) 555-9022": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Phone_semantic",
+          "description": "The primary telephone number for the supplier.",
+          "keywords": ["phone", "telephone", "contact", "number", "call"]
         }
       }
     },
@@ -2637,6 +3445,11 @@
               "(0544) 60603": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "Fax_semantic",
+          "description": "The fax number associated with the supplier's business contact.",
+          "keywords": ["fax", "fax number", "contact", "communication"]
         }
       }
     },
@@ -2665,6 +3478,11 @@
               "#CAJUN.HTM#": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "HomePage_semantic",
+          "description": "The website URL or homepage link for the supplier.",
+          "keywords": ["homepage", "website", "url", "web", "link", "site"]
         }
       }
     },
@@ -2698,6 +3516,17 @@
               "06897": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "TerritoryID_semantic",
+          "description": "Unique identifier for each sales territory, typically formatted as a postal code.",
+          "keywords": [
+            "territory id",
+            "postal code",
+            "zip code",
+            "primary key",
+            "identifier"
+          ]
         }
       }
     },
@@ -2731,6 +3560,11 @@
               "Santa Monica": 1
             }
           }
+        },
+        "semantic_properties": {
+          "name": "TerritoryDescription_semantic",
+          "description": "Descriptive name or label for the territory, often representing a city or specific area.",
+          "keywords": ["territory name", "city", "area", "description", "label"]
         }
       }
     },
@@ -2759,6 +3593,17 @@
             "max": 4
           },
           "categorical_stats": null
+        },
+        "semantic_properties": {
+          "name": "RegionID_semantic",
+          "description": "Foreign key linking the territory to its broader geographic region.",
+          "keywords": [
+            "region id",
+            "foreign key",
+            "geographic hierarchy",
+            "region",
+            "link"
+          ]
         }
       }
     }
