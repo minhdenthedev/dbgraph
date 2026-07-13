@@ -1,3 +1,4 @@
+import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 
@@ -19,6 +20,21 @@ class GraphDescriptorV1(GraphDescriptor):
     target_prompt: str
     formating_prompt: str
     max_worker: int = 10
+
+    def _generate_semantic_aspects(
+        self, system_prompt: str, user_prompt: str, assets_ids: list[str]
+    ) -> dict[str, SemanticAspect]:
+        s = self.llm.generate(system_prompt, user_prompt)
+        data = json.loads(s) if s else {}
+        parsed = {
+            k: SemanticAspect(
+                name=f"{name}_semantic",
+                description=v["description"],
+                keywords=v["keywords"],
+            )
+            for k, (name, v) in zip(assets_ids, data.items())
+        }
+        return parsed
 
     def _rbuild_prompt_for_target_asset(
         self, target_asset: Asset, column_assets: list[Asset]
@@ -46,7 +62,7 @@ class GraphDescriptorV1(GraphDescriptor):
         with ThreadPoolExecutor(max_workers=self.max_worker) as executor:
             futures = [
                 executor.submit(
-                    self.llm.generate_semantic_aspects, pair[0], pair[1], pair[2]
+                    self._generate_semantic_aspects, pair[0], pair[1], pair[2]
                 )
                 for pair in prompt_pairs
             ]
