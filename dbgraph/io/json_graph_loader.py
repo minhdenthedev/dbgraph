@@ -10,6 +10,7 @@ from dbgraph.entity.aspect import (
     RNumericalStatistics,
     RTableSchemaAspect,
     RTableStatisticsAspect,
+    SemanticAspect,
 )
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
@@ -92,6 +93,13 @@ class JSONGraphLoader(GraphLoader):
                 num_columns=properties["num_columns"],
                 num_rows=properties["num_rows"],
             )
+        if "semantic_properties" in aspects_data:
+            properties = aspects_data["semantic_properties"]
+            aspects["semantic_properties"] = SemanticAspect(
+                name=properties["name"],
+                description=properties["description"],
+                keywords=properties["keywords"],
+            )
         return Asset(
             asset_id=data["asset_id"],
             name=data["name"],
@@ -135,6 +143,13 @@ class JSONGraphLoader(GraphLoader):
                 null_count=properties["null_count"],
                 numerical_stats=rnumerical_stats,
                 categorical_stats=rcategorical_stats,
+            )
+        if "semantic_properties" in aspects_data:
+            properties = aspects_data["semantic_properties"]
+            aspects["semantic_properties"] = SemanticAspect(
+                name=properties["name"],
+                description=properties["description"],
+                keywords=properties["keywords"],
             )
 
         return Asset(

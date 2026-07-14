@@ -29,7 +29,6 @@ class TestJSONGraphLoader(unittest.TestCase):
             "8ab5a624-0596-497e-a0ee-3996d95dbe63", LinkType.CONTAIN
         )
         self.assertIsInstance(subgraph, DatabaseGraph)
-        # print(subgraph.to_markdown())
 
     def test_get_neighbors_sub_graph_fk(self):
         graph = self.graph_loader.load()

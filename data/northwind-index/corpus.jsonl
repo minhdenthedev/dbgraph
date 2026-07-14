@@ -1,0 +1,101 @@
+{"id": "8ab5a624-0596-497e-a0ee-3996d95dbe63", "text": "Stores product category definitions and metadata, serving as a lookup table for classifying products in the inventory system."}
+{"id": "e1ea6b2c-3a25-4257-8eb7-ffa81b16b55f", "text": "Associative table linking customer entities to demographic profiles, facilitating many-to-many relationships between customers and customer types."}
+{"id": "169809a7-e312-4bac-9a68-d05105d14d7c", "text": "Stores descriptive characteristics and demographic profiles associated with customer types. This table defines the categories of customers and their corresponding descriptions, serving as a lookup table for customer classification."}
+{"id": "09594675-9477-4331-8850-c2922cb0554f", "text": "A table storing detailed information about customers, including contact details, demographics, and shipping addresses."}
+{"id": "d6090517-bb47-413b-a951-db0d8bf65c46", "text": "A table containing detailed information about the company's employees, including personal details, contact information, job titles, and organizational hierarchy."}
+{"id": "cfe51f37-7ec6-423e-a5ff-69b06753125e", "text": "A junction table linking employees to their assigned sales territories, enabling many-to-many relationships between staff and geographic regions."}
+{"id": "a03335e3-414c-4559-8764-66d67e903525", "text": "Stores individual line items for each order, linking products to orders with specific pricing, quantities, and discounts. This table captures the details of items purchased in a single order transaction."}
+{"id": "20414a87-96a2-4314-887c-a247daf4b160", "text": "Stores details about customer orders including dates, shipping information, assigned employees, and shipping carriers."}
+{"id": "23bdb40f-b7eb-4455-a550-e1e11b52589f", "text": "A master table storing details for all products in the inventory, linking to categories and suppliers to manage product information, pricing, and stock levels."}
+{"id": "ce5f3566-966b-4b0e-ac06-dfc1ec9cd53d", "text": "Stores distinct geographical region definitions used to categorize territories."}
+{"id": "41a418ee-92f2-4b42-bad3-2ff144ac851f", "text": "Stores information about shipping companies used for delivering orders."}
+{"id": "ebe5b00a-4cf0-4cad-9349-7cec2e75679a", "text": "Stores detailed information about product suppliers, including company details, contact persons, and geographical data."}
+{"id": "477127da-f666-450e-a8a6-3365c00444f4", "text": "Contains geographic territory definitions including descriptions and their associated regions for sales or distribution tracking."}
+{"id": "04c20046-2808-4021-bbf1-99876e0eea6e", "text": "Unique integer identifier for each product category, acting as the primary key for the Categories table."}
+{"id": "815cd167-41f4-45d9-a467-0ed9dd8a8ec8", "text": "Textual name representing the category group, such as Seafood, Dairy Products, or Beverages."}
+{"id": "21fcbf83-627d-4ff0-957f-5e3b3dddcb25", "text": "Detailed text explaining the contents or characteristics of the product category."}
+{"id": "25ad7169-e449-40a6-95c9-8e09975036fa", "text": "Binary large object storing the visual representation or icon associated with a specific product category."}
+{"id": "707ed661-a134-48a9-bfd1-0966c06c962e", "text": "Unique identifier referencing a specific customer record from the Customers table."}
+{"id": "f1668f51-ff26-46c1-b9b7-48813b3dbc37", "text": "Unique identifier referencing a specific demographic type from the CustomerDemographics table."}
+{"id": "966a9cdc-7516-4b46-83ec-e33349896da8", "text": "Unique identifier for a specific customer type or demographic category. Acts as the primary key for the CustomerDemographics table and is referenced by the CustomerCustomerDemo table to link customers to their demographic groups."}
+{"id": "87dde91e-ae61-4dd8-810a-1bff7e5204ac", "text": "Descriptive text providing details about the specific customer type or demographic segment. This field offers context on the characteristics or attributes defining the customer category."}
+{"id": "6d8f6099-28b1-4e2e-98cf-227918948955", "text": "A unique identifier for each customer, serving as the primary key."}
+{"id": "3a4ea0d0-23c3-4115-9ebf-f64346f24464", "text": "The name of the customer's business or organization."}
+{"id": "c45ec1d3-e249-4e11-85ca-b8e611092d57", "text": "The name of the primary contact person for the customer."}
+{"id": "97f93fdb-53ef-4e2b-9abf-21d1947ac492", "text": "The job title or role of the contact person within the company."}
+{"id": "c1440edd-6e14-42be-a4a0-09a83a55b0d7", "text": "The street address of the customer's location."}
+{"id": "70e73112-d0a4-4ca5-8ae3-d3ca35a6c82d", "text": "The city where the customer is located."}
+{"id": "36cace1c-6d19-4d9f-9d7a-2808a05bbd8a", "text": "The region or state/province where the customer is located."}
+{"id": "cf00c753-955a-425e-b6b8-be2a75e7eb4c", "text": "The postal or zip code associated with the customer's address."}
+{"id": "1143644d-9aeb-414b-b267-92749b3eae60", "text": "The country where the customer is located."}
+{"id": "78ddf161-80e0-48ed-8acb-e47fb6970d5a", "text": "The telephone number of the customer."}
+{"id": "29c30aa2-23c7-41fb-a473-e0577b5015a8", "text": "The fax number of the customer."}
+{"id": "055d5005-5498-42f0-8815-569ba1622e3f", "text": "Unique identifier for each employee, serving as the primary key for the Employees table and referenced by other tables for relationships."}
+{"id": "8ed5ab15-bfd6-4571-84ba-57ceae6f6632", "text": "The surname or family name of the employee."}
+{"id": "2f779241-dc95-4367-9d0f-e6612facaeac", "text": "The given name or first name of the employee."}
+{"id": "346d6b29-09c0-4a95-8086-bb800c6890f1", "text": "The job title or position held by the employee within the organization."}
+{"id": "902ebc10-0411-487e-85ac-70c48ea85620", "text": "The honorific or courtesy title used when addressing the employee (e.g., Mr., Ms., Mrs., Dr.)."}
+{"id": "f2d0e7f9-e881-4179-8705-96b3a2770d5e", "text": "The date of birth of the employee."}
+{"id": "a378b57c-c080-4f1e-99be-04c7f1ac2719", "text": "The date when the employee was hired by the company."}
+{"id": "a60c5adb-1097-472d-8092-2f7c64ec410f", "text": "The home street address of the employee."}
+{"id": "18296191-f80c-433e-bdaa-d4cabec24a98", "text": "The city where the employee resides."}
+{"id": "9f56dac0-54d6-411f-bd13-d95c902d20d0", "text": "The geographical region or state where the employee is located."}
+{"id": "cbc88037-a5f0-4cd3-84e7-8d740c5fe968", "text": "The postal or zip code associated with the employee's home address."}
+{"id": "7a782190-5167-48c9-80a6-d959c46ed009", "text": "The country where the employee resides."}
+{"id": "ef1cb775-2612-4b47-b650-b301ff943173", "text": "The home telephone number of the employee."}
+{"id": "311451a6-beca-4428-89de-eb45a8ce7f4c", "text": "The internal telephone extension number for the employee."}
+{"id": "14ee59f6-36ef-49b6-9b1e-2e21df6141dc", "text": "A binary large object (BLOB) containing the employee's photograph."}
+{"id": "1fd877cb-a607-45ec-8878-9194429c2f71", "text": "Additional text notes or biographical details about the employee."}
+{"id": "946d404b-1671-412a-bb08-941798554007", "text": "The EmployeeID of the manager to whom this employee reports, indicating the organizational reporting line."}
+{"id": "d35c52e4-832c-4b2a-bb05-d6a9d45a4491", "text": "A text string containing the URL or file path to the employee's photograph."}
+{"id": "ee1b41be-2d01-4dd0-896d-53cf3aa68d81", "text": "Unique identifier for the employee assigned to a specific territory."}
+{"id": "1f5ac5f7-6883-4b4d-8f54-0f32afc717fb", "text": "Unique identifier for the sales territory or geographic region associated with an employee."}
+{"id": "f3f851d4-e43f-4413-86f5-942fac652d2b", "text": "Unique identifier for the order that this line item belongs to. Links the detail record back to the main Orders table."}
+{"id": "cdee512d-6316-4af3-91ad-cc4a7e1f3b4e", "text": "Unique identifier for the product included in this order detail. Links the detail record back to the Products table."}
+{"id": "06eda878-ecfa-4610-841b-01161017cd02", "text": "The price of a single unit of the product at the time of the order. This price is recorded statically to preserve historical accuracy of the transaction."}
+{"id": "8d8c0dbb-3ee3-4778-9d43-0710927ec8f2", "text": "The number of units of the specific product ordered in this line item."}
+{"id": "3c216408-0e7c-4329-833a-7ca0ba9aa9d5", "text": "The discount percentage applied to this specific line item. A value of 0 indicates no discount, while higher values indicate greater discounts up to the maximum allowed."}
+{"id": "a43b85f8-7162-41a3-bfcd-77757ddeae5d", "text": "The unique identifier for each sales order."}
+{"id": "1931e5b9-18a9-4079-9051-738029f36c76", "text": "The unique identifier linking the order to a specific customer."}
+{"id": "ccfa910e-a6f8-49e6-954d-2138e3ef6d7c", "text": "The unique identifier linking the order to the employee who processed it."}
+{"id": "e12d3dce-f78d-47f0-bfe3-8aa4afd1e740", "text": "The date and time when the order was placed."}
+{"id": "bbd20bd0-b23d-4d76-9606-a2198dd09f16", "text": "The date by which the customer expects the order to be delivered."}
+{"id": "c303d001-34ce-406e-a8fc-0d6857e3359f", "text": "The date and time when the order was actually shipped."}
+{"id": "601fca0f-9c27-4833-86d0-48f8383437a0", "text": "The identifier for the shipping carrier or company used to deliver the order."}
+{"id": "9b0a23b2-230a-413f-97bc-4bb6dabc430f", "text": "The cost of freight or shipping charged for the order."}
+{"id": "bd3f6cab-a437-40a8-b54d-6b3254c2c0f7", "text": "The name of the customer or company to whom the order is being shipped."}
+{"id": "0093ef8a-e38a-46b2-ba33-f9b25249b96c", "text": "The street address where the order is to be delivered."}
+{"id": "ea44ff9f-8cb2-4631-94c2-cd7aedb0079d", "text": "The city where the order is to be delivered."}
+{"id": "aea35d32-a7dd-470d-8ebc-78dbd5c44acb", "text": "The region, state, or province where the order is to be delivered."}
+{"id": "d0e7b9c0-5a5a-473e-af6c-7fed22ad93c5", "text": "The postal or zip code for the shipping destination."}
+{"id": "0e8fa030-45e0-48e7-b743-92c7330bbc22", "text": "The country where the order is to be delivered."}
+{"id": "dc55e671-0d2b-4845-b39a-31f976781892", "text": "The unique identifier for each product in the system."}
+{"id": "f8a0dd49-a522-4b39-ba4a-52b3e56450a9", "text": "The name or title of the product."}
+{"id": "97c6985b-f361-47b7-a511-65abeff7f857", "text": "The identifier linking the product to its supplier in the Suppliers table."}
+{"id": "18752bcb-a929-43e5-bbde-5664733015c1", "text": "The identifier linking the product to its category in the Categories table."}
+{"id": "cebb8a59-bbd0-40dd-9b85-7a043fcd90b2", "text": "The packaging unit quantity or size description for the product."}
+{"id": "47e0c1d8-d3cd-461b-b6f5-65ccf3505074", "text": "The selling price for a single unit of the product."}
+{"id": "31fe2949-5401-468d-aed0-64d4f8fa122b", "text": "The current number of units of the product available in inventory."}
+{"id": "0e2b795d-6964-4a42-84b6-1f9269754954", "text": "The number of units of the product that are currently ordered from the supplier but not yet received."}
+{"id": "957913b8-5a3a-4b44-ae68-2e7cab4fe22c", "text": "The minimum quantity of the product in stock that triggers a reorder notification."}
+{"id": "31bd44de-6eb3-4a66-bdcb-22453e3aad72", "text": "A flag indicating whether the product is discontinued (active or inactive status)."}
+{"id": "88373f02-73a7-4248-b2b0-2f478320a323", "text": "Unique integer identifier for each geographical region."}
+{"id": "30cccc13-1be0-4621-8bc7-71453fe69a74", "text": "Textual name or label describing the geographical region."}
+{"id": "d3593656-7414-4dcc-b6a9-0daff3500dce", "text": "Unique identifier for each shipping company."}
+{"id": "7c8bbc27-7e1e-4b4d-9017-afdb7818b1b0", "text": "Name of the shipping company."}
+{"id": "1d16e744-0f04-4445-a120-964eaa60622f", "text": "Contact phone number for the shipping company."}
+{"id": "ac47be75-0bc8-456e-aa31-bc5bc5acc429", "text": "The unique identifier for each supplier."}
+{"id": "efa6d523-dc8e-49c9-ae4b-0b94b8aebabf", "text": "The legal or trading name of the supplier company."}
+{"id": "a700e6ba-be69-4da9-9c57-20847197e4fd", "text": "The name of the primary contact person at the supplier."}
+{"id": "192ad429-6c1d-4c36-8073-beef923b6da3", "text": "The job title or role of the contact person within the supplier company."}
+{"id": "93900ee3-6796-4da6-9cf2-7533bcfafc7f", "text": "The street address of the supplier's location."}
+{"id": "29fb86b7-13f6-4a23-ab24-26d68881624f", "text": "The city where the supplier is located."}
+{"id": "583eef62-19d6-4587-aab5-b2e8a1166284", "text": "The region or state/province of the supplier's location."}
+{"id": "217676d6-1ac5-48f3-b79c-6f00792a9baa", "text": "The postal or zip code for the supplier's address."}
+{"id": "f361d250-a477-4e01-9871-874803a14b68", "text": "The country where the supplier is based."}
+{"id": "c225f85d-1383-4875-a2c3-8719f153b630", "text": "The primary telephone number for the supplier."}
+{"id": "2d372503-fad3-4441-bc60-d47932d1640d", "text": "The fax number associated with the supplier's business contact."}
+{"id": "846ed4b6-ca1e-4275-b6a3-79858d93b621", "text": "The website URL or homepage link for the supplier."}
+{"id": "ce2317ea-f7cb-4beb-954d-bfb8e8c97581", "text": "Unique identifier for each sales territory, typically formatted as a postal code."}
+{"id": "c7d01927-3b2b-4b95-94d6-8fedb9d1bc0d", "text": "Descriptive name or label for the territory, often representing a city or specific area."}
+{"id": "38c16615-13eb-4548-899f-77e5bc6c7fd9", "text": "Foreign key linking the territory to its broader geographic region."}

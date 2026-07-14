@@ -38,11 +38,6 @@ Return a JSON output with following schema: {`table or column's name`: {\"descri
         graph_writer = JSONGraphWriter(Path("data/northwind-graph-v2.json"), indent=2)
         graph_writer.write(graph)
 
-    # def test_load_semantic_aspects(self):
-    #     graph = JSONGraphLoader(Path("data/northwind-graph-v2.json")).load()
-    #     with open("data/northwind-desc.md", "a") as f:
-    #         f.write(graph.to_markdown())
-
 
 if __name__ == "__main__":
     unittest.main()
