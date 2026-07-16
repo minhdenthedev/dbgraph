@@ -2,4 +2,4 @@
 
 ## Usecases
 
-![Usecases of DBGraph](diagrams/usecases.png)
+![Usecases of DBGraph](diagrams/usecase.png)
