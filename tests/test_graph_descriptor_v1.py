@@ -20,9 +20,9 @@ Return a JSON output with following schema: {`table or column's name`: {\"descri
         """
         self.graph_descriptor = GraphDescriptorV1(
             llm=OAICompatibleLLM(
-                model="ic_coding_assistant",
-                base_url="https://code-assistant.icenter.ai/v1",
-                api_key="vnpt1235",
+                model="",
+                base_url="",
+                api_key="",
             ),
             system_prompt="# ROLES & OBJECTIVES\nYou are an expert database analyst. Your task is to generate descriptions and keywords for tables and columns.This is the schema relevant to the user's task:",
             formating_prompt=formatting_prompt,
