@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+actor DataScientist as u
+
+usecase "Manipulate\nschema" as MS
+usecase "Profile\ndatabase" as PD
+usecase "LLM\nassistance" as LA
+usecase "Render\ngraph" as RG
+
+u --> MS
+MS <|-- (Build schema graph)
+MS <|-- (Store schema graph)
+MS <|-- (Schema traversal)
+
+u --> PD
+RG <-- u
+(Search for\ndata assets) <-- u
+LA <-- u
+(Generate data\ndescriptions) --|> LA
+(SQL generation) --|> LA
+PD <|-- (Numerical\nstatistics)
+PD <|-- (Categorical\nstatistics)
+PD <|-- (Schema\nproperties)
+(SQL generation) --> RG
+(SQL generation) --> (Search for\ndata assets)
+(Generate data\ndescriptions) --> RG
+RG --> MS
+RG --> PD
+
+@enduml
