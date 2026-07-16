@@ -56,6 +56,55 @@ assets_ids = search_engine.search(
 )
 ```
 
+For visualization purpose, this is the graph saved in JSON:
+
+```json
+{
+  "assets": [
+    {
+      "asset_id": "8ab5a624-0596-497e-a0ee-3996d95dbe63",
+      "name": "Categories",
+      "type": "table",
+      "aspects": {
+        "schema_properties": {
+          "name": "Categories_table_schema",
+          "pks": ["CategoryID"],
+          "indices": {}
+        },
+        "statistical_properties": {
+          "name": "Categories_table_stats",
+          "num_columns": 4,
+          "num_rows": 8
+        },
+        "semantic_properties": {
+          "name": "Categories_semantic",
+          "description": "Stores product category definitions and metadata, serving as a lookup table for classifying products in the inventory system.",
+          "keywords": [
+            "categories",
+            "product classification",
+            "category definitions",
+            "inventory groups",
+            "product types"
+          ]
+        }
+      }
+    },
+    ...
+  ],
+  "links": [
+    {
+      "link_id": "db6bea93-a02c-4426-a2db-449e4a7bba8f",
+      "name": "Categories_CategoryID",
+      "type": "contain",
+      "source_id": "8ab5a624-0596-497e-a0ee-3996d95dbe63",
+      "destination_id": "04c20046-2808-4021-bbf1-99876e0eea6e",
+      "aspects": {}
+    },
+    ...
+  ]
+}
+```
+
 ## Usecases
 
 ![Usecases of DBGraph](diagrams/usecase.png)
