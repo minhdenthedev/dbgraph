@@ -188,9 +188,11 @@ class SQLiteGraphBuilder(GraphBuilder):
         for asset in columns_assets:
             if "schema_properties" in asset.aspects:
                 schema_aspect = asset.aspects["schema_properties"]
-                if isinstance(schema_aspect, RColumnSchemaAspect):
-                    if schema_aspect.is_pk:
-                        pks.append(asset.name)
+                if (
+                    isinstance(schema_aspect, RColumnSchemaAspect)
+                    and schema_aspect.is_pk
+                ):
+                    pks.append(asset.name)
         return RTableSchemaAspect(
             name=f"{table_name}_table_schema", pks=pks, indices=indices_map
         )
@@ -238,7 +240,7 @@ class SQLiteGraphBuilder(GraphBuilder):
         return contain_links
 
     def _build_fk_links(self) -> list[Link]:
-        tables = [a for a in self.tables_assets.keys()]
+        tables = [a for a in self.tables_assets]
         links = []
         with sqlite3.connect(self.db_path) as conn:
             for table_name in tables:
