@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from openai import OpenAI
+from openai import AsyncOpenAI, OpenAI
 
 from dbgraph.llm.llm import LLM
 
@@ -19,6 +19,23 @@ class OAICompatibleLLM(LLM):
             api_key=self.api_key,
         )
         response = client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            extra_body={
+                "extra_body": {"chat_template_kwargs": {"enable_thinking": False}}
+            },
+        )
+        return response.choices[0].message.content or ""
+
+    async def agenerate(self, system_prompt: str, user_prompt: str) -> str:
+        client = AsyncOpenAI(
+            base_url=self.base_url,
+            api_key=self.api_key,
+        )
+        response = await client.chat.completions.create(
             model=self.model,
             messages=[
                 {"role": "system", "content": system_prompt},

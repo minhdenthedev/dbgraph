@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from dbgraph.descriptor.graph_descriptor_v1 import GraphDescriptorV1
+from dbgraph.descriptor.graph_descriptor_v2 import GraphDescriptorV2
 from dbgraph.entity.rdbgraph import RDatabaseGraph
 from dbgraph.io.json_graph_loader import JSONGraphLoader
 from dbgraph.io.json_graph_writer import JSONGraphWriter
 from dbgraph.llm.oai_llm import OAICompatibleLLM
 
 
-class TestGraphDescriptorV1(unittest.TestCase):
+class TestGraphDescriptorV2(unittest.TestCase):
     def setUp(self) -> None:
         formatting_prompt = """
 # OUTPUT & FORMATTING
@@ -23,7 +23,7 @@ Return a JSON output with following schema: {`table or column's name`: {\"descri
 - The keywords should be short and relevant to the topic or the nature of the table or column.
 - The descriptions and keywords should be easy to search for when using search engines like Google, ElasticSearch, ...
         """
-        self.graph_descriptor = GraphDescriptorV1(
+        self.graph_descriptor = GraphDescriptorV2(
             llm=OAICompatibleLLM(
                 model=os.getenv("LLM_MODEL", ""),
                 base_url=os.getenv("LLM_BASE_URL", ""),

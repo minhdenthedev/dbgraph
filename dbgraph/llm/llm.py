@@ -7,3 +7,7 @@ class LLM(ABC):
     @abstractmethod
     def generate(self, system_prompt: str, user_prompt: str) -> str:
         pass
+
+    @abstractmethod
+    async def agenerate(self, system_prompt: str, user_prompt: str) -> str:
+        pass

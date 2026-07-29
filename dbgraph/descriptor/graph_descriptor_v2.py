@@ -1,8 +1,8 @@
+import asyncio
 import json
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 
-from tqdm import tqdm
+from tqdm.asyncio import tqdm_asyncio
 
 from dbgraph.descriptor.graph_descriptor import GraphDescriptor
 from dbgraph.entity.aspect import SemanticAspect
@@ -12,8 +12,8 @@ from dbgraph.llm.llm import LLM
 
 
 @dataclass
-class GraphDescriptorV1(GraphDescriptor):
-    """Implementation of Graph Descriptor using ThreadPoolExecutor"""
+class GraphDescriptorV2(GraphDescriptor):
+    """Implementation of Graph Descriptor using asyncio"""
 
     llm: LLM
     system_prompt: str
@@ -21,10 +21,10 @@ class GraphDescriptorV1(GraphDescriptor):
     formating_prompt: str
     max_worker: int = 10
 
-    def _generate_semantic_aspects(
+    async def _generate_semantic_aspects(
         self, system_prompt: str, user_prompt: str, assets_ids: list[str]
     ) -> dict[str, SemanticAspect]:
-        s = self.llm.generate(system_prompt, user_prompt)
+        s = await self.llm.agenerate(system_prompt, user_prompt)
         data = json.loads(s) if s else {}
         parsed = {
             k: SemanticAspect(
@@ -50,7 +50,7 @@ class GraphDescriptorV1(GraphDescriptor):
         """Build system prompt to generate semantic aspect for an targeted asset, given the contexts (subgraph)"""
         return self.system_prompt + "\n" + sub_graph.to_markdown()
 
-    def _gather_semantic_aspects(
+    async def _gather_semantic_aspects(
         self,
         system_prompts: list[str],
         user_prompts: list[str],
@@ -59,21 +59,18 @@ class GraphDescriptorV1(GraphDescriptor):
         prompt_pairs = list(zip(system_prompts, user_prompts, assets_ids_list))
 
         results = {}
-        with ThreadPoolExecutor(max_workers=self.max_worker) as executor:
-            futures = [
-                executor.submit(
-                    self._generate_semantic_aspects, pair[0], pair[1], pair[2]
-                )
-                for pair in prompt_pairs
-            ]
-            for future in tqdm(
-                as_completed(futures),
-                total=len(futures),
-                desc="Generating asset's semantic aspects",
-            ):
-                result = future.result()
+        tasks = [
+            self._generate_semantic_aspects(pair[0], pair[1], pair[2])
+            for pair in prompt_pairs
+        ]
 
-                results.update(result)
+        results = {}
+
+        for result in await tqdm_asyncio.gather(
+            *tasks, desc="Generating semantic aspects"
+        ):
+            results.update(result)
+
         return results
 
     def rfill_semantic_aspects(self, graph: RDatabaseGraph) -> RDatabaseGraph:
@@ -96,8 +93,12 @@ class GraphDescriptorV1(GraphDescriptor):
             for table, columns in zip(tables, columns_lists)
         ]
 
-        semantic_aspects = self._gather_semantic_aspects(
-            system_prompts, user_prompts, assets_ids_list
+        semantic_aspects = asyncio.run(
+            self._gather_semantic_aspects(
+                system_prompts,
+                user_prompts,
+                assets_ids_list,
+            )
         )
         for k, aspect in semantic_aspects.items():
             graph._nodes_data[graph._nodes_idx[k]].aspects["semantic_properties"] = (
