@@ -10,7 +10,7 @@ class TestRDatabaseGraph(unittest.TestCase):
     def setUp(self) -> None:
         self.graph_loader = JSONGraphLoader("test", Path("data/northwind-graph.json"))
         dbgraph = self.graph_loader.load()
-        self.graph = RDatabaseGraph("test",
+        self.graph = RDatabaseGraph(
             list(dbgraph._nodes_data.values()), list(dbgraph._edges_data.values())
         )
 

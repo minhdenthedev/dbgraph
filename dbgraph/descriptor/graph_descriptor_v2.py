@@ -101,7 +101,7 @@ class GraphDescriptorV2(GraphDescriptor):
             )
         )
         for k, aspect in semantic_aspects.items():
-            graph._nodes_data[graph._nodes_idx[k]].aspects["semantic_properties"] = (
+            graph._nodes_data[graph._asset_id_to_node_idx[k]].aspects["semantic_properties"] = (
                 aspect
             )
         return graph
