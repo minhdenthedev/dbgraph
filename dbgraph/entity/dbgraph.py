@@ -65,6 +65,17 @@ class DatabaseGraph:
         return asset_indices, list(links.values())
 
 
+    def get_asset(self, asset_id: str) -> Asset:
+        """Return the asset using asset_id"""
+        return self._graph.get_node_data(self._node_idx(asset_id))
+
+    def get_link(self, src_id: str, dst_id: str) -> Link:
+        """Return the link connect these two Assets"""
+        return self._graph.get_edge_data(
+            self._node_idx(src_id), self._node_idx(dst_id)
+        )
+
+
     def select_neighbors(
         self, asset_id: str
     ) -> DatabaseGraph:

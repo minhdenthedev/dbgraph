@@ -23,4 +23,4 @@ class GraphBuilder(ABC):
     def build_graph(self) -> DatabaseGraph:
         assets = self._build_assets()
         links = self._build_links()
-        return DatabaseGraph(self.get_graph_name(), assets, links)
+        return DatabaseGraph(assets, links)

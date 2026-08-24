@@ -75,7 +75,7 @@ class GraphDescriptorV2(GraphDescriptor):
 
     def rfill_semantic_aspects(self, graph: RDatabaseGraph) -> RDatabaseGraph:
         tables = graph.get_tables()
-        subgraphs = [graph.get_refs_with_columns(table.asset_id) for table in tables]
+        subgraphs = [graph.select_connected_tables(table.asset_id) for table in tables]
         columns_lists = [
             [a for a in subgraph.get_columns(table.asset_id)]
             for table, subgraph in zip(tables, subgraphs)
@@ -101,7 +101,7 @@ class GraphDescriptorV2(GraphDescriptor):
             )
         )
         for k, aspect in semantic_aspects.items():
-            graph._nodes_data[graph._asset_id_to_node_idx[k]].aspects["semantic_properties"] = (
+            graph._nodes_data[graph._node_idx(k)].aspects["semantic_properties"] = (
                 aspect
             )
         return graph
