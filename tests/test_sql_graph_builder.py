@@ -15,7 +15,6 @@ def get_kv_memory():
 class TestSQLGraphBuilder(unittest.TestCase):
     def setUp(self) -> None:
         self.graph_builder = SQLGraphBuilder("sqlite:///data/northwind.db")
-        # self.graph_builder = SQLAlchemyGraphBuilder("trino://45ba00f2-189d-4215-9eb4-8ad92b5892e6:f4asulq4wluhis651wfi@ec29c5d8-5c42-45eb-a9c6-1c594383db6e.idma.cloud:443/vnpt_net_cell_clk/app")
 
     def test_build_graph(self):
         from time import perf_counter_ns
