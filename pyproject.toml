@@ -1,0 +1,26 @@
+[project]
+name = "dbgraph"
+version = "0.1.0"
+description = "dbgraph is a database profiling tool which model the database as a graph"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "bm25s[all]>=0.3.9",
+    "grip>=4.6.2",
+    "matplotlib>=3.11.0",
+    "mkdocs>=1.6.1",
+    "mkdocs-gen-files>=0.6.1",
+    "mkdocs-material>=9.7.7",
+    "mkdocstrings[python]>=1.0.6",
+    "openai>=2.45.0",
+    "psutil>=7.2.2",
+    "pydot>=4.0.1",
+    "pympler>=1.1",
+    "pystemmer>=3.1.0",
+    "pytest>=9.1.1",
+    "python-dotenv>=1.2.2",
+    "rustworkx>=0.18.0",
+    "sqlalchemy>=2.0.52",
+    "tqdm>=4.68.4",
+    "trino>=0.339.0",
+]

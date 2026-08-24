@@ -1,0 +1,103 @@
+@startuml
+class Asset {
+    asset_id: str
+    asset_name: str
+    asset_type: AssetType
+    aspects: dict[str, Aspect]
+}
+class Link {
+    link_id: str
+    link_name: str
+    source_id: str
+    destination_id: str
+    link_type: LinkType
+    aspects: dict[str, Aspect]
+}
+enum AssetType {
+    TABLE
+    COLUMN
+}
+enum LinkType {
+    CONTAIN
+    FOREIGN_KEY
+}
+class Aspect {
+    name: str
+}
+class DatabaseGraph {
+    assets: list[Asset]
+    links: list[Link]
+}
+class RDatabaseGraph
+interface RDataGateway
+class RGraphBuilder {
+    gateway: RDataGateway
+    build(): RDatabaseGraph
+}
+class RProfiler {
+    gateway: RDataGateway
+    graph: RDatabaseGraph
+    column_stats_aspect(asset_id): RColumnStatsAspect
+    column_schema_aspect(asset_id): RColumnSchemaAspect
+    table_stats_aspect(asset_id): RTableStatsAspect
+    table_schema_aspect(asset_id): RTableSchemaAspect
+}
+class RColumnStatsAspect
+class RColumnSchemaAspect
+class RTableSchemaAspect
+class RTableStatsAspect
+interface LLM {
+    generate(system_prompt, user_prompt) -> str
+}
+class RDescriptor {
+    llm: LLM
+    graph: RDatabaseGraph
+    semantic_aspect(asset_id) -> SemanticAspect
+}
+class SemanticAspect
+interface GraphGateway {
+    insert_assets(assets: list[Asset])
+    update_assets(data: dict[str, Asset])
+    remove_assets(assets_ids: list[str])
+    insert_links(links: list[Link])
+    remove_links(links_ids: list[str])
+    update_links(data: dict[str, Link])
+    load() -> DatabaseGraph
+}
+interface SearchEngine {
+    index(graph: DatabaseGraph)
+    search(text: str, top_k: int) -> list[str]
+}
+interface RGraphRenderer {
+    render(graph: RDatabaseGraph) -> str
+}
+
+RDatabaseGraph <.. RGraphRenderer
+RProfiler ..> RColumnSchemaAspect
+RProfiler ..> RColumnStatsAspect
+RProfiler ..> RTableSchemaAspect
+RProfiler ..> RTableStatsAspect
+RGraphBuilder ..> RDatabaseGraph
+RDescriptor ..> SemanticAspect
+SemanticAspect --|> Aspect
+AssetType -right-* Asset
+LinkType -left-* Link
+Aspect --o Asset
+Aspect --o Link
+Asset "0..n" --o "1" DatabaseGraph
+Link "0..n" --o "1" DatabaseGraph
+RDatabaseGraph --|> DatabaseGraph
+RDataGateway --o RGraphBuilder
+RDataGateway --o RProfiler
+RColumnStatsAspect --|> Aspect
+RColumnSchemaAspect --|> Aspect
+RTableSchemaAspect --|> Aspect
+RTableStatsAspect --|> Aspect
+LLM --o RDescriptor
+RProfiler o--- RDatabaseGraph
+RDescriptor o---- RDatabaseGraph
+GraphGateway .up.> Asset
+GraphGateway .down.> DatabaseGraph
+GraphGateway .up.> Link
+SearchEngine .up.> DatabaseGraph
+@enduml
