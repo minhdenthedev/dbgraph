@@ -25,13 +25,12 @@ class DatabaseGraph:
             relationships between assets.
     """
 
-    name: str
     assets: list[Asset]
     links: list[Link]
 
     def __post_init__(self):
         self._nodes_idx = {a.asset_id: i for i, a in enumerate(self.assets)}
-        self._nodes_data = {i: a for i, a in enumerate(self.assets)}
+        self._nodes_data = {i: asset for i, asset in enumerate(self.assets)}
         self._edges_data = {i: link for i, link in enumerate(self.links)}
         links_tuples = [
             (
@@ -58,7 +57,7 @@ class DatabaseGraph:
             )
         assets_ids.add(self._nodes_idx[asset_id])
         assets = [self._nodes_data[i] for i in assets_ids]
-        return DatabaseGraph(self.name, assets, target_links)
+        return DatabaseGraph(assets, target_links)
 
     def find_shortest_paths_sub_graphs(
         self, src_id: str, dst_id: str, visiting_ids: set[str] | None = None
@@ -75,7 +74,7 @@ class DatabaseGraph:
                 for pairs in pairs_lists
             ]
             return [
-                DatabaseGraph(self.name, assets, links)
+                DatabaseGraph(assets, links)
                 for assets, links in zip(assets_lists, links_lists)
             ]
 
@@ -94,7 +93,7 @@ class DatabaseGraph:
             for pairs in pairs_lists
         ]
         return [
-            DatabaseGraph(self.name, assets, links)
+            DatabaseGraph(assets, links)
             for assets, links in zip(assets_lists, links_lists)
         ]
 
