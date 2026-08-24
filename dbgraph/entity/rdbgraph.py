@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dbgraph import LinkType
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
 from dbgraph.entity.dbgraph import DatabaseGraph
@@ -28,6 +29,10 @@ class RDatabaseGraph(DatabaseGraph):
     def get_tables(self) -> list[Asset]:
         """Get all the tables in the graph"""
         return [a for a in self.assets if a.type == AssetType.RTABLE]
+
+    def get_foreign_keys(self) -> list[Link]:
+        """Get all foreign keys in the graph"""
+        return [link for link in self.links if link.type == LinkType.FOREIGN_KEY]
 
     def get_connected_tables(self, table_id: str) -> list[Asset]:
         """Get all connected table
