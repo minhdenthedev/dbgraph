@@ -30,7 +30,7 @@ class TestDBGraph(unittest.TestCase):
                 destination_id=assets[2].asset_id,
             ),
         ]
-        self.dbgraph = DatabaseGraph(assets, links)
+        self.dbgraph = DatabaseGraph("test", assets, links)
 
     def test_shortest_paths(self):
         assets = self.dbgraph.find_shortest_paths("hello1", "hello3", set())

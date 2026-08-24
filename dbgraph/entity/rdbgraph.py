@@ -51,4 +51,4 @@ class RDatabaseGraph(DatabaseGraph):
                     self._nodes_idx[table.asset_id], self._nodes_idx[column.asset_id]
                 )
                 links.append(link)
-        return RDatabaseGraph(assets, links)
+        return RDatabaseGraph(self.name, assets, links)

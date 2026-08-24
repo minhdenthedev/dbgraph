@@ -12,7 +12,7 @@ class TestBM25SearchEngine(unittest.TestCase):
         self.search_engine = BM25SearchEngine(Path("data/northwind-index"))
 
     def test_index(self):
-        graph_loader = JSONGraphLoader(Path("data/northwind-graph-v2.json"))
+        graph_loader = JSONGraphLoader("test", Path("data/northwind-graph-v2.json"))
         graph = graph_loader.load()
         semantic_aspects = {
             a.asset_id: cast(SemanticAspect, a.aspects["semantic_properties"])

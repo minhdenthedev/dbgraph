@@ -22,6 +22,7 @@ from dbgraph.io.graph_loader import GraphLoader
 
 @dataclass
 class JSONGraphLoader(GraphLoader):
+    graph_name: str
     json_path: Path
 
     def load(self) -> DatabaseGraph:
@@ -47,7 +48,7 @@ class JSONGraphLoader(GraphLoader):
             else:
                 raise NotImplementedError(f"Invalid link type '{data['type']}'")
             links.append(link)
-        return DatabaseGraph(assets, links)
+        return DatabaseGraph(self.graph_name, assets, links)
 
     def _parse_fk_link(self, data: dict) -> Link:
         fk_data = data["aspects"]["foreign_key_properties"]

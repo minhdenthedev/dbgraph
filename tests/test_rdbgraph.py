@@ -1,15 +1,16 @@
 import unittest
 from pathlib import Path
 
+from dbgraph.entity.dbgraph import DatabaseGraph
 from dbgraph.entity.rdbgraph import RDatabaseGraph
 from dbgraph.io.json_graph_loader import JSONGraphLoader
 
 
 class TestRDatabaseGraph(unittest.TestCase):
     def setUp(self) -> None:
-        self.graph_loader = JSONGraphLoader(Path("data/northwind-graph.json"))
+        self.graph_loader = JSONGraphLoader("test", Path("data/northwind-graph.json"))
         dbgraph = self.graph_loader.load()
-        self.graph = RDatabaseGraph(
+        self.graph = RDatabaseGraph("test",
             list(dbgraph._nodes_data.values()), list(dbgraph._edges_data.values())
         )
 
@@ -17,7 +18,7 @@ class TestRDatabaseGraph(unittest.TestCase):
         subgraph = self.graph.get_refs_with_columns(
             "20414a87-96a2-4314-887c-a247daf4b160"
         )
-        print(subgraph.to_markdown())
+        self.assertIsInstance(subgraph, DatabaseGraph)
 
 
 if __name__ == "__main__":

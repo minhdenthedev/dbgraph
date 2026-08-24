@@ -8,7 +8,7 @@ from dbgraph.io.json_graph_loader import JSONGraphLoader
 
 class TestJSONGraphLoader(unittest.TestCase):
     def setUp(self):
-        self.graph_loader = JSONGraphLoader(json_path=Path("data/northwind-graph.json"))
+        self.graph_loader = JSONGraphLoader("test", json_path=Path("data/northwind-graph.json"))
 
     def test_load(self):
         graph = self.graph_loader.load()
@@ -21,7 +21,7 @@ class TestJSONGraphLoader(unittest.TestCase):
             "29fb86b7-13f6-4a23-ab24-26d68881624f",
             set(),
         )
-        print(subgraphs[0].to_markdown())
+        self.assertIsInstance(subgraphs, DatabaseGraph)
 
     def test_get_neighbors_sub_graph(self):
         graph = self.graph_loader.load()
@@ -35,7 +35,7 @@ class TestJSONGraphLoader(unittest.TestCase):
         subgraph = graph.get_neighbors_sub_graph(
             "8ab5a624-0596-497e-a0ee-3996d95dbe63", LinkType.FOREIGN_KEY
         )
-        # print(subgraph.to_markdown())
+        self.assertIsInstance(subgraph, DatabaseGraph)
 
 
 if __name__ == "__main__":

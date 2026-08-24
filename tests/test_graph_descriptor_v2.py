@@ -33,8 +33,8 @@ Return a JSON output with following schema: {`table or column's name`: {\"descri
             formating_prompt=formatting_prompt,
             target_prompt="# TASK DETAILS\nGenerate descriptions and keywords for {asset_type} `{asset_name}` and its columns:\n{columns_str}\nRemember use to the UUIDs I gave you. DO NOT generate fake UUIDs.",
         )
-        graph = JSONGraphLoader(Path("data/northwind-graph.json")).load()
-        self.graph = RDatabaseGraph(
+        graph = JSONGraphLoader("test", Path("data/northwind-graph.json")).load()
+        self.graph = RDatabaseGraph("test",
             list(graph._nodes_data.values()), list(graph._edges_data.values())
         )
 

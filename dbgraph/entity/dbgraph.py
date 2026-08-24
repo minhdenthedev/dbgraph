@@ -58,7 +58,7 @@ class DatabaseGraph:
             )
         assets_ids.add(self._nodes_idx[asset_id])
         assets = [self._nodes_data[i] for i in assets_ids]
-        return DatabaseGraph(assets, target_links)
+        return DatabaseGraph(self.name, assets, target_links)
 
     def find_shortest_paths_sub_graphs(
         self, src_id: str, dst_id: str, visiting_ids: set[str] | None = None
@@ -75,7 +75,7 @@ class DatabaseGraph:
                 for pairs in pairs_lists
             ]
             return [
-                DatabaseGraph(assets, links)
+                DatabaseGraph(self.name, assets, links)
                 for assets, links in zip(assets_lists, links_lists)
             ]
 
@@ -94,7 +94,7 @@ class DatabaseGraph:
             for pairs in pairs_lists
         ]
         return [
-            DatabaseGraph(assets, links)
+            DatabaseGraph(self.name, assets, links)
             for assets, links in zip(assets_lists, links_lists)
         ]
 
