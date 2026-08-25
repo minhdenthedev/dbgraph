@@ -136,7 +136,10 @@ class DatabaseGraph:
         """
         asset_indices, _ = self._neighbors(asset_id)
         # Remove itself
-        asset_indices.remove(self._node_idx(asset_id))
+        try:
+            asset_indices.remove(self._node_idx(asset_id))
+        except KeyError:
+            pass
         return [self._graph.get_node_data(i) for i in asset_indices]
 
     def find_shortest_paths(
