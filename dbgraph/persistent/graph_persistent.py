@@ -56,6 +56,14 @@ class GraphPersistent(ABC):
         """Insert aspects into asset"""
 
     @abstractmethod
+    def get_asset(self, asset_id: str, graph_id: str) -> Asset:
+        """Find asset by its ID"""
+
+    @abstractmethod
+    def get_link(self, link_id: str, graph_id: str) -> Link:
+        """Find link by its ID"""
+
+    @abstractmethod
     def insert_link_aspects(
         self, link_id: str, aspects: dict[str, Aspect]
     ):

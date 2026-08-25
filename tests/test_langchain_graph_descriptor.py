@@ -3,19 +3,18 @@ import unittest
 from pathlib import Path
 
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 from pydantic import SecretStr
 
-from dbgraph.descriptor.prompt_templates import COLUMN_QUESTION_PROMPT, COLUMN_SYSTEM_PROMPT, TABLE_QUESTION_PROMPT, TABLE_SYSTEM_PROMPT
-from dbgraph.entity.asset import Asset
-from dbgraph.entity.asset_type import AssetType
-from dbgraph.entity.dbgraph import DatabaseGraph
-from dbgraph.entity.link import Link
-from dbgraph.entity.link_type import LinkType
+from dbgraph.descriptor.prompt_templates import (
+    COLUMN_QUESTION_PROMPT,
+    COLUMN_SYSTEM_PROMPT,
+    TABLE_QUESTION_PROMPT,
+    TABLE_SYSTEM_PROMPT,
+)
 from dbgraph.entity.rdbgraph import RDatabaseGraph
-from dbgraph.render.markdown_renderer import MarkdownRenderer
 from dbgraph.io.json_graph_writer import JSONGraphWriter
+from dbgraph.render.markdown_renderer import MarkdownRenderer
 
 load_dotenv()
 

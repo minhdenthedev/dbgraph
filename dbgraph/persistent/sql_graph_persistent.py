@@ -4,10 +4,22 @@ from dataclasses import asdict, dataclass
 from sqlalchemy import create_engine, delete, select
 from sqlalchemy.orm import Session
 
-from dbgraph.entity.aspect import Aspect
+from dbgraph.entity.aspect import (
+    Aspect,
+    RCategoricalStatistics,
+    RColumnSchemaAspect,
+    RColumnStatisticsAspect,
+    RForeignKeyAspect,
+    RNumericalStatistics,
+    RTableSchemaAspect,
+    RTableStatisticsAspect,
+    SemanticAspect,
+)
 from dbgraph.entity.asset import Asset
+from dbgraph.entity.asset_type import AssetType
 from dbgraph.entity.dbgraph import DatabaseGraph
 from dbgraph.entity.link import Link
+from dbgraph.entity.link_type import LinkType
 from dbgraph.persistent.graph_persistent import GraphPersistent
 from dbgraph.persistent.models import (
     AssetAspectModel,
@@ -74,6 +86,7 @@ class SQLGraphPersistent(GraphPersistent):
         with Session(self.engine) as session:
             session.add(model)
             session.commit()
+        self.insert_asset_aspects(asset.asset_id, asset.aspects)
 
     def insert_links(self, links: list[Link], graph_id: str):
         """Insert links into database"""
@@ -105,6 +118,27 @@ class SQLGraphPersistent(GraphPersistent):
         with Session(self.engine) as session:
             session.add(model)
             session.commit()
+        self.insert_link_aspects(link.link_id, link.aspects)
+
+    def get_link(self, link_id: str, graph_id: str) -> Link:
+        with Session(self.engine) as session:
+            model = session.scalar(
+                select(LinkModel).where(
+                    LinkModel.link_id == link_id and
+                    LinkModel.graph_id == graph_id
+                )
+            )
+        if model is None:
+            raise KeyError(f"Link with id={link_id} not found in graph={graph_id}")
+        aspects = self.get_aspects_of_link(link_id)
+        return Link(
+            link_id=link_id,
+            name=model.name,
+            source_id=model.source_id,
+            destination_id=model.destination_id,
+            aspects=aspects,
+            type=LinkType(model.link_type)
+        )
 
     def remove_assets(self, assets_ids: list[str], graph_id: str):
         with Session(self.engine) as session:
@@ -124,6 +158,24 @@ class SQLGraphPersistent(GraphPersistent):
                 )
             )
             session.commit()
+
+    def get_asset(self, asset_id: str, graph_id: str) -> Asset:
+        with Session(self.engine) as session:
+            model = session.scalar(
+                select(AssetModel).where(
+                    AssetModel.asset_id == asset_id and
+                    AssetModel.graph_id == graph_id
+                )
+            )
+        if model is None:
+            raise KeyError(f"Asset with id={asset_id} not found in graph={graph_id}")
+        aspects = self.get_aspects_of_asset(asset_id)
+        return Asset(
+            asset_id=asset_id,
+            name=model.name,
+            type=AssetType(model.asset_type),
+            aspects=aspects
+        )
 
     def remove_links(self, links_ids: list[str], graph_id: str):
         """Remove the links and return them"""
@@ -151,11 +203,12 @@ class SQLGraphPersistent(GraphPersistent):
         """Insert aspects into asset"""
         models = [
             AssetAspectModel(
-                name=name,
+                name=aspect.name,
+                type=aspect_type,
                 asset_id=asset_id,
-                json_aspect=json.dumps(asdict(aspect))
+                json_aspect=asdict(aspect)
             )
-            for name, aspect in aspects.items()
+            for aspect_type, aspect in aspects.items()
         ]
         with Session(self.engine) as session:
             session.add_all(models)
@@ -167,11 +220,12 @@ class SQLGraphPersistent(GraphPersistent):
         """Insert aspects into link"""
         models = [
             LinkAspectModel(
-                name=name,
+                name=aspect.name,
+                type=aspect_type,
                 link_id=link_id,
-                json_aspect=json.dumps(asdict(aspect))
+                json_aspect=asdict(aspect)
             )
-            for name, aspect in aspects.items()
+            for aspect_type, aspect in aspects.items()
         ]
         with Session(self.engine) as session:
             session.add_all(models)
@@ -185,16 +239,102 @@ class SQLGraphPersistent(GraphPersistent):
                     AssetAspectModel.asset_id == asset_id
                 )
             )
-            answers: dict[str, Aspect]
+            asset = session.scalar(
+                select(AssetModel).where(
+                    AssetModel.asset_id == asset_id
+                )
+            )
+            if asset is None:
+                raise KeyError(f"Asset with id={asset_id} not found!")
+            asset_type = AssetType(asset.asset_type)
+            answers: dict[str, Aspect] = {}
+            for model in models:
+                json_aspect = model.json_aspect
+                match model.type:
+                    case "schema_properties":
+                        if asset_type == AssetType.RTABLE:
+                            aspect = RTableSchemaAspect(
+                                **json_aspect
+                            )
+                        elif asset_type == AssetType.RCOLUMN:
+                            aspect = RColumnSchemaAspect(
+                                **json_aspect
+                            )
+                        else:
+                            raise NotImplementedError()
+                    case "statistical_properties":
+                        if asset_type == AssetType.RTABLE:
+                            aspect = RTableStatisticsAspect(
+                                **json_aspect
+                            )
+                        elif asset_type == AssetType.RCOLUMN:
+                            if json_aspect["numerical_stats"] is not None:
+                                numerical_aspect = RNumericalStatistics(
+                                    **json_aspect["numerical_stats"]
+                                )
+                                categorical_aspect = None
+                            elif json_aspect["categorical_stats"] is not None:
+                                categorical_aspect = RCategoricalStatistics(
+                                    **json_aspect['categorical_stats']
+                                )
+                                numerical_aspect = None
+                            else:
+                                raise RuntimeError("Neither categorical or numerical stats exists")
+                            aspect = RColumnStatisticsAspect(
+                                name=json_aspect['name'],
+                                non_null_count=json_aspect['non_null_count'],
+                                null_count=json_aspect['null_count'],
+                                categorical_stats=categorical_aspect,
+                                numerical_stats=numerical_aspect
+                            )
+                        else:
+                            raise NotImplementedError()
+                    case "semantic_properties":
+                        aspect = SemanticAspect(
+                            **json_aspect
+                        )
+                    case _:
+                        raise NotImplementedError()
+                answers[model.type] = aspect
+            return answers
+
 
     def get_aspects_of_link(self, link_id: str) -> dict[str, Aspect]:
         """Get the aspects of a link"""
+        with Session(self.engine) as session:
+            models = session.scalars(
+                select(LinkAspectModel).where(
+                    LinkAspectModel.link_id == link_id
+                )
+            )
+            link = session.scalar(
+                select(LinkModel).where(
+                    LinkModel.link_id == link_id
+                )
+            )
+            if link is None:
+                raise KeyError(f"Link with id={link_id} not found!")
+            answers: dict[str, Aspect] = {}
+            for model in models:
+                json_aspect = model.json_aspect
+                match model.type:
+                    case "foreign_key_properties":
+                        aspect = RForeignKeyAspect(
+                            **json_aspect
+                        )
+                    case _:
+                        raise NotImplementedError()
+                answers[model.type] = aspect
+            return answers
 
     def load_graph(self, graph_id: str, load_aspects: bool = False) -> DatabaseGraph:
         """Load the full database graph"""
+        raise NotImplementedError()
 
     def save_graph(self, graph: DatabaseGraph, graph_id: str):
         """Save the graph into database"""
+        raise NotImplementedError()
 
     def set_graph_state(self, graph_id: str, completed: bool):
         """Mark the graph as completely built and saved in the database or hasn't been finished building yet"""
+        raise NotImplementedError()
