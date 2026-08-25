@@ -26,7 +26,6 @@ class GraphDescriptor(ABC):
         """
 
     def rfill_semantic_aspects(self, graph: RDatabaseGraph) -> RDatabaseGraph:
-        print("Building context...")
         tables = graph.get_tables()
         assets = tables
         contexts = [graph.select_connected_tables(table.asset_id) for table in tables]
@@ -36,7 +35,6 @@ class GraphDescriptor(ABC):
             for column in columns:
                 assets.append(column)
                 contexts.append(context)
-        print("Done building context")
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             results = {
                 asset.asset_id: future
@@ -51,7 +49,6 @@ class GraphDescriptor(ABC):
         return graph
 
     def rfill_semantic_aspects_seq(self, graph: RDatabaseGraph) -> RDatabaseGraph:
-        print("Building context...")
         tables = graph.get_tables()
         assets = tables
         contexts = [graph.select_connected_tables(table.asset_id) for table in tables]
@@ -61,7 +58,6 @@ class GraphDescriptor(ABC):
             for column in columns:
                 assets.append(column)
                 contexts.append(context)
-        print("Done building context")
         results = {}
         for asset, context in zip(assets, contexts):
             results[asset.asset_id] = self.get_semantic_aspect(asset, context)
