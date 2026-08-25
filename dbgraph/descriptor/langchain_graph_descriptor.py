@@ -24,17 +24,14 @@ class LangchainGraphDescriptor(GraphDescriptor):
     markdown_renderer: MarkdownRenderer
 
     def _generate(self, system_prompt: str, question: str) -> str:
-        print("Generating...")
-        # TODO: time profiling
         response = self.model.invoke(
             [SystemMessage(content=system_prompt), HumanMessage(content=question)]
         )
-        print(f"Generated: {question}")
         if response.content is None:
             raise ValueError("Couldn't generate description")
         return str(response.content)
 
-    def _get_sematic_aspect_column(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
+    def _get_semantic_aspect_table(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
         self.markdown_renderer.render(context)
         system_prompt = self.table_system_prompt + "\n" + self.markdown_renderer.get_content()
         question = self.table_question_prompt + " " + asset.name
@@ -42,7 +39,7 @@ class LangchainGraphDescriptor(GraphDescriptor):
         return SemanticAspect(name=f"{asset.name}_semantic_properties", description=description, keywords=[])
 
 
-    def _get_semantic_aspect_table(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
+    def _get_semantic_aspect_column(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
         self.markdown_renderer.render(context)
         system_prompt = self.column_system_prompt + "\n" + self.markdown_renderer.get_content()
         question = self.column_question_prompt + " " + asset.name
@@ -51,7 +48,7 @@ class LangchainGraphDescriptor(GraphDescriptor):
 
     def get_semantic_aspect(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
         if asset.type == AssetType.RCOLUMN:
-            return self._get_sematic_aspect_column(asset, context)
+            return self._get_semantic_aspect_column(asset, context)
         elif asset.type == AssetType.RTABLE:
             return self._get_semantic_aspect_table(asset, context)
         else:

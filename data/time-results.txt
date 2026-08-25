@@ -1,0 +1,2 @@
+ThreadPool: 21.38s/101 assets
+Seq: 29.20s/101 assets
