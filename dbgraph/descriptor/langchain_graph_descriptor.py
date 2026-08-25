@@ -36,7 +36,6 @@ class LangchainGraphDescriptor(GraphDescriptor):
         system_prompt = self.table_system_prompt + "\n" + self.markdown_renderer.get_content()
         question = self.table_question_prompt + " " + asset.name
         description = self._generate(system_prompt, question)
-        print(f"Table {asset.name}: {description}")
         return SemanticAspect(name=f"{asset.name}_semantic_properties", description=description, keywords=[])
 
 
@@ -45,7 +44,6 @@ class LangchainGraphDescriptor(GraphDescriptor):
         system_prompt = self.column_system_prompt + "\n" + self.markdown_renderer.get_content()
         question = self.column_question_prompt + " " + asset.name
         description = self._generate(system_prompt, question)
-        print(f"Column {asset.name}: {description}")
         return SemanticAspect(name=f"{asset.name}_semantic_properties", description=description, keywords=[])
 
     def get_semantic_aspect(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
