@@ -106,9 +106,12 @@ class TestRDBGraph(unittest.TestCase):
         self.assertEqual(len(subgraph.links), 5)
         subgraph.assets.sort(key=lambda x: x.asset_id)
         subgraph.links.sort(key=lambda x: x.link_id)
-        self.assertEqual([a.asset_id for a in subgraph.assets], ["1", "2", "4", "5", "6", "7"])
-        self.assertEqual([link.link_id for link in subgraph.links], ["1", "2", "3", "4", "7"])
-
+        self.assertEqual(
+            [a.asset_id for a in subgraph.assets], ["1", "2", "4", "5", "6", "7"]
+        )
+        self.assertEqual(
+            [link.link_id for link in subgraph.links], ["1", "2", "3", "4", "7"]
+        )
 
 
 if __name__ == "__main__":

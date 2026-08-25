@@ -14,7 +14,9 @@ class GraphDescriptor(ABC):
     max_workers: int
 
     @abstractmethod
-    def get_semantic_aspect(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
+    def get_semantic_aspect(
+        self, asset: Asset, context: RDatabaseGraph
+    ) -> SemanticAspect:
         """Get the description of this asset.
 
         Args:
@@ -39,8 +41,7 @@ class GraphDescriptor(ABC):
             results = {
                 asset.asset_id: future
                 for asset, future in zip(
-                    assets,
-                    executor.map(self.get_semantic_aspect, assets, contexts)
+                    assets, executor.map(self.get_semantic_aspect, assets, contexts)
                 )
             }
         for key, aspect in results.items():

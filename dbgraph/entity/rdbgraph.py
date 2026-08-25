@@ -66,9 +66,7 @@ class RDatabaseGraph(DatabaseGraph):
             for column in target_table_columns
         ]
         for table in refs_tables:
-            fk_link = self.get_link(
-                table_id, table.asset_id
-            )
+            fk_link = self.get_link(table_id, table.asset_id)
             links.append(fk_link)
             columns = self.get_columns(table.asset_id)
             for column in columns:

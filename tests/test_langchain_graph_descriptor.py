@@ -30,9 +30,7 @@ class TestJSONGraphLoader(unittest.TestCase):
             model=os.getenv("LLM_MODEL", ""),
             api_key=SecretStr(os.getenv("API_KEY", "")),
             extra_body={
-                "extra_body": {
-                    "chat_template_kwargs": {"enable_thinking": False}
-                }
+                "extra_body": {"chat_template_kwargs": {"enable_thinking": False}}
             },
         )
         self.descriptor = LangchainGraphDescriptor(
@@ -42,19 +40,20 @@ class TestJSONGraphLoader(unittest.TestCase):
             column_system_prompt=COLUMN_SYSTEM_PROMPT,
             column_question_prompt=COLUMN_QUESTION_PROMPT,
             max_workers=4,
-            markdown_renderer=MarkdownRenderer()
+            markdown_renderer=MarkdownRenderer(),
         )
-
 
     def test_rfill(self):
         import time
+
         start = time.perf_counter()
-        graph = self.descriptor.rfill_semantic_aspects(RDatabaseGraph.from_graph(self.dbgraph))
+        graph = self.descriptor.rfill_semantic_aspects(
+            RDatabaseGraph.from_graph(self.dbgraph)
+        )
         end = time.perf_counter()
-        print(f"Time: {end-start:.2f}s/{len(graph.assets)} assets")
+        print(f"Time: {end - start:.2f}s/{len(graph.assets)} assets")
         writer = JSONGraphWriter(Path("data/northwind-semantic-v5.json"))
         writer.write(graph)
-
 
 
 if __name__ == "__main__":

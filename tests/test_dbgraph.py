@@ -88,7 +88,9 @@ class TestDBGraph(unittest.TestCase):
         self.assertIsInstance(subgraph, DatabaseGraph)
         self.assertEqual(len(subgraph.assets), 4)
         self.assertEqual(len(subgraph.links), 3)
-        self.assertEqual([asset.asset_id for asset in subgraph.assets], ["1", "2", "4", "5"])
+        self.assertEqual(
+            [asset.asset_id for asset in subgraph.assets], ["1", "2", "4", "5"]
+        )
         self.assertEqual([link.link_id for link in subgraph.links], ["1", "2", "7"])
 
         # column-1-1 -> [table-1]
@@ -114,14 +116,20 @@ class TestDBGraph(unittest.TestCase):
         subgraph = subgraphs[0]
         self.assertEqual(len(subgraph.assets), 5)
         self.assertEqual(len(subgraph.links), 4)
-        self.assertEqual([asset.asset_id for asset in subgraph.assets], ["4", "1", "2", "3", "9"])
-        self.assertEqual([link.link_id for link in subgraph.links], ["1", "7", "8", "6"])
+        self.assertEqual(
+            [asset.asset_id for asset in subgraph.assets], ["4", "1", "2", "3", "9"]
+        )
+        self.assertEqual(
+            [link.link_id for link in subgraph.links], ["1", "7", "8", "6"]
+        )
 
     def test_find_shortest_paths(self):
         # column-1-1 -> table-1 -> table-2 -> table-3 -> column-3-2
         assets = self.dbgraph.find_shortest_paths("4", "9")[0]
         self.assertEqual(len(assets), 5)
-        self.assertEqual([asset.asset_id for asset in assets], ["4", "1", "2", "3", "9"])
+        self.assertEqual(
+            [asset.asset_id for asset in assets], ["4", "1", "2", "3", "9"]
+        )
 
 
 if __name__ == "__main__":

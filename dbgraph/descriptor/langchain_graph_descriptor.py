@@ -31,25 +31,44 @@ class LangchainGraphDescriptor(GraphDescriptor):
             raise ValueError("Couldn't generate description")
         return str(response.content)
 
-    def _get_semantic_aspect_table(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
+    def _get_semantic_aspect_table(
+        self, asset: Asset, context: RDatabaseGraph
+    ) -> SemanticAspect:
         self.markdown_renderer.render(context)
-        system_prompt = self.table_system_prompt + "\n" + self.markdown_renderer.get_content()
+        system_prompt = (
+            self.table_system_prompt + "\n" + self.markdown_renderer.get_content()
+        )
         question = self.table_question_prompt + " " + asset.name
         description = self._generate(system_prompt, question)
-        return SemanticAspect(name=f"{asset.name}_semantic_properties", description=description, keywords=[])
+        return SemanticAspect(
+            name=f"{asset.name}_semantic_properties",
+            description=description,
+            keywords=[],
+        )
 
-
-    def _get_semantic_aspect_column(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
+    def _get_semantic_aspect_column(
+        self, asset: Asset, context: RDatabaseGraph
+    ) -> SemanticAspect:
         self.markdown_renderer.render(context)
-        system_prompt = self.column_system_prompt + "\n" + self.markdown_renderer.get_content()
+        system_prompt = (
+            self.column_system_prompt + "\n" + self.markdown_renderer.get_content()
+        )
         question = self.column_question_prompt + " " + asset.name
         description = self._generate(system_prompt, question)
-        return SemanticAspect(name=f"{asset.name}_semantic_properties", description=description, keywords=[])
+        return SemanticAspect(
+            name=f"{asset.name}_semantic_properties",
+            description=description,
+            keywords=[],
+        )
 
-    def get_semantic_aspect(self, asset: Asset, context: RDatabaseGraph) -> SemanticAspect:
+    def get_semantic_aspect(
+        self, asset: Asset, context: RDatabaseGraph
+    ) -> SemanticAspect:
         if asset.type == AssetType.RCOLUMN:
             return self._get_semantic_aspect_column(asset, context)
         elif asset.type == AssetType.RTABLE:
             return self._get_semantic_aspect_table(asset, context)
         else:
-            raise NotImplementedError("Only support for table and column in relational databases")
+            raise NotImplementedError(
+                "Only support for table and column in relational databases"
+            )

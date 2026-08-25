@@ -23,9 +23,7 @@ class TestJSONGraphLoader(unittest.TestCase):
 
     def test_get_neighbors_sub_graph(self):
         graph = self.graph_loader.load()
-        subgraph = graph.select_neighbors(
-            "8ab5a624-0596-497e-a0ee-3996d95dbe63"
-        )
+        subgraph = graph.select_neighbors("8ab5a624-0596-497e-a0ee-3996d95dbe63")
         self.assertIsInstance(subgraph, DatabaseGraph)
 
 

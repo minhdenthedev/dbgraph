@@ -58,12 +58,11 @@ class DatabaseGraph:
 
         # Find assets indices
         asset_indices = {self._node_idx(link.destination_id) for link in links.values()}
-        asset_indices = asset_indices.union({
-            self._node_idx(link.source_id) for link in links.values()
-        })
+        asset_indices = asset_indices.union(
+            {self._node_idx(link.source_id) for link in links.values()}
+        )
 
         return asset_indices, list(links.values())
-
 
     def get_asset(self, asset_id: str) -> Asset:
         """Return the asset using asset_id"""
@@ -71,14 +70,9 @@ class DatabaseGraph:
 
     def get_link(self, src_id: str, dst_id: str) -> Link:
         """Return the link connect these two Assets"""
-        return self._graph.get_edge_data(
-            self._node_idx(src_id), self._node_idx(dst_id)
-        )
+        return self._graph.get_edge_data(self._node_idx(src_id), self._node_idx(dst_id))
 
-
-    def select_neighbors(
-        self, asset_id: str
-    ) -> DatabaseGraph:
+    def select_neighbors(self, asset_id: str) -> DatabaseGraph:
         """Get this node and its neighbors.
 
         Args:
@@ -92,9 +86,7 @@ class DatabaseGraph:
         assets = [self._graph.get_node_data(i) for i in asset_indices]
         return DatabaseGraph(assets, links)
 
-    def select_shortest_paths(
-        self, src_id: str, dst_id: str
-    ) -> list[DatabaseGraph]:
+    def select_shortest_paths(self, src_id: str, dst_id: str) -> list[DatabaseGraph]:
         """
         Find shortest paths between two Assets.
 
@@ -142,9 +134,7 @@ class DatabaseGraph:
             pass
         return [self._graph.get_node_data(i) for i in asset_indices]
 
-    def find_shortest_paths(
-        self, src_id: str, dst_id: str
-    ) -> list[list[Asset]]:
+    def find_shortest_paths(self, src_id: str, dst_id: str) -> list[list[Asset]]:
         """Find shortest paths between two Assets
 
         Args:

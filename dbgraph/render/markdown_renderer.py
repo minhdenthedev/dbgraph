@@ -19,6 +19,7 @@ from dbgraph.render.text_renderer import TextRenderer
 @dataclass
 class MarkdownRenderer(TextRenderer):
     """Render the graph to Markdown format"""
+
     categorical_value_max_char: int = 50
 
     def __post_init__(self):
@@ -27,9 +28,11 @@ class MarkdownRenderer(TextRenderer):
     def _dump_table(self, asset: Asset) -> str:
         if asset.type != AssetType.RTABLE:
             raise TypeError(f"Asset of type {asset.type} is not table type")
-        if "semantic_properties" in asset.aspects and isinstance(asset.aspects["semantic_properties"], SemanticAspect):
+        if "semantic_properties" in asset.aspects and isinstance(
+            asset.aspects["semantic_properties"], SemanticAspect
+        ):
             answer = f"""# Table `{asset.name}`
-{asset.aspects['semantic_properties'].description}
+{asset.aspects["semantic_properties"].description}
 - ID: {asset.asset_id}"""
         else:
             answer = f"""# Table `{asset.name}`
@@ -46,8 +49,10 @@ class MarkdownRenderer(TextRenderer):
         header = f"""## Column `{asset.name}`"""
         if asset.type != AssetType.RCOLUMN:
             raise TypeError(f"Asset of type {asset.type} is not column type")
-        if "semantic_properties" in asset.aspects and isinstance(asset.aspects["semantic_properties"], SemanticAspect):
-            answer = f"""{asset.aspects['semantic_properties'].description}
+        if "semantic_properties" in asset.aspects and isinstance(
+            asset.aspects["semantic_properties"], SemanticAspect
+        ):
+            answer = f"""{asset.aspects["semantic_properties"].description}
 - ID: {asset.asset_id}"""
         else:
             answer = f"""- ID: {asset.asset_id}"""
@@ -63,7 +68,7 @@ class MarkdownRenderer(TextRenderer):
                     answer += "\n- Top 10 Value counts: "
                     for key, value in aspect.categorical_stats.value_counts.items():
                         if len(key) > self.categorical_value_max_char:
-                            key = key[:self.categorical_value_max_char] + "..."
+                            key = key[: self.categorical_value_max_char] + "..."
                         answer += f"\n\t- {key}: {value}"
         return header + "\n" + answer
 
@@ -72,14 +77,17 @@ class MarkdownRenderer(TextRenderer):
             raise TypeError(f"Link of type {link.type} is not foreign key type")
         src_name = graph.get_asset(link.source_id).name
         dst_name = graph.get_asset(link.destination_id).name
-        if "foreign_key_properties" in link.aspects and isinstance(link.aspects["foreign_key_properties"], RForeignKeyAspect):
+        if "foreign_key_properties" in link.aspects and isinstance(
+            link.aspects["foreign_key_properties"], RForeignKeyAspect
+        ):
             aspect = link.aspects["foreign_key_properties"]
-            answer = f"- {src_name}.{aspect.from_column} -> {dst_name}.{aspect.to_column}"
+            answer = (
+                f"- {src_name}.{aspect.from_column} -> {dst_name}.{aspect.to_column}"
+            )
         else:
             answer = f"- {src_name} -> {dst_name}"
 
         return answer
-
 
     def render(self, graph: DatabaseGraph):
         graph = RDatabaseGraph.from_graph(graph)
