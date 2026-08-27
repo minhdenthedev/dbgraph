@@ -35,7 +35,6 @@ from dbgraph.entity.link_type import LinkType
 class SQLGraphBuilder(GraphBuilder):
     """Build the database graph using SQL Alchemy"""
 
-    graph_name: str
     db_uri: str
     max_worker: int = 4
 
@@ -46,10 +45,6 @@ class SQLGraphBuilder(GraphBuilder):
         self._tables_orm: dict[str, Table] = {
             table.name: table for table in self._orm_tables
         }
-
-    def get_graph_name(self) -> str:
-        """Return the graph's name"""
-        return self.graph_name
 
     @property
     def _orm_tables(self) -> list[Table]:

@@ -3,7 +3,6 @@ from dataclasses import asdict, dataclass
 from sqlalchemy import create_engine, delete, select, update
 from sqlalchemy.orm import Session
 
-from dbgraph.entity import aspect
 from dbgraph.entity.aspect import (
     Aspect,
     RCategoricalStatistics,
