@@ -9,10 +9,6 @@ class GraphBuilder(ABC):
     """Interface for relational database graph builder"""
 
     @abstractmethod
-    def get_graph_name(self) -> str:
-        """Return the graph's name"""
-
-    @abstractmethod
     def _build_assets(self) -> list[Asset]:
         pass
 
