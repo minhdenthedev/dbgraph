@@ -368,7 +368,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
         self.assertEqual(schema_aspect.name, "column-2-1-schema")
         self.assertEqual(semantic_aspect.name, "column-2-1-semantic")
         self.assertIsInstance(stats_aspect.numerical_stats, RNumericalStatistics)
-        self.assertEqual(stats_aspect.numerical_stats.min, 0)
+        self.assertEqual(stats_aspect.numerical_stats.min, 0)  # pyright: ignore[reportOptionalMemberAccess]
         self.persistent.remove_asset(target_asset.asset_id, self.graph_id)
 
     def test_get_aspects_of_asset_categorical_column(self):
@@ -390,7 +390,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
         self.assertEqual(schema_aspect.name, "column-2-2-schema")
         self.assertEqual(semantic_aspect.name, "column-2-2-semantic")
         self.assertIsInstance(stats_aspect.categorical_stats, RCategoricalStatistics)
-        self.assertEqual(stats_aspect.categorical_stats.value_counts, {"1": 1, "2": 2})
+        self.assertEqual(stats_aspect.categorical_stats.value_counts, {"1": 1, "2": 2})  # pyright: ignore[reportOptionalMemberAccess]
         self.persistent.remove_asset(target_asset.asset_id, self.graph_id)
 
     def test_get_aspects_of_link(self):

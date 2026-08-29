@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pathlib import Path
 from uuid import uuid4
 
 from dbgraph.builder.graph_builder import GraphBuilder
@@ -8,6 +9,8 @@ from dbgraph.entity.asset import Asset
 from dbgraph.entity.dbgraph import DatabaseGraph
 from dbgraph.entity.link import Link
 from dbgraph.entity.rdbgraph import RDatabaseGraph
+from dbgraph.io.json_graph_loader import JSONGraphLoader
+from dbgraph.io.json_graph_writer import JSONGraphWriter
 from dbgraph.persistent.graph_persistent import GraphPersistent
 from dbgraph.persistent.sql_graph_persistent import SQLGraphPersistent
 
@@ -68,3 +71,12 @@ class Application:
     def get_link(self, link_id: str, graph_id: str) -> Link:
         """Find a link using its ID"""
         return self.graph_persistent.get_link(link_id, graph_id)
+
+    def write_to_json(self, graph_id: str, path: str):
+        graph = self.graph_persistent.load_graph(graph_id)
+        writer = JSONGraphWriter(Path(path))
+        writer.write(graph)
+
+    def load_from_json(self, path: str) -> DatabaseGraph:
+        reader = JSONGraphLoader(Path(path))
+        return reader.load()
