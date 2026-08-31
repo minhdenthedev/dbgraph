@@ -148,13 +148,13 @@ class SQLGraphBuilder(GraphBuilder):
 
     def _get_table_stats_aspect(self, table_name: str) -> RTableStatisticsAspect:
         table = self._tables_orm[table_name]
-        nrow = self._get_table_nrows(table_name)
+        nrow = self._get_table_nrow(table_name)
         ncol = len(table.columns)
         return RTableStatisticsAspect(
             name=f"{table.name}_table_stats", num_rows=nrow, num_columns=ncol
         )
 
-    def _get_table_nrows(self, table_name: str) -> int:
+    def _get_table_nrow(self, table_name: str) -> int:
         table = self._tables_orm[table_name]
 
         stmt = select(func.count()).select_from(table)
@@ -163,7 +163,7 @@ class SQLGraphBuilder(GraphBuilder):
             nrow = conn.execute(stmt).scalar()
         if nrow is None:
             raise RuntimeError("Can't get number of row")
-        return nrow
+        return int(nrow)
 
     def _get_table_schema_aspect(self, table_name: str) -> RTableSchemaAspect:
         table = self._tables_orm[table_name]

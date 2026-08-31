@@ -52,7 +52,7 @@ class TestSQLGraphBuilder(unittest.TestCase):
         tables = self.graph_builder.table_names
 
     def test__get_table_nrows(self):
-        nrow = self.graph_builder._get_table_nrows("Orders")
+        nrow = self.graph_builder._get_table_nrow("Orders")
 
     def test__get_columns_assets(self):
         assets = self.graph_builder._get_columns_assets("Orders")
