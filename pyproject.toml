@@ -1,15 +1,10 @@
-[tool.uv]
-# uv sẽ tự động build từ src layout
-package-dir = "dbgraph"
-
 [build-system]
-requires = ["uv>=0.1"]
-build-backend = "uv.build"
-
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "dbgraph"
-version = "0.1.0"
+version = "0.2.0"
 description = "dbgraph is a database profiling tool which model the database as a graph"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -30,7 +25,6 @@ dependencies = [
     "pydot>=4.0.1",
     "pympler>=1.1",
     "pystemmer>=3.1.0",
-    "pytest>=9.1.1",
     "python-dotenv>=1.2.2",
     "rustworkx>=0.18.0",
     "sqlalchemy>=2.0.52",

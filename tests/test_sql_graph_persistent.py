@@ -22,6 +22,10 @@ from dbgraph.persistent.sql_graph_persistent import SQLGraphPersistent
 
 class TestSQLGraphPersistent(unittest.TestCase):
     def setUp(self) -> None:
+        try:
+            os.remove("data/graph.db")
+        except PermissionError:
+            pass
         self.persistent = SQLGraphPersistent("sqlite:///data/graph.db")
         assets = [
             Asset(
@@ -300,7 +304,10 @@ class TestSQLGraphPersistent(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.persistent.delete_graph(self.graph_id)
-        os.remove("data/graph.db")
+        try:
+            os.remove("data/graph.db")
+        except PermissionError:
+            pass
 
     def test_asset(self):
         target_asset = self.graph.get_asset("1")
@@ -439,6 +446,12 @@ class TestSQLGraphPersistent(unittest.TestCase):
         self.persistent.insert_links(self.graph.links, self.graph_id)
         graph = self.persistent.load_graph(self.graph_id)
         self.assertEqual(graph, self.graph)
+
+    def test_save_graph(self):
+        self.persistent.save_graph(self.graph, self.graph_id)
+        graph = self.persistent.load_graph(self.graph_id)
+        self.assertEqual(self.graph, graph)
+
 
     def test_get_graph_info(self):
         graph_info = self.persistent.get_graph_info("1")
