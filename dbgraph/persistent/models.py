@@ -181,8 +181,8 @@ class AssetAspectModel(Base):
         nullable=False,
     )
 
-    json_aspect: Mapped[dict] = mapped_column(
-        JSON,
+    json_aspect: Mapped[str] = mapped_column(
+        Text,
         nullable=False,
     )
 
@@ -212,8 +212,8 @@ class LinkAspectModel(Base):
         nullable=False,
     )
 
-    json_aspect: Mapped[dict] = mapped_column(
-        JSON,
+    json_aspect: Mapped[str] = mapped_column(
+        Text,
         nullable=False,
     )
 

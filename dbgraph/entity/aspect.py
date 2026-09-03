@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime, timedelta
 from enum import StrEnum
 
 
@@ -104,6 +105,15 @@ class RCategoricalStatistics:
 
 
 @dataclass
+class RTemporalStatistics:
+    """Statistics for temporal columns"""
+    min_time: datetime | None = None
+    max_time: datetime | None = None
+    mode_time: datetime | None = None
+    num_uniques: int | None = None
+
+
+@dataclass
 class RColumnStatisticsAspect(Aspect):
     """Group of properties relevant to RDB's column statistics
 
@@ -118,6 +128,7 @@ class RColumnStatisticsAspect(Aspect):
     null_count: int
     numerical_stats: RNumericalStatistics | None = None
     categorical_stats: RCategoricalStatistics | None = None
+    temporal_stats: RTemporalStatistics | None = None
 
 
 class FKBehavior(StrEnum):

@@ -12,8 +12,10 @@ from sqlalchemy import (
     create_engine,
     func,
     inspect,
-    select,
+    select, SmallInteger, Integer, BigInteger, Float, DECIMAL, Text, Unicode, UnicodeText, CHAR, NCHAR, BLOB, DATE,
+    DATETIME, distinct,
 )
+from sqlalchemy.orm import Session
 
 from dbgraph.builder.graph_builder import GraphBuilder
 from dbgraph.entity.aspect import (
@@ -23,7 +25,7 @@ from dbgraph.entity.aspect import (
     RForeignKeyAspect,
     RNumericalStatistics,
     RTableSchemaAspect,
-    RTableStatisticsAspect,
+    RTableStatisticsAspect, RTemporalStatistics,
 )
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
@@ -97,21 +99,40 @@ class SQLGraphBuilder(GraphBuilder):
         value_counts = {str(row[0]): int(row[1]) for row in rows}
         return RCategoricalStatistics(value_counts)
 
+    def _get_temp_aspect(self, col: Column) -> RTemporalStatistics:
+        min_max_nunique_stmt = select(
+            func.min(col),
+            func.max(col),
+            func.count(distinct(col))
+        )
+        mode_stmt = select(col).group_by(col).order_by(func.count(col).desc()).limit(1)
+        with Session(self.engine) as session:
+            min_time, max_time, nunique = session.execute(min_max_nunique_stmt).one()
+            mode = session.execute(mode_stmt).scalar()
+        return RTemporalStatistics(
+            min_time, max_time, mode, nunique
+        )
+
     def _get_stats_aspect(self, col: Column) -> RColumnStatisticsAspect:
         non_null_count, null_count = self._get_null_info(col)
-        if isinstance(col.type, Numeric):
+        num_aspect = None
+        cat_aspect = None
+        temp_aspect = None
+        if isinstance(col.type, (Numeric, Integer, SmallInteger, BigInteger, Float, DECIMAL)):
             num_aspect = self._get_numerical_stats_aspect(col)
-            cat_aspect = None
-        elif isinstance(col.type, String):
-            num_aspect = None
+        elif isinstance(col.type, (String, Text, Unicode, UnicodeText, CHAR, NCHAR)):
             cat_aspect = self._get_cat_stats_aspect(col)
+        elif isinstance(col.type, (DATE, DATETIME)):
+            temp_aspect = self._get_temp_aspect(col)
+        elif isinstance(col.type, (BLOB, )):
+            pass
         else:
-            num_aspect = None
-            cat_aspect = None
+            raise NotImplementedError(f"Only support Numeric, String, Date, and BLOB. Got {col.type} for {col.name}")
         return RColumnStatisticsAspect(
             name=f"{col.name}_column_stats",
             numerical_stats=num_aspect,
             categorical_stats=cat_aspect,
+            temporal_stats=temp_aspect,
             non_null_count=non_null_count,
             null_count=null_count,
         )

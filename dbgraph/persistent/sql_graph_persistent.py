@@ -1,3 +1,4 @@
+import json
 from dataclasses import asdict, dataclass
 
 from sqlalchemy import create_engine, delete, select, update
@@ -12,7 +13,7 @@ from dbgraph.entity.aspect import (
     RNumericalStatistics,
     RTableSchemaAspect,
     RTableStatisticsAspect,
-    SemanticAspect,
+    SemanticAspect, RTemporalStatistics,
 )
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
@@ -20,6 +21,7 @@ from dbgraph.entity.dbgraph import DatabaseGraph
 from dbgraph.entity.link import Link
 from dbgraph.entity.link_type import LinkType
 from dbgraph.persistent.graph_persistent import GraphPersistent
+from dbgraph.persistent.json_utils import DateTimeEncoder, DateTimeDecoder
 from dbgraph.persistent.models import (
     AssetAspectModel,
     AssetModel,
@@ -69,7 +71,7 @@ class SQLGraphPersistent(GraphPersistent):
                     asset_id=asset.asset_id,
                     name=aspect.name,
                     type=aspect_type,
-                    json_aspect=asdict(aspect),
+                    json_aspect=json.dumps(asdict(aspect), cls=DateTimeEncoder),
                 )
                 aspects.append(aspect)
         with Session(self.engine) as session:
@@ -110,7 +112,7 @@ class SQLGraphPersistent(GraphPersistent):
                     link_id=link.link_id,
                     name=aspect.name,
                     type=aspect_type,
-                    json_aspect=asdict(aspect),
+                    json_aspect=json.dumps(asdict(aspect), cls=DateTimeEncoder),
                 )
                 aspects.append(link_aspect)
         with Session(self.engine) as session:
@@ -201,7 +203,7 @@ class SQLGraphPersistent(GraphPersistent):
                 name=aspect.name,
                 type=aspect_type,
                 asset_id=asset_id,
-                json_aspect=asdict(aspect),
+                json_aspect=json.dumps(asdict(aspect), cls=DateTimeEncoder),
             )
             for aspect_type, aspect in aspects.items()
         ]
@@ -216,7 +218,7 @@ class SQLGraphPersistent(GraphPersistent):
                 name=aspect.name,
                 type=aspect_type,
                 link_id=link_id,
-                json_aspect=asdict(aspect),
+                json_aspect=json.dumps(asdict(aspect), cls=DateTimeEncoder),
             )
             for aspect_type, aspect in aspects.items()
         ]
@@ -228,7 +230,7 @@ class SQLGraphPersistent(GraphPersistent):
         self, model: AssetAspectModel, asset_type: AssetType
     ) -> Aspect:
         """Turn SQL Alchemy model to Aspect"""
-        json_aspect = model.json_aspect
+        json_aspect = json.loads(model.json_aspect, cls=DateTimeDecoder)
         match model.type:
             case "schema_properties":
                 if asset_type == AssetType.RTABLE:
@@ -241,6 +243,7 @@ class SQLGraphPersistent(GraphPersistent):
                 if asset_type == AssetType.RTABLE:
                     aspect = RTableStatisticsAspect(**json_aspect)
                 elif asset_type == AssetType.RCOLUMN:
+                    numerical_aspect = categorical_aspect = temp_aspect = None
                     if json_aspect["numerical_stats"] is not None:
                         numerical_aspect = RNumericalStatistics(
                             **json_aspect["numerical_stats"]
@@ -251,9 +254,9 @@ class SQLGraphPersistent(GraphPersistent):
                             **json_aspect["categorical_stats"]
                         )
                         numerical_aspect = None
-                    else:
-                        raise RuntimeError(
-                            "Neither categorical or numerical stats exists"
+                    elif json_aspect["temporal_stats"] is not None:
+                        temp_aspect = RTemporalStatistics(
+                            **json_aspect['temporal_stats']
                         )
                     aspect = RColumnStatisticsAspect(
                         name=json_aspect["name"],
@@ -261,6 +264,7 @@ class SQLGraphPersistent(GraphPersistent):
                         null_count=json_aspect["null_count"],
                         categorical_stats=categorical_aspect,
                         numerical_stats=numerical_aspect,
+                        temporal_stats=temp_aspect
                     )
                 else:
                     raise NotImplementedError()
@@ -289,7 +293,7 @@ class SQLGraphPersistent(GraphPersistent):
 
     def _parse_link_aspect_model(self, model: LinkAspectModel) -> Aspect:
         """Turn SQL Alchemy model to Link Aspect"""
-        json_aspect = model.json_aspect
+        json_aspect = json.loads(model.json_aspect, cls=DateTimeDecoder)
         match model.type:
             case "foreign_key_properties":
                 aspect = RForeignKeyAspect(**json_aspect)
@@ -315,7 +319,7 @@ class SQLGraphPersistent(GraphPersistent):
         with Session(self.engine) as session:
             models = session.scalars(
                 select(AssetModel).where(AssetModel.graph_id == graph_id)
-            )
+            ).all()
             assets = []
             for model in models:
                 aspects = {}
@@ -336,7 +340,7 @@ class SQLGraphPersistent(GraphPersistent):
         with Session(self.engine) as session:
             models = session.scalars(
                 select(LinkModel).where(LinkModel.graph_id == graph_id)
-            )
+            ).all()
             links = []
             for model in models:
                 aspects = {}
