@@ -5,6 +5,7 @@ from typing import Any, Callable
 
 class DateTimeEncoder(json.JSONEncoder):
     """Custom encoder for datetime"""
+
     def default(self, o: Any) -> Any:
         if isinstance(o, (datetime.date, datetime.datetime)):
             return o.isoformat()
@@ -28,5 +29,6 @@ def datetime_parser(obj):
 
 class DateTimeDecoder(json.JSONDecoder):
     """Custom decoder for datetime"""
+
     def __init__(self, *args, **kwargs):
         super().__init__(object_hook=datetime_parser, *args, **kwargs)

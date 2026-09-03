@@ -13,7 +13,8 @@ from dbgraph.entity.aspect import (
     RNumericalStatistics,
     RTableSchemaAspect,
     RTableStatisticsAspect,
-    SemanticAspect, RTemporalStatistics,
+    SemanticAspect,
+    RTemporalStatistics,
 )
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
@@ -256,7 +257,7 @@ class SQLGraphPersistent(GraphPersistent):
                         numerical_aspect = None
                     elif json_aspect["temporal_stats"] is not None:
                         temp_aspect = RTemporalStatistics(
-                            **json_aspect['temporal_stats']
+                            **json_aspect["temporal_stats"]
                         )
                     aspect = RColumnStatisticsAspect(
                         name=json_aspect["name"],
@@ -264,7 +265,7 @@ class SQLGraphPersistent(GraphPersistent):
                         null_count=json_aspect["null_count"],
                         categorical_stats=categorical_aspect,
                         numerical_stats=numerical_aspect,
-                        temporal_stats=temp_aspect
+                        temporal_stats=temp_aspect,
                     )
                 else:
                     raise NotImplementedError()

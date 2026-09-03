@@ -17,5 +17,5 @@ __all__ = [
     "SQLGraphBuilder",
     "SQLGraphPersistent",
     "LangchainGraphDescriptor",
-    "MarkdownRenderer"
+    "MarkdownRenderer",
 ]

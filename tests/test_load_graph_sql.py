@@ -17,5 +17,5 @@ class TestLoadGraphSQL(unittest.TestCase):
         self.assertEqual(len(target_graph.links), len(graph.links))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

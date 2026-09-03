@@ -107,6 +107,7 @@ class RCategoricalStatistics:
 @dataclass
 class RTemporalStatistics:
     """Statistics for temporal columns"""
+
     min_time: datetime | None = None
     max_time: datetime | None = None
     mode_time: datetime | None = None

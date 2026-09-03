@@ -441,7 +441,6 @@ class TestSQLGraphPersistent(unittest.TestCase):
         graph = self.persistent.load_graph(self.graph_id)
         self.assertEqual(self.graph, graph)
 
-
     def test_get_graph_info(self):
         graph_info = self.persistent.get_graph_info("1")
         self.assertEqual(graph_info[1], "graph-1")
