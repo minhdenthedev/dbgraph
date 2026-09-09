@@ -34,9 +34,9 @@ class LangchainGraphDescriptor(GraphDescriptor):
     def _get_semantic_aspect_table(
         self, asset: Asset, context: RDatabaseGraph
     ) -> SemanticAspect:
-        self.markdown_renderer.render(context)
+        context_str = self.markdown_renderer.render(context)
         system_prompt = (
-            self.table_system_prompt + "\n" + self.markdown_renderer.get_content()
+            self.table_system_prompt + "\n" + context_str
         )
         question = self.table_question_prompt + " " + asset.name
         description = self._generate(system_prompt, question)
