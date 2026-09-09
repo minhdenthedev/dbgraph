@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "dbgraph"
-version = "0.2.1"
+version = "0.2.2"
 description = "dbgraph is a database profiling tool which model the database as a graph"
 readme = "README.md"
 requires-python = ">=3.11"
