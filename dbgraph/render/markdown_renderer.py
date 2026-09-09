@@ -13,11 +13,11 @@ from dbgraph.entity.asset import Asset
 from dbgraph.entity.dbgraph import DatabaseGraph
 from dbgraph.entity.link import Link
 from dbgraph.entity.rdbgraph import RDatabaseGraph
-from dbgraph.render.text_renderer import TextRenderer
+from dbgraph.render.graph_renderer import GraphRenderer
 
 
 @dataclass
-class MarkdownRenderer(TextRenderer):
+class MarkdownRenderer(GraphRenderer):
     """Render the graph to Markdown format"""
 
     categorical_value_max_char: int = 50
@@ -89,7 +89,7 @@ class MarkdownRenderer(TextRenderer):
 
         return answer
 
-    def render(self, graph: DatabaseGraph):
+    def render(self, graph: DatabaseGraph) -> str:
         graph = RDatabaseGraph.from_graph(graph)
         tables = graph.get_tables()
         answer = ""
@@ -103,9 +103,4 @@ class MarkdownRenderer(TextRenderer):
             answer += "\n# List of Foreign Key Constraints"
             for fk in foreign_keys:
                 answer += f"\n{self._dump_fk(fk, graph)}"
-        self.content = answer
-
-    def get_content(self) -> str:
-        if not self.content:
-            raise RuntimeError("Content is empty. Please run `render()` first!")
-        return self.content
+        return answer

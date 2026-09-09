@@ -12,8 +12,8 @@ class TestMarkdownRenderer(unittest.TestCase):
         self.renderer = MarkdownRenderer()
 
     def test_render(self):
-        self.renderer.render(self.graph)
-        self.assertIsInstance(self.renderer.get_content(), str)
+        markdown = self.renderer.render(self.graph)
+        self.assertIsInstance(markdown, str)
 
 
 if __name__ == "__main__":

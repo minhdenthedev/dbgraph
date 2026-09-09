@@ -7,6 +7,10 @@ import rustworkx as rx
 
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.link import Link
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from dbgraph.entity.rdbgraph import RDatabaseGraph
 
 
 @dataclass
@@ -88,7 +92,7 @@ class DatabaseGraph:
 
     def select_shortest_paths(self, src_id: str, dst_id: str) -> list[DatabaseGraph]:
         """
-        Find shortest paths between two Assets.
+        Find the shortest paths between two Assets.
 
         Args:
             src_id: ID of the source asset
@@ -135,7 +139,7 @@ class DatabaseGraph:
         return [self._graph.get_node_data(i) for i in asset_indices]
 
     def find_shortest_paths(self, src_id: str, dst_id: str) -> list[list[Asset]]:
-        """Find shortest paths between two Assets
+        """Find the shortest paths between two Assets
 
         Args:
             src_id: ID of the source asset
@@ -150,3 +154,7 @@ class DatabaseGraph:
         paths = rx.all_shortest_paths(self._graph, src_idx, dst_idx)
 
         return [[self._graph.get_node_data(i) for i in path] for path in paths]
+
+    def to_relational(self) -> "RDatabaseGraph":
+        """Return the RDatabaseGraph"""
+        return RDatabaseGraph.from_graph(self)
