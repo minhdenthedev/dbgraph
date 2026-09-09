@@ -19,7 +19,7 @@ class TestJSONGraphLoader(unittest.TestCase):
             "601fca0f-9c27-4833-86d0-48f8383437a0",
             "29fb86b7-13f6-4a23-ab24-26d68881624f",
         )
-        self.assertIsInstance(subgraphs, DatabaseGraph)
+        self.assertIsInstance(subgraphs, list)
 
     def test_get_neighbors_sub_graph(self):
         graph = self.graph_loader.load()
