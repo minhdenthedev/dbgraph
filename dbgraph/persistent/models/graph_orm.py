@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from dbgraph.persistent.models.asset_orm import AssetORM
     from dbgraph.persistent.models.link_orm import LinkORM
 
+
 class GraphORM(Base):
     __tablename__ = "graphs"
 
@@ -17,4 +18,3 @@ class GraphORM(Base):
 
     assets: Mapped[List["AssetORM"]] = relationship(back_populates="graph")
     links: Mapped[List["LinkORM"]] = relationship(back_populates="graph")
-

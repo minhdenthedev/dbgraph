@@ -4,7 +4,6 @@ from typing import Any, Callable
 
 
 class TimeAwareEncoder(json.JSONEncoder):
-
     def default(self, o: Any) -> Any:
         if isinstance(o, (datetime, date, time)):
             return o.isoformat()

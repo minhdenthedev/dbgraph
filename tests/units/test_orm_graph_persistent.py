@@ -10,14 +10,14 @@ from dbgraph.entity.aspect import (
     RNumericalStatistics,
     RTableSchemaAspect,
     RTableStatisticsAspect,
-    SemanticAspect, RTemporalStatistics,
+    SemanticAspect,
+    RTemporalStatistics,
 )
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
 from dbgraph.entity.dbgraph import DatabaseGraph
 from dbgraph.entity.link import Link
 from dbgraph.entity.link_type import LinkType
-from dbgraph.persistent import graph_persistent
 from dbgraph.persistent.orm_graph_persistent import ORMGraphPersistent
 
 
@@ -138,8 +138,8 @@ class TestORMGraphPersistent(unittest.TestCase):
                             min_time=datetime.now(),
                             max_time=datetime.now(),
                             mode_time=datetime.now(),
-                            num_uniques=3
-                        )
+                            num_uniques=3,
+                        ),
                     ),
                     "schema_properties": RColumnSchemaAspect(
                         name="column-2-1-schema",
@@ -344,13 +344,8 @@ class TestORMGraphPersistent(unittest.TestCase):
         self.persistent.insert_graph(graph_id, "test")
         self.persistent.insert_assets(self.graph.assets, graph_id)
         for asset in self.graph.assets:
-            self.persistent.insert_asset_aspects(
-                asset.aspects, asset.asset_id
-            )
-            aspects = self.persistent.get_asset_aspects(
-                asset.asset_id,
-                asset.type
-            )
+            self.persistent.insert_asset_aspects(asset.aspects, asset.asset_id)
+            aspects = self.persistent.get_asset_aspects(asset.asset_id, asset.type)
             self.assertEqual(set(asset.aspects), set(aspects))
 
     def test_cr_link_aspect(self):
@@ -359,21 +354,15 @@ class TestORMGraphPersistent(unittest.TestCase):
         self.persistent.insert_links(self.graph.links, graph_id)
         for link in self.graph.links:
             self.persistent.insert_link_aspects(link.aspects, link.link_id)
-            aspects = self.persistent.get_link_aspects(
-                link.link_id,
-                link.type
-            )
+            aspects = self.persistent.get_link_aspects(link.link_id, link.type)
             self.assertEqual(set(link.aspects), set(aspects))
 
     def test_save_load_graph(self):
         target_id = uuid.uuid4()
-        self.persistent.save_graph(
-            target_id,
-            "test",
-            self.graph
-        )
+        self.persistent.save_graph(target_id, "test", self.graph)
         graph = self.persistent.load_graph(target_id)
         self.assertEqual(self.graph, graph)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

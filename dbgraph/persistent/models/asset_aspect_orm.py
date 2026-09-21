@@ -11,12 +11,8 @@ class AssetAspectORM(Base):
     __tablename__ = "asset_aspects"
 
     asset_id: Mapped[UUID] = mapped_column(
-        ForeignKey(
-            "assets.asset_id",
-            ondelete="CASCADE",
-            onupdate="CASCADE"
-        ),
-        primary_key=True
+        ForeignKey("assets.asset_id", ondelete="CASCADE", onupdate="CASCADE"),
+        primary_key=True,
     )
     aspect_type: Mapped[str] = mapped_column(primary_key=True)
     json_aspect: Mapped[str]

@@ -18,25 +18,13 @@ class LinkORM(Base):
     name: Mapped[str]
     link_type: Mapped[str]
     source_id: Mapped[UUID] = mapped_column(
-        ForeignKey(
-            "assets.asset_id",
-            ondelete="CASCADE",
-            onupdate="CASCADE"
-        )
+        ForeignKey("assets.asset_id", ondelete="CASCADE", onupdate="CASCADE")
     )
     destination_id: Mapped[UUID] = mapped_column(
-        ForeignKey(
-            "assets.asset_id",
-            ondelete="CASCADE",
-            onupdate="CASCADE"
-        )
+        ForeignKey("assets.asset_id", ondelete="CASCADE", onupdate="CASCADE")
     )
     graph_id: Mapped[UUID] = mapped_column(
-        ForeignKey(
-            "graphs.graph_id",
-            ondelete="CASCADE",
-            onupdate="CASCADE"
-        )
+        ForeignKey("graphs.graph_id", ondelete="CASCADE", onupdate="CASCADE")
     )
 
     graph: Mapped[GraphORM] = relationship(back_populates="links")

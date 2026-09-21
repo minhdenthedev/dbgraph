@@ -11,12 +11,8 @@ class LinkAspectORM(Base):
     __tablename__ = "link_aspects"
 
     link_id: Mapped[UUID] = mapped_column(
-        ForeignKey(
-            "links.link_id",
-            ondelete="CASCADE",
-            onupdate="CASCADE"
-        ),
-        primary_key=True
+        ForeignKey("links.link_id", ondelete="CASCADE", onupdate="CASCADE"),
+        primary_key=True,
     )
     aspect_type: Mapped[str] = mapped_column(primary_key=True)
     json_aspect: Mapped[str]

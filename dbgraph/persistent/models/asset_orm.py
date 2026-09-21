@@ -18,11 +18,7 @@ class AssetORM(Base):
     name: Mapped[str]
     asset_type: Mapped[str]
     graph_id: Mapped[UUID] = mapped_column(
-        ForeignKey(
-            "graphs.graph_id",
-            ondelete="CASCADE",
-            onupdate="CASCADE"
-        )
+        ForeignKey("graphs.graph_id", ondelete="CASCADE", onupdate="CASCADE")
     )
 
     graph: Mapped[GraphORM] = relationship(back_populates="assets")

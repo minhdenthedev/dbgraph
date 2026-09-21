@@ -162,9 +162,9 @@ class DatabaseGraph:
 
     def __eq__(self, value: object, /) -> bool:
         return (
-            isinstance(value, DatabaseGraph) and
-            set(value.assets) == set(self.assets) and
-            set(value.links) == set(self.links)
+            isinstance(value, DatabaseGraph)
+            and set(value.assets) == set(self.assets)
+            and set(value.links) == set(self.links)
         )
 
     def __hash__(self) -> int:

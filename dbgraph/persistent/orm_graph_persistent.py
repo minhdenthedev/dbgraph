@@ -6,11 +6,20 @@ from sqlalchemy import create_engine, select, delete, and_
 from sqlalchemy.orm import Session
 
 from dbgraph import Asset, Link, DatabaseGraph, LinkType, AssetType
-from dbgraph.entity.aspect import Aspect, RTableSchemaAspect, RColumnSchemaAspect, RTableStatisticsAspect, \
-    RNumericalStatistics, RCategoricalStatistics, RTemporalStatistics, SemanticAspect, RColumnStatisticsAspect, \
-    RForeignKeyAspect
+from dbgraph.entity.aspect import (
+    Aspect,
+    RTableSchemaAspect,
+    RColumnSchemaAspect,
+    RTableStatisticsAspect,
+    RNumericalStatistics,
+    RCategoricalStatistics,
+    RTemporalStatistics,
+    SemanticAspect,
+    RColumnStatisticsAspect,
+    RForeignKeyAspect,
+)
 from dbgraph.persistent.graph_not_found import GraphNotFound
-from dbgraph.persistent.graph_persistent_v2 import GraphPersistentV2
+from dbgraph.persistent.graph_persistent import GraphPersistent
 from dbgraph.persistent.models.asset_aspect_orm import AssetAspectORM
 from dbgraph.persistent.models.asset_orm import AssetORM
 from dbgraph.persistent.models.base import Base
@@ -21,7 +30,7 @@ from dbgraph.utils.serialize import TimeAwareEncoder, TimeAwareDecoder
 
 
 @dataclass
-class ORMGraphPersistent(GraphPersistentV2):
+class ORMGraphPersistent(GraphPersistent):
     persistent_uri: str
 
     def __post_init__(self):
@@ -29,10 +38,7 @@ class ORMGraphPersistent(GraphPersistentV2):
         Base.metadata.create_all(self.engine)
 
     def insert_graph(self, graph_id: UUID, graph_name: str):
-        orm_graph = GraphORM(
-            graph_id=graph_id,
-            name=graph_name
-        )
+        orm_graph = GraphORM(graph_id=graph_id, name=graph_name)
         with Session(self.engine) as session:
             session.add(orm_graph)
             session.commit()
@@ -56,9 +62,7 @@ class ORMGraphPersistent(GraphPersistentV2):
         return DatabaseGraph(assets, links)
 
     def get_graph_name(self, graph_id: UUID) -> str:
-        stmt = select(GraphORM.name).where(
-            GraphORM.graph_id==graph_id
-        )
+        stmt = select(GraphORM.name).where(GraphORM.graph_id == graph_id)
         with Session(self.engine) as session:
             result = session.scalar(stmt)
         if not result:
@@ -66,9 +70,7 @@ class ORMGraphPersistent(GraphPersistentV2):
         return result
 
     def delete_graph(self, graph_id: UUID):
-        stmt = delete(GraphORM).where(
-            GraphORM.graph_id == graph_id
-        )
+        stmt = delete(GraphORM).where(GraphORM.graph_id == graph_id)
         with Session(self.engine) as session:
             session.execute(stmt)
             session.commit()
@@ -79,7 +81,7 @@ class ORMGraphPersistent(GraphPersistentV2):
                 asset_id=asset.asset_id,
                 name=asset.name,
                 asset_type=asset.type,
-                graph_id=graph_id
+                graph_id=graph_id,
             )
             for asset in assets
         ]
@@ -95,7 +97,7 @@ class ORMGraphPersistent(GraphPersistentV2):
                 link_type=link.type,
                 source_id=link.source_id,
                 destination_id=link.destination_id,
-                graph_id=graph_id
+                graph_id=graph_id,
             )
             for link in links
         ]
@@ -105,10 +107,7 @@ class ORMGraphPersistent(GraphPersistentV2):
 
     def delete_assets(self, asset_ids: list[UUID], graph_id: UUID):
         stmt = delete(AssetORM).where(
-            and_(
-                AssetORM.asset_id.in_(asset_ids),
-                AssetORM.graph_id == graph_id
-            )
+            and_(AssetORM.asset_id.in_(asset_ids), AssetORM.graph_id == graph_id)
         )
         with Session(self.engine) as session:
             session.execute(stmt)
@@ -116,19 +115,14 @@ class ORMGraphPersistent(GraphPersistentV2):
 
     def delete_links(self, link_ids: list[UUID], graph_id: UUID):
         stmt = delete(LinkORM).where(
-            and_(
-                LinkORM.link_id.in_(link_ids),
-                LinkORM.graph_id == graph_id
-            )
+            and_(LinkORM.link_id.in_(link_ids), LinkORM.graph_id == graph_id)
         )
         with Session(self.engine) as session:
             session.execute(stmt)
             session.commit()
 
     def get_links(self, graph_id: UUID) -> list[Link]:
-        stmt = select(LinkORM).where(
-            LinkORM.graph_id == graph_id
-        )
+        stmt = select(LinkORM).where(LinkORM.graph_id == graph_id)
         with Session(self.engine) as session:
             rows = session.scalars(stmt).all()
         return [
@@ -137,23 +131,17 @@ class ORMGraphPersistent(GraphPersistentV2):
                 name=row.name,
                 type=LinkType(row.link_type),
                 source_id=row.source_id,
-                destination_id=row.destination_id
+                destination_id=row.destination_id,
             )
             for row in rows
         ]
 
     def get_assets(self, graph_id: UUID) -> list[Asset]:
-        stmt = select(AssetORM).where(
-            AssetORM.graph_id == graph_id
-        )
+        stmt = select(AssetORM).where(AssetORM.graph_id == graph_id)
         with Session(self.engine) as session:
             rows = session.scalars(stmt).all()
         return [
-            Asset(
-                asset_id=row.asset_id,
-                name=row.name,
-                type=AssetType(row.asset_type)
-            )
+            Asset(asset_id=row.asset_id, name=row.name, type=AssetType(row.asset_type))
             for row in rows
         ]
 
@@ -162,7 +150,7 @@ class ORMGraphPersistent(GraphPersistentV2):
             AssetAspectORM(
                 asset_id=asset_id,
                 aspect_type=aspect_type,
-                json_aspect=json.dumps(asdict(aspect), cls=TimeAwareEncoder)
+                json_aspect=json.dumps(asdict(aspect), cls=TimeAwareEncoder),
             )
             for aspect_type, aspect in aspects.items()
         ]
@@ -175,7 +163,7 @@ class ORMGraphPersistent(GraphPersistentV2):
             LinkAspectORM(
                 link_id=link_id,
                 aspect_type=aspect_type,
-                json_aspect=json.dumps(asdict(aspect), cls=TimeAwareEncoder)
+                json_aspect=json.dumps(asdict(aspect), cls=TimeAwareEncoder),
             )
             for aspect_type, aspect in aspects.items()
         ]
@@ -183,10 +171,10 @@ class ORMGraphPersistent(GraphPersistentV2):
             session.add_all(link_aspects)
             session.commit()
 
-    def get_asset_aspects(self, asset_id: UUID, asset_type: AssetType) -> dict[str, Aspect]:
-        stmt = select(AssetAspectORM).where(
-            AssetAspectORM.asset_id == asset_id
-        )
+    def get_asset_aspects(
+        self, asset_id: UUID, asset_type: AssetType
+    ) -> dict[str, Aspect]:
+        stmt = select(AssetAspectORM).where(AssetAspectORM.asset_id == asset_id)
         with Session(self.engine) as session:
             rows = session.scalars(stmt).all()
         answer = {}
@@ -223,7 +211,7 @@ class ORMGraphPersistent(GraphPersistentV2):
                                 null_count=aspect_data["null_count"],
                                 categorical_stats=categorical_aspect,
                                 numerical_stats=numerical_aspect,
-                                temporal_stats=temp_aspect
+                                temporal_stats=temp_aspect,
                             )
                 case "semantic_properties":
                     aspect = SemanticAspect(**aspect_data)
@@ -232,11 +220,8 @@ class ORMGraphPersistent(GraphPersistentV2):
             answer[row.aspect_type] = aspect
         return answer
 
-
     def get_link_aspects(self, link_id: UUID, link_type: LinkType) -> dict[str, Aspect]:
-        stmt = select(LinkAspectORM).where(
-            LinkAspectORM.link_id == link_id
-        )
+        stmt = select(LinkAspectORM).where(LinkAspectORM.link_id == link_id)
         with Session(self.engine) as session:
             rows = session.scalars(stmt).all()
         answer = {}
