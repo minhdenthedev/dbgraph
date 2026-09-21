@@ -1,6 +1,6 @@
-import os
 import unittest
-from typing import cast
+import uuid
+from datetime import datetime
 
 from dbgraph.entity.aspect import (
     RCategoricalStatistics,
@@ -10,22 +10,22 @@ from dbgraph.entity.aspect import (
     RNumericalStatistics,
     RTableSchemaAspect,
     RTableStatisticsAspect,
-    SemanticAspect,
+    SemanticAspect, RTemporalStatistics,
 )
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
 from dbgraph.entity.dbgraph import DatabaseGraph
 from dbgraph.entity.link import Link
 from dbgraph.entity.link_type import LinkType
-from dbgraph.persistent.sql_graph_persistent import SQLGraphPersistent
+from dbgraph.persistent import graph_persistent
+from dbgraph.persistent.orm_graph_persistent import ORMGraphPersistent
 
 
-class TestSQLGraphPersistent(unittest.TestCase):
+class TestORMGraphPersistent(unittest.TestCase):
     def setUp(self) -> None:
-        self.persistent = SQLGraphPersistent("sqlite:///:memory:")
         assets = [
             Asset(
-                asset_id="1",
+                asset_id=uuid.uuid4(),
                 name="table-1",
                 type=AssetType.RTABLE,
                 aspects={
@@ -41,7 +41,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="2",
+                asset_id=uuid.uuid4(),
                 name="table-2",
                 type=AssetType.RTABLE,
                 aspects={
@@ -57,7 +57,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="3",
+                asset_id=uuid.uuid4(),
                 name="table-3",
                 type=AssetType.RTABLE,
                 aspects={
@@ -73,7 +73,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="4",
+                asset_id=uuid.uuid4(),
                 name="column-1-1",
                 type=AssetType.RCOLUMN,
                 aspects={
@@ -96,7 +96,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="5",
+                asset_id=uuid.uuid4(),
                 name="column-1-2",
                 type=AssetType.RCOLUMN,
                 aspects={
@@ -121,7 +121,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="6",
+                asset_id=uuid.uuid4(),
                 name="column-2-1",
                 type=AssetType.RCOLUMN,
                 aspects={
@@ -132,8 +132,14 @@ class TestSQLGraphPersistent(unittest.TestCase):
                         name="column-2-1-statistic",
                         non_null_count=0,
                         null_count=0,
-                        numerical_stats=RNumericalStatistics(min=0, max=0, mean=0),
+                        numerical_stats=None,
                         categorical_stats=None,
+                        temporal_stats=RTemporalStatistics(
+                            min_time=datetime.now(),
+                            max_time=datetime.now(),
+                            mode_time=datetime.now(),
+                            num_uniques=3
+                        )
                     ),
                     "schema_properties": RColumnSchemaAspect(
                         name="column-2-1-schema",
@@ -144,7 +150,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="7",
+                asset_id=uuid.uuid4(),
                 name="column-2-2",
                 type=AssetType.RCOLUMN,
                 aspects={
@@ -169,7 +175,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="8",
+                asset_id=uuid.uuid4(),
                 name="column-3-1",
                 type=AssetType.RCOLUMN,
                 aspects={
@@ -192,7 +198,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Asset(
-                asset_id="9",
+                asset_id=uuid.uuid4(),
                 name="column-3-2",
                 type=AssetType.RCOLUMN,
                 aspects={
@@ -219,49 +225,49 @@ class TestSQLGraphPersistent(unittest.TestCase):
         ]
         links = [
             Link(
-                link_id="1",
+                link_id=uuid.uuid4(),
                 name="table-1-column-1-1",
                 type=LinkType.CONTAIN,
                 source_id=assets[0].asset_id,
                 destination_id=assets[3].asset_id,
             ),
             Link(
-                link_id="2",
+                link_id=uuid.uuid4(),
                 name="table-1-column-1-2",
                 type=LinkType.CONTAIN,
                 source_id=assets[0].asset_id,
                 destination_id=assets[4].asset_id,
             ),
             Link(
-                link_id="3",
+                link_id=uuid.uuid4(),
                 name="table-2-column-2-1",
                 type=LinkType.CONTAIN,
                 source_id=assets[1].asset_id,
                 destination_id=assets[5].asset_id,
             ),
             Link(
-                link_id="4",
+                link_id=uuid.uuid4(),
                 name="table-2-column-2-2",
                 type=LinkType.CONTAIN,
                 source_id=assets[1].asset_id,
                 destination_id=assets[6].asset_id,
             ),
             Link(
-                link_id="5",
+                link_id=uuid.uuid4(),
                 name="table-3-column-3-1",
                 type=LinkType.CONTAIN,
                 source_id=assets[2].asset_id,
                 destination_id=assets[7].asset_id,
             ),
             Link(
-                link_id="6",
+                link_id=uuid.uuid4(),
                 name="table-3-column-3-2",
                 type=LinkType.CONTAIN,
                 source_id=assets[2].asset_id,
                 destination_id=assets[8].asset_id,
             ),
             Link(
-                link_id="7",
+                link_id=uuid.uuid4(),
                 name="table-1-table-2",
                 type=LinkType.FOREIGN_KEY,
                 source_id=assets[0].asset_id,
@@ -277,7 +283,7 @@ class TestSQLGraphPersistent(unittest.TestCase):
                 },
             ),
             Link(
-                link_id="8",
+                link_id=uuid.uuid4(),
                 name="table-2-table-3",
                 type=LinkType.FOREIGN_KEY,
                 source_id=assets[1].asset_id,
@@ -294,158 +300,80 @@ class TestSQLGraphPersistent(unittest.TestCase):
             ),
         ]
         self.graph = DatabaseGraph(assets, links)
-        self.graph_id = "1"
-        self.graph_name = "graph-1"
-        self.persistent.create_graph(self.graph_id, self.graph_name)
+        self.persistent = ORMGraphPersistent("sqlite:///:memory:")
 
-    def test_asset(self):
-        target_asset = self.graph.get_asset("1")
-        self.persistent.insert_asset(target_asset, self.graph_id)
+    def test_insert_graph(self):
+        target_id = uuid.uuid4()
+        target_name = "test-name"
+        self.persistent.insert_graph(target_id, target_name)
+        name = self.persistent.get_graph_name(target_id)
+        self.assertEqual(target_name, name)
 
-        asset = self.persistent.get_asset(target_asset.asset_id, self.graph_id)
-        self.assertEqual(asset.asset_id, "1")
-        self.assertTrue("semantic_properties" in asset.aspects)
-        self.assertEqual(asset.aspects["semantic_properties"].name, "table-1-semantic")
-        self.assertEqual(asset.aspects, target_asset.aspects)
-        self.persistent.remove_asset("1", self.graph_id)
-        with self.assertRaises(KeyError):
-            asset = self.persistent.get_asset("1", self.graph_id)
+    def test_crud_assets(self):
+        target_id = uuid.uuid4()
+        self.persistent.insert_graph(target_id, "test")
+        self.persistent.insert_assets(self.graph.assets, target_id)
+        assets = self.persistent.get_assets(target_id)
+        target_ids = set(a.asset_id for a in self.graph.assets)
+        asset_ids = set(a.asset_id for a in assets)
+        self.assertEqual(target_ids, asset_ids)
+        self.persistent.delete_assets(list(asset_ids), target_id)
+        assets = self.persistent.get_assets(target_id)
+        self.assertEqual(0, len(assets))
 
-    def test_link(self):
-        target_link = self.graph.get_link("1", "2")
-        self.persistent.insert_link(target_link, self.graph_id)
+    def test_crud_links(self):
+        target_id = uuid.uuid4()
+        self.persistent.insert_graph(target_id, "test")
+        self.persistent.insert_links(self.graph.links, target_id)
+        links = self.persistent.get_links(target_id)
+        links.sort(key=lambda x: x.link_id)
+        target_links = self.graph.links
+        target_links.sort(key=lambda x: x.link_id)
+        for target_link, link in zip(target_links, links):
+            self.assertEqual(target_link.link_id, link.link_id)
+            self.assertEqual(target_link.source_id, link.source_id)
+            self.assertEqual(target_link.destination_id, link.destination_id)
 
-        link = self.persistent.get_link(target_link.link_id, self.graph_id)
-        self.assertEqual(link.link_id, "7")
-        self.assertTrue("foreign_key_properties" in link.aspects)
-        self.assertEqual(
-            link.aspects["foreign_key_properties"].name, "table-1-table-2-fk"
+        link_ids = [link.link_id for link in links]
+        self.persistent.delete_links(link_ids, target_id)
+        links = self.persistent.get_links(target_id)
+        self.assertEqual(0, len(links))
+
+    def test_cr_asset_aspect(self):
+        graph_id = uuid.uuid4()
+        self.persistent.insert_graph(graph_id, "test")
+        self.persistent.insert_assets(self.graph.assets, graph_id)
+        for asset in self.graph.assets:
+            self.persistent.insert_asset_aspects(
+                asset.aspects, asset.asset_id
+            )
+            aspects = self.persistent.get_asset_aspects(
+                asset.asset_id,
+                asset.type
+            )
+            self.assertEqual(set(asset.aspects), set(aspects))
+
+    def test_cr_link_aspect(self):
+        graph_id = uuid.uuid4()
+        self.persistent.insert_graph(graph_id, "test")
+        self.persistent.insert_links(self.graph.links, graph_id)
+        for link in self.graph.links:
+            self.persistent.insert_link_aspects(link.aspects, link.link_id)
+            aspects = self.persistent.get_link_aspects(
+                link.link_id,
+                link.type
+            )
+            self.assertEqual(set(link.aspects), set(aspects))
+
+    def test_save_load_graph(self):
+        target_id = uuid.uuid4()
+        self.persistent.save_graph(
+            target_id,
+            "test",
+            self.graph
         )
-        self.persistent.remove_link(link.link_id, self.graph_id)
-        with self.assertRaises(KeyError):
-            link = self.persistent.get_link(link.link_id, self.graph_id)
-
-    def test_get_aspects_of_asset_table(self):
-        target_asset = self.graph.get_asset("1")
-        self.persistent.insert_asset(target_asset, self.graph_id)
-        aspects = self.persistent.get_aspects_of_asset("1")
-        self.assertTrue("statistical_properties" in aspects)
-        self.assertTrue("schema_properties" in aspects)
-        self.assertTrue("semantic_properties" in aspects)
-        self.assertIsInstance(aspects["statistical_properties"], RTableStatisticsAspect)
-        self.assertIsInstance(aspects["schema_properties"], RTableSchemaAspect)
-        self.assertIsInstance(aspects["semantic_properties"], SemanticAspect)
-        stats_aspect = cast(RTableStatisticsAspect, aspects["statistical_properties"])
-        schema_aspect = cast(RTableSchemaAspect, aspects["schema_properties"])
-        semantic_aspect = cast(SemanticAspect, aspects["semantic_properties"])
-        self.assertEqual(stats_aspect.num_rows, 0)
-        self.assertEqual(stats_aspect.num_columns, 0)
-        self.assertEqual(stats_aspect.name, "table-1-statistic")
-        self.assertEqual(schema_aspect.name, "table-1-schema")
-        self.assertEqual(semantic_aspect.name, "table-1-semantic")
-        self.persistent.remove_asset(target_asset.asset_id, self.graph_id)
-
-    def test_get_aspects_of_asset_numerical_column(self):
-        target_asset = self.graph.get_asset("6")
-        self.persistent.insert_asset(target_asset, self.graph_id)
-        aspects = self.persistent.get_aspects_of_asset("6")
-        self.assertTrue("statistical_properties" in aspects)
-        self.assertTrue("schema_properties" in aspects)
-        self.assertTrue("semantic_properties" in aspects)
-        self.assertIsInstance(
-            aspects["statistical_properties"], RColumnStatisticsAspect
-        )
-        self.assertIsInstance(aspects["schema_properties"], RColumnSchemaAspect)
-        self.assertIsInstance(aspects["semantic_properties"], SemanticAspect)
-        stats_aspect = cast(RColumnStatisticsAspect, aspects["statistical_properties"])
-        schema_aspect = cast(RColumnSchemaAspect, aspects["schema_properties"])
-        semantic_aspect = cast(SemanticAspect, aspects["semantic_properties"])
-        self.assertEqual(stats_aspect.name, "column-2-1-statistic")
-        self.assertEqual(schema_aspect.name, "column-2-1-schema")
-        self.assertEqual(semantic_aspect.name, "column-2-1-semantic")
-        self.assertIsInstance(stats_aspect.numerical_stats, RNumericalStatistics)
-        self.assertEqual(stats_aspect.numerical_stats.min, 0)
-        self.persistent.remove_asset(target_asset.asset_id, self.graph_id)
-
-    def test_get_aspects_of_asset_categorical_column(self):
-        target_asset = self.graph.get_asset("7")
-        self.persistent.insert_asset(target_asset, self.graph_id)
-        aspects = self.persistent.get_aspects_of_asset("7")
-        self.assertTrue("statistical_properties" in aspects)
-        self.assertTrue("schema_properties" in aspects)
-        self.assertTrue("semantic_properties" in aspects)
-        self.assertIsInstance(
-            aspects["statistical_properties"], RColumnStatisticsAspect
-        )
-        self.assertIsInstance(aspects["schema_properties"], RColumnSchemaAspect)
-        self.assertIsInstance(aspects["semantic_properties"], SemanticAspect)
-        stats_aspect = cast(RColumnStatisticsAspect, aspects["statistical_properties"])
-        schema_aspect = cast(RColumnSchemaAspect, aspects["schema_properties"])
-        semantic_aspect = cast(SemanticAspect, aspects["semantic_properties"])
-        self.assertEqual(stats_aspect.name, "column-2-2-statistic")
-        self.assertEqual(schema_aspect.name, "column-2-2-schema")
-        self.assertEqual(semantic_aspect.name, "column-2-2-semantic")
-        self.assertIsInstance(stats_aspect.categorical_stats, RCategoricalStatistics)
-        self.assertEqual(stats_aspect.categorical_stats.value_counts, {"1": 1, "2": 2})
-        self.persistent.remove_asset(target_asset.asset_id, self.graph_id)
-
-    def test_get_aspects_of_link(self):
-        link = self.graph.get_link("1", "2")
-        self.persistent.insert_link(link, self.graph_id)
-        aspects = self.persistent.get_aspects_of_link(link.link_id)
-        self.assertTrue("foreign_key_properties" in aspects)
-        self.assertIsInstance(aspects["foreign_key_properties"], RForeignKeyAspect)
-        fk_aspect = cast(RForeignKeyAspect, aspects["foreign_key_properties"])
-        self.assertEqual(fk_aspect.from_column, "fake_col_1")
-        self.assertEqual(fk_aspect.to_column, "fake_col_2")
-        self.assertEqual(fk_aspect.on_delete, "CASCADE")
-        self.assertEqual(fk_aspect.on_update, "CASCADE")
-        self.persistent.remove_link(link.link_id, self.graph_id)
-
-    def test_insert_assets(self):
-        self.persistent.insert_assets(self.graph.assets, self.graph_id)
-        self.persistent.remove_assets(
-            [asset.asset_id for asset in self.graph.assets], self.graph_id
-        )
-
-    def test_insert_links(self):
-        self.persistent.insert_links(self.graph.links, self.graph_id)
-        self.persistent.remove_links(
-            [link.link_id for link in self.graph.links], self.graph_id
-        )
-
-    def test_get_assets(self):
-        self.persistent.insert_assets(self.graph.assets, self.graph_id)
-        assets = self.persistent.get_assets(self.graph_id)
-        self.persistent.remove_assets(
-            [asset.asset_id for asset in self.graph.assets], self.graph_id
-        )
-        self.assertEqual(assets, self.graph.assets)
-
-    def test_get_links(self):
-        self.persistent.insert_links(self.graph.links, self.graph_id)
-        links = self.persistent.get_links(self.graph_id)
-        self.persistent.remove_links(
-            [link.link_id for link in self.graph.links], self.graph_id
-        )
-        self.assertEqual(links, self.graph.links)
-
-    def test_load_graph(self):
-        self.persistent.insert_assets(self.graph.assets, self.graph_id)
-        self.persistent.insert_links(self.graph.links, self.graph_id)
-        graph = self.persistent.load_graph(self.graph_id)
-        self.assertEqual(graph, self.graph)
-
-    def test_save_graph(self):
-        self.persistent.save_graph(self.graph, self.graph_id)
-        graph = self.persistent.load_graph(self.graph_id)
+        graph = self.persistent.load_graph(target_id)
         self.assertEqual(self.graph, graph)
 
-    def test_get_graph_info(self):
-        graph_info = self.persistent.get_graph_info("1")
-        self.assertEqual(graph_info[1], "graph-1")
-        self.assertEqual(graph_info[2], False)
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

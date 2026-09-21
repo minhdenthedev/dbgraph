@@ -1,5 +1,7 @@
+from uuid import UUID
+
+import sqlalchemy
 from sqlalchemy import (
-    JSON,
     Boolean,
     ForeignKey,
     String,
@@ -15,8 +17,8 @@ class Base(DeclarativeBase):
 class GraphModel(Base):
     __tablename__ = "graphs"
 
-    graph_id: Mapped[str] = mapped_column(
-        String(36),
+    graph_id: Mapped[UUID] = mapped_column(
+        sqlalchemy.UUID,
         primary_key=True,
     )
 
@@ -66,6 +68,7 @@ class AssetModel(Base):
         ForeignKey(
             "graphs.graph_id",
             ondelete="CASCADE",
+            onupdate="CASCADE"
         ),
         nullable=False,
         index=True,
@@ -116,6 +119,7 @@ class LinkModel(Base):
         ForeignKey(
             "assets.asset_id",
             ondelete="CASCADE",
+            onupdate="CASCADE"
         ),
         nullable=False,
         index=True,
@@ -125,6 +129,7 @@ class LinkModel(Base):
         ForeignKey(
             "assets.asset_id",
             ondelete="CASCADE",
+            onupdate="CASCADE"
         ),
         nullable=False,
         index=True,
@@ -134,6 +139,7 @@ class LinkModel(Base):
         ForeignKey(
             "graphs.graph_id",
             ondelete="CASCADE",
+            onupdate="CASCADE"
         ),
         nullable=False,
         index=True,
@@ -167,6 +173,7 @@ class AssetAspectModel(Base):
         ForeignKey(
             "assets.asset_id",
             ondelete="CASCADE",
+            onupdate="CASCADE"
         ),
         primary_key=True,
     )
@@ -198,6 +205,7 @@ class LinkAspectModel(Base):
         ForeignKey(
             "links.link_id",
             ondelete="CASCADE",
+            onupdate="CASCADE"
         ),
         primary_key=True,
     )

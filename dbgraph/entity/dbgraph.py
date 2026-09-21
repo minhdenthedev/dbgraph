@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import itertools
 from dataclasses import dataclass
+from uuid import UUID
 
 import rustworkx as rx
 
@@ -47,13 +48,13 @@ class DatabaseGraph:
         self._graph.add_nodes_from(self.assets)
         self._graph.add_edges_from(links_tuples)
 
-    def _node_idx(self, asset_id: str) -> int:
+    def _node_idx(self, asset_id: UUID) -> int:
         try:
             return self._asset_id_to_node_idx[asset_id]
         except KeyError:
             raise KeyError(f"Asset with id={asset_id} not found!")
 
-    def _neighbors(self, asset_id: str) -> tuple[set[int], list[Link]]:
+    def _neighbors(self, asset_id: UUID) -> tuple[set[int], list[Link]]:
         """Return list of asset's indices in the graph and those links"""
         node_idx = self._node_idx(asset_id)
 
@@ -68,15 +69,15 @@ class DatabaseGraph:
 
         return asset_indices, list(links.values())
 
-    def get_asset(self, asset_id: str) -> Asset:
+    def get_asset(self, asset_id: UUID) -> Asset:
         """Return the asset using asset_id"""
         return self._graph.get_node_data(self._node_idx(asset_id))
 
-    def get_link(self, src_id: str, dst_id: str) -> Link:
+    def get_link(self, src_id: UUID, dst_id: UUID) -> Link:
         """Return the link connect these two Assets"""
         return self._graph.get_edge_data(self._node_idx(src_id), self._node_idx(dst_id))
 
-    def select_neighbors(self, asset_id: str) -> DatabaseGraph:
+    def select_neighbors(self, asset_id: UUID) -> DatabaseGraph:
         """Get this node and its neighbors.
 
         Args:
@@ -90,7 +91,7 @@ class DatabaseGraph:
         assets = [self._graph.get_node_data(i) for i in asset_indices]
         return DatabaseGraph(assets, links)
 
-    def select_shortest_paths(self, src_id: str, dst_id: str) -> list[DatabaseGraph]:
+    def select_shortest_paths(self, src_id: UUID, dst_id: UUID) -> list[DatabaseGraph]:
         """
         Find the shortest paths between two Assets.
 
@@ -121,7 +122,7 @@ class DatabaseGraph:
             for assets, links in zip(assets_lists, links_lists)
         ]
 
-    def get_neighbors(self, asset_id: str) -> list[Asset]:
+    def get_neighbors(self, asset_id: UUID) -> list[Asset]:
         """Get neighbors assets of an asset
 
         Args:
@@ -138,7 +139,7 @@ class DatabaseGraph:
             pass
         return [self._graph.get_node_data(i) for i in asset_indices]
 
-    def find_shortest_paths(self, src_id: str, dst_id: str) -> list[list[Asset]]:
+    def find_shortest_paths(self, src_id: UUID, dst_id: UUID) -> list[list[Asset]]:
         """Find the shortest paths between two Assets
 
         Args:
@@ -158,3 +159,13 @@ class DatabaseGraph:
     def to_relational(self) -> "RDatabaseGraph":
         """Return the RDatabaseGraph"""
         return RDatabaseGraph.from_graph(self)
+
+    def __eq__(self, value: object, /) -> bool:
+        return (
+            isinstance(value, DatabaseGraph) and
+            set(value.assets) == set(self.assets) and
+            set(value.links) == set(self.links)
+        )
+
+    def __hash__(self) -> int:
+        return hash((frozenset(self.assets), frozenset(self.links)))
