@@ -1,4 +1,6 @@
+from __future__ import annotations
 from dataclasses import dataclass, field
+from uuid import UUID
 
 from dbgraph.entity.aspect import (
     Aspect,
@@ -20,7 +22,13 @@ class Asset:
         aspects: properties aspects belong to this asset
     """
 
-    asset_id: str
+    asset_id: UUID
     name: str
     type: AssetType
     aspects: dict[str, Aspect] = field(default_factory=dict)
+
+    def __hash__(self) -> int:
+        return hash(self.asset_id)
+
+    def __eq__(self, value: object, /) -> bool:
+        return isinstance(value, Asset) and value.asset_id == self.asset_id

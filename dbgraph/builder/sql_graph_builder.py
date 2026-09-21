@@ -27,6 +27,7 @@ from sqlalchemy import (
     DATE,
     DATETIME,
     distinct,
+    TIME,
 )
 from sqlalchemy.orm import Session
 
@@ -134,7 +135,7 @@ class SQLGraphBuilder(GraphBuilder):
             num_aspect = self._get_numerical_stats_aspect(col)
         elif isinstance(col.type, (String, Text, Unicode, UnicodeText, CHAR, NCHAR)):
             cat_aspect = self._get_cat_stats_aspect(col)
-        elif isinstance(col.type, (DATE, DATETIME)):
+        elif isinstance(col.type, (DATE, DATETIME, TIME)):
             temp_aspect = self._get_temp_aspect(col)
         elif isinstance(col.type, (BLOB,)):
             pass
@@ -160,7 +161,7 @@ class SQLGraphBuilder(GraphBuilder):
         )
         stats_aspect = self._get_stats_aspect(col)
         return Asset(
-            asset_id=str(uuid4()),
+            asset_id=uuid4(),
             name=col.name,
             type=AssetType.RCOLUMN,
             aspects={
@@ -195,7 +196,7 @@ class SQLGraphBuilder(GraphBuilder):
         stmt = select(func.count()).select_from(table)
 
         with self.engine.connect() as conn:
-            nrow = conn.execute(stmt).scalar()
+            nrow = conn.scalar(stmt)
         if nrow is None:
             raise RuntimeError("Can't get number of row")
         return int(nrow)
@@ -213,7 +214,7 @@ class SQLGraphBuilder(GraphBuilder):
         stats_aspect = self._get_table_stats_aspect(table_name)
         schema_aspect = self._get_table_schema_aspect(table_name)
         table_asset = Asset(
-            asset_id=str(uuid4()),
+            asset_id=uuid4(),
             name=table_name,
             type=AssetType.RTABLE,
             aspects={
@@ -238,7 +239,7 @@ class SQLGraphBuilder(GraphBuilder):
             table_asset = self.tables_assets[table_name]
             for column_asset in columns_assets:
                 link = Link(
-                    link_id=str(uuid4()),
+                    link_id=uuid4(),
                     name=f"{table_asset.name}_{column_asset.name}",
                     source_id=table_asset.asset_id,
                     destination_id=column_asset.asset_id,
@@ -256,7 +257,7 @@ class SQLGraphBuilder(GraphBuilder):
                 from_table = table.name
                 name = f"{from_table}_{to_table}_fk"
                 link = Link(
-                    link_id=str(uuid4()),
+                    link_id=uuid4(),
                     name=name,
                     source_id=self.tables_assets[from_table].asset_id,
                     destination_id=self.tables_assets[to_table].asset_id,

@@ -1,3 +1,4 @@
+from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from enum import StrEnum
@@ -12,6 +13,12 @@ class Aspect:
     """
 
     name: str
+
+    def __hash__(self) -> int:
+        return hash(self.name)
+
+    def __eq__(self, value: object, /) -> bool:
+        return isinstance(value, Aspect) and value.name == self.name
 
 
 @dataclass
