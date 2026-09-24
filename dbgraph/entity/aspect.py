@@ -134,6 +134,7 @@ class RColumnStatisticsAspect(Aspect):
 
     non_null_count: int
     null_count: int
+    is_textual: bool
     numerical_stats: RNumericalStatistics | None = None
     categorical_stats: RCategoricalStatistics | None = None
     temporal_stats: RTemporalStatistics | None = None

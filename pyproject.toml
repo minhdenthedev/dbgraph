@@ -24,6 +24,7 @@ dependencies = [
     "pydantic>=2.13.4",
     "pydot>=4.0.1",
     "pympler>=1.1",
+    "pyrefly>=0.60.0",
     "pystemmer>=3.1.0",
     "python-dotenv>=1.2.2",
     "rustworkx>=0.18.0",
