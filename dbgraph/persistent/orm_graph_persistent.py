@@ -212,6 +212,7 @@ class ORMGraphPersistent(GraphPersistent):
                                 categorical_stats=categorical_aspect,
                                 numerical_stats=numerical_aspect,
                                 temporal_stats=temp_aspect,
+                                is_textual=aspect_data["is_textual"]
                             )
                 case "semantic_properties":
                     aspect = SemanticAspect(**aspect_data)

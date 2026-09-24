@@ -84,6 +84,7 @@ class TestORMGraphPersistent(unittest.TestCase):
                         name="column-1-1-statistic",
                         non_null_count=0,
                         null_count=0,
+                        is_textual=False,
                         numerical_stats=RNumericalStatistics(min=0, max=0, mean=0),
                         categorical_stats=None,
                     ),
@@ -108,6 +109,7 @@ class TestORMGraphPersistent(unittest.TestCase):
                         non_null_count=0,
                         null_count=0,
                         numerical_stats=None,
+                        is_textual=False,
                         categorical_stats=RCategoricalStatistics(
                             value_counts={"1": 1, "2": 2}
                         ),
@@ -132,6 +134,7 @@ class TestORMGraphPersistent(unittest.TestCase):
                         name="column-2-1-statistic",
                         non_null_count=0,
                         null_count=0,
+                        is_textual=False,
                         numerical_stats=None,
                         categorical_stats=None,
                         temporal_stats=RTemporalStatistics(

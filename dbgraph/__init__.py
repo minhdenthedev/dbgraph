@@ -6,6 +6,7 @@ from dbgraph.entity.link_type import LinkType
 from dbgraph.builder.sql_graph_builder import SQLGraphBuilder
 from dbgraph.descriptor.langchain_graph_descriptor import LangchainGraphDescriptor
 from dbgraph.render.markdown_renderer import MarkdownRenderer
+from dbgraph.persistent.orm_graph_persistent import ORMGraphPersistent
 
 __all__ = [
     "Asset",
@@ -16,4 +17,5 @@ __all__ = [
     "SQLGraphBuilder",
     "LangchainGraphDescriptor",
     "MarkdownRenderer",
+    "ORMGraphPersistent"
 ]
