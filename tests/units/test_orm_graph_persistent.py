@@ -365,6 +365,9 @@ class TestORMGraphPersistent(unittest.TestCase):
         self.persistent.save_graph(target_id, "test", self.graph)
         graph = self.persistent.load_graph(target_id)
         self.assertEqual(self.graph, graph)
+        self.persistent.delete_graph(target_id)
+        assets = self.persistent.get_assets(target_id)
+        self.assertEqual(0, len(assets))
 
 
 if __name__ == "__main__":

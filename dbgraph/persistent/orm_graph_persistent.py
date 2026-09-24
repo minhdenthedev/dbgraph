@@ -2,7 +2,7 @@ import json
 from dataclasses import dataclass, asdict
 from uuid import UUID
 
-from sqlalchemy import create_engine, select, delete, and_
+from sqlalchemy import create_engine, select, delete, and_, event
 from sqlalchemy.orm import Session
 
 from dbgraph import Asset, Link, DatabaseGraph, LinkType, AssetType
@@ -35,6 +35,13 @@ class ORMGraphPersistent(GraphPersistent):
 
     def __post_init__(self):
         self.engine = create_engine(self.persistent_uri)
+
+        @event.listens_for(self.engine, "connect")
+        def set_sqlite_pragma(dbapi_connection, connection_record):
+            cursor = dbapi_connection.cursor()
+            cursor.execute("PRAGMA foreign_keys=ON")
+            cursor.close()
+
         Base.metadata.create_all(self.engine)
 
     def insert_graph(self, graph_id: UUID, graph_name: str):
