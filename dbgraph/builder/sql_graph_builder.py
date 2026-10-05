@@ -1,9 +1,6 @@
 import logging
-from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from unittest import result
 from uuid import uuid4
-from tqdm import tqdm
 
 from sqlalchemy import (
     Column,
@@ -30,7 +27,7 @@ from sqlalchemy import (
     DATE,
     DATETIME,
     distinct,
-    TIME, TIMESTAMP,
+    TIME, TIMESTAMP, VARBINARY,
 )
 from sqlalchemy.orm import Session
 
@@ -70,6 +67,7 @@ class SQLGraphBuilder(GraphBuilder):
     detector_sample_size: int = 200
     textual_length_threshold: int = 30
     textual_distinct_ratio_threshold: float = 0.8
+    run_full_statistics: bool = True
 
     def __post_init__(self):
         logger.info("Creating SQLAlchemy engine...")
@@ -202,23 +200,26 @@ class SQLGraphBuilder(GraphBuilder):
         if isinstance(
                 col.type, (Numeric, Integer, SmallInteger, BigInteger, Float, DECIMAL),
         ):
-            num_aspect = self._get_numerical_stats_aspect(col)
+            if self.run_full_statistics:
+                num_aspect = self._get_numerical_stats_aspect(col)
         elif isinstance(col.type, (String, Text, Unicode, UnicodeText, CHAR, NCHAR)):
             is_textual = self._is_column_textual(col)
             if is_textual:
                 logger.debug("`%s` is textual type", col)
                 cat_aspect = None
             else:
-                cat_aspect = self._get_cat_stats_aspect(col)
+                if self.run_full_statistics:
+                    cat_aspect = self._get_cat_stats_aspect(col)
         elif isinstance(col.type, (DATE, DATETIME, TIME, TIMESTAMP)):
-            temp_aspect = self._get_temp_aspect(col)
-        elif isinstance(col.type, (BLOB,)):
+            if self.run_full_statistics:
+                temp_aspect = self._get_temp_aspect(col)
+        elif isinstance(col.type, (BLOB, VARBINARY)):
             pass
         else:
-            raise NotImplementedError(
-                f"Only support Numeric, String, Date, and BLOB. Got {col.type} for "
-                f"{col}",
-            )
+            logger.warning(f"Only support Numeric, String, Date, and BLOB. Got {col.type} for "
+                f"{col}")
+            pass
+
         return RColumnStatisticsAspect(
             name=f"{col.name}_column_stats",
             numerical_stats=num_aspect,
@@ -231,21 +232,24 @@ class SQLGraphBuilder(GraphBuilder):
 
     def _make_column_asset(self, col: Column, pks: PrimaryKeyConstraint) -> Asset:
         logger.info("`%s` - building column asset...", col)
+        aspects = {}
         schema_aspect = RColumnSchemaAspect(
             name=f"{col.name}_column_schema",
             dtype=str(col.type),
             is_nullable=col.nullable or False,
             is_pk=col.name in [c.name for c in pks.columns],
         )
-        stats_aspect = self._get_stats_aspect(col)
+        aspects["schema_properties"] = schema_aspect
+
+        if self.run_full_statistics:
+            stats_aspect = self._get_stats_aspect(col)
+            aspects["statistical_properties"] = stats_aspect
+
         return Asset(
             asset_id=uuid4(),
             name=col.name,
             type=AssetType.RCOLUMN,
-            aspects={
-                "schema_properties"     : schema_aspect,
-                "statistical_properties": stats_aspect,
-            },
+            aspects=aspects,
         )
 
     def _get_columns_assets(self, table_name: str) -> list[Asset]:
@@ -255,25 +259,6 @@ class SQLGraphBuilder(GraphBuilder):
         pks = table.primary_key
         for column in table.columns:
             assets.append(self._make_column_asset(column, pks))
-        # with ThreadPoolExecutor(max_workers=self.max_worker) as executor:
-        #     if self.use_tqdm:
-        #         assets = list(
-        #             tqdm(
-        #                 executor.map(
-        #                     self._make_column_asset, table.columns,
-        #                     [pks] * len(table.columns),
-        #                 ),
-        #                 total=len(table.columns),
-        #                 desc="Processing columns",
-        #             ),
-        #         )
-        #     else:
-        #         assets = list(
-        #             executor.map(
-        #                 self._make_column_asset, table.columns,
-        #                 [pks] * len(table.columns),
-        #             ),
-        #         )
         return assets
 
     def _get_table_stats_aspect(self, table_name: str) -> RTableStatisticsAspect:
@@ -314,16 +299,17 @@ class SQLGraphBuilder(GraphBuilder):
 
     def _make_table_asset(self, table_name: str) -> Asset:
         logger.info("`%s` - creating table asset...", table_name)
+        aspects = {}
+
         stats_aspect = self._get_table_stats_aspect(table_name)
         schema_aspect = self._get_table_schema_aspect(table_name)
+        aspects["schema_properties"] = schema_aspect
+        aspects["statistical_properties"] = stats_aspect
         table_asset = Asset(
             asset_id=uuid4(),
             name=table_name,
             type=AssetType.RTABLE,
-            aspects={
-                "schema_properties"     : schema_aspect,
-                "statistical_properties": stats_aspect,
-            },
+            aspects=aspects,
         )
         self.columns_assets[table_asset.name] = self._get_columns_assets(table_name)
         self.tables_assets[table_asset.name] = table_asset
