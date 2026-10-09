@@ -2,41 +2,32 @@ import unittest
 import uuid
 from datetime import datetime
 
+from dbgraph import Asset, AssetType, Link, LinkType, DatabaseGraph
 from dbgraph.entity.aspect import (
-    RCategoricalStatistics,
-    RColumnSchemaAspect,
-    RColumnStatisticsAspect,
-    RForeignKeyAspect,
-    RNumericalStatistics,
-    RTableSchemaAspect,
-    RTableStatisticsAspect,
-    SemanticAspect,
-    RTemporalStatistics,
+    SemanticAspect, RTableStatisticsAspect,
+    RTableSchemaAspect, RColumnStatisticsAspect, RNumericalStatistics,
+    RColumnSchemaAspect, RCategoricalStatistics, RTemporalStatistics, RForeignKeyAspect,
 )
-from dbgraph.entity.asset import Asset
-from dbgraph.entity.asset_type import AssetType
-from dbgraph.entity.dbgraph import DatabaseGraph
-from dbgraph.entity.link import Link
-from dbgraph.entity.link_type import LinkType
-from dbgraph.persistent.orm_graph_persistent import ORMGraphPersistent
+from dbgraph.persistent.async_orm_persistent import async_persistent
+from dbgraph.persistent.graph_not_found import GraphNotFound
 
 
-class TestORMGraphPersistent(unittest.TestCase):
-    def setUp(self) -> None:
+class TestAsyncOrmPersistent(unittest.IsolatedAsyncioTestCase):
+    async def asyncSetUp(self) -> None:
         assets = [
             Asset(
                 asset_id=uuid.uuid4(),
                 name="table-1",
                 type=AssetType.RTABLE,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="table-1-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="table-1-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RTableStatisticsAspect(
-                        name="table-1-statistic", num_rows=0, num_columns=0
+                        name="table-1-statistic", num_rows=0, num_columns=0,
                     ),
-                    "schema_properties": RTableSchemaAspect(
-                        name="table-1-schema", indices={}, pks=[]
+                    "schema_properties"     : RTableSchemaAspect(
+                        name="table-1-schema", indices={}, pks=[],
                     ),
                 },
             ),
@@ -45,14 +36,14 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="table-2",
                 type=AssetType.RTABLE,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="table-2-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="table-2-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RTableStatisticsAspect(
-                        name="table-2-statistic", num_rows=0, num_columns=0
+                        name="table-2-statistic", num_rows=0, num_columns=0,
                     ),
-                    "schema_properties": RTableSchemaAspect(
-                        name="table-2-schema", indices={}, pks=[]
+                    "schema_properties"     : RTableSchemaAspect(
+                        name="table-2-schema", indices={}, pks=[],
                     ),
                 },
             ),
@@ -61,14 +52,14 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="table-3",
                 type=AssetType.RTABLE,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="table-3-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="table-3-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RTableStatisticsAspect(
-                        name="table-3-statistic", num_rows=0, num_columns=0
+                        name="table-3-statistic", num_rows=0, num_columns=0,
                     ),
-                    "schema_properties": RTableSchemaAspect(
-                        name="table-3-schema", indices={}, pks=[]
+                    "schema_properties"     : RTableSchemaAspect(
+                        name="table-3-schema", indices={}, pks=[],
                     ),
                 },
             ),
@@ -77,8 +68,8 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="column-1-1",
                 type=AssetType.RCOLUMN,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="column-1-1-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="column-1-1-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RColumnStatisticsAspect(
                         name="column-1-1-statistic",
@@ -88,7 +79,7 @@ class TestORMGraphPersistent(unittest.TestCase):
                         numerical_stats=RNumericalStatistics(min=0, max=0, mean=0),
                         categorical_stats=None,
                     ),
-                    "schema_properties": RColumnSchemaAspect(
+                    "schema_properties"     : RColumnSchemaAspect(
                         name="column-1-1-schema",
                         dtype="TEXT",
                         is_nullable=False,
@@ -101,8 +92,8 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="column-1-2",
                 type=AssetType.RCOLUMN,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="column-1-2-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="column-1-2-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RColumnStatisticsAspect(
                         name="column-1-2-statistic",
@@ -111,10 +102,10 @@ class TestORMGraphPersistent(unittest.TestCase):
                         numerical_stats=None,
                         is_textual=False,
                         categorical_stats=RCategoricalStatistics(
-                            value_counts={"1": 1, "2": 2}
+                            value_counts={"1": 1, "2": 2},
                         ),
                     ),
-                    "schema_properties": RColumnSchemaAspect(
+                    "schema_properties"     : RColumnSchemaAspect(
                         name="column-1-2-schema",
                         dtype="TEXT",
                         is_nullable=False,
@@ -127,8 +118,8 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="column-2-1",
                 type=AssetType.RCOLUMN,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="column-2-1-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="column-2-1-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RColumnStatisticsAspect(
                         name="column-2-1-statistic",
@@ -144,7 +135,7 @@ class TestORMGraphPersistent(unittest.TestCase):
                             num_uniques=3,
                         ),
                     ),
-                    "schema_properties": RColumnSchemaAspect(
+                    "schema_properties"     : RColumnSchemaAspect(
                         name="column-2-1-schema",
                         dtype="TEXT",
                         is_nullable=False,
@@ -157,8 +148,8 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="column-2-2",
                 type=AssetType.RCOLUMN,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="column-2-2-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="column-2-2-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RColumnStatisticsAspect(
                         name="column-2-2-statistic",
@@ -166,10 +157,10 @@ class TestORMGraphPersistent(unittest.TestCase):
                         null_count=0,
                         numerical_stats=None,
                         categorical_stats=RCategoricalStatistics(
-                            value_counts={"1": 1, "2": 2}
+                            value_counts={"1": 1, "2": 2},
                         ),
                     ),
-                    "schema_properties": RColumnSchemaAspect(
+                    "schema_properties"     : RColumnSchemaAspect(
                         name="column-2-2-schema",
                         dtype="TEXT",
                         is_nullable=False,
@@ -182,8 +173,8 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="column-3-1",
                 type=AssetType.RCOLUMN,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="column-3-1-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="column-3-1-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RColumnStatisticsAspect(
                         name="column-3-1-statistic",
@@ -192,7 +183,7 @@ class TestORMGraphPersistent(unittest.TestCase):
                         numerical_stats=RNumericalStatistics(min=0, max=0, mean=0),
                         categorical_stats=None,
                     ),
-                    "schema_properties": RColumnSchemaAspect(
+                    "schema_properties"     : RColumnSchemaAspect(
                         name="column-3-1-schema",
                         dtype="TEXT",
                         is_nullable=False,
@@ -205,8 +196,8 @@ class TestORMGraphPersistent(unittest.TestCase):
                 name="column-3-2",
                 type=AssetType.RCOLUMN,
                 aspects={
-                    "semantic_properties": SemanticAspect(
-                        name="column-3-2-semantic", description="test", keywords=[]
+                    "semantic_properties"   : SemanticAspect(
+                        name="column-3-2-semantic", description="test", keywords=[],
                     ),
                     "statistical_properties": RColumnStatisticsAspect(
                         name="column-3-2-statistic",
@@ -214,10 +205,10 @@ class TestORMGraphPersistent(unittest.TestCase):
                         null_count=0,
                         numerical_stats=None,
                         categorical_stats=RCategoricalStatistics(
-                            value_counts={"1": 1, "2": 2}
+                            value_counts={"1": 1, "2": 2},
                         ),
                     ),
-                    "schema_properties": RColumnSchemaAspect(
+                    "schema_properties"     : RColumnSchemaAspect(
                         name="column-3-2-schema",
                         dtype="TEXT",
                         is_nullable=False,
@@ -282,7 +273,7 @@ class TestORMGraphPersistent(unittest.TestCase):
                         to_column="fake_col_2",
                         on_delete="CASCADE",
                         on_update="CASCADE",
-                    )
+                    ),
                 },
             ),
             Link(
@@ -298,86 +289,92 @@ class TestORMGraphPersistent(unittest.TestCase):
                         to_column="fake_col_2",
                         on_delete="CASCADE",
                         on_update="CASCADE",
-                    )
+                    ),
                 },
             ),
         ]
         self.graph = DatabaseGraph(assets, links)
-        self.persistent = ORMGraphPersistent("sqlite:///:memory:")
+        self.uri = "sqlite+aiosqlite:///:memory:"
 
-    def test_insert_graph(self):
-        persistent = ORMGraphPersistent("sqlite:///:memory:")
+    async def test_insert_and_delete_graph(self):
         target_id = uuid.uuid4()
-        target_name = "test-name"
-        persistent.insert_graph(target_id, target_name)
-        name = persistent.get_graph_name(target_id)
-        self.assertEqual(target_name, name)
+        persistent = await async_persistent(self.uri)
+        await persistent.insert_graph(target_id, "test")
+        graph_name = await persistent.get_graph_name(target_id)
+        self.assertEqual("test", graph_name)
+        await persistent.delete_graph(target_id)
+        with self.assertRaises(GraphNotFound):
+            _ = await persistent.get_graph_name(target_id)
 
-    def test_crud_assets(self):
-        persistent = ORMGraphPersistent("sqlite:///:memory:")
+    async def test_crd_assets(self):
         target_id = uuid.uuid4()
-        persistent.insert_graph(target_id, "test")
-        persistent.insert_assets(self.graph.assets, target_id)
-        assets = persistent.get_assets(target_id)
-        target_ids = set(a.asset_id for a in self.graph.assets)
-        asset_ids = set(a.asset_id for a in assets)
-        self.assertEqual(target_ids, asset_ids)
-        persistent.delete_assets(list(asset_ids), target_id)
-        assets = persistent.get_assets(target_id)
+        persistent = await async_persistent(self.uri)
+        await persistent.insert_graph(target_id, "test")
+        await persistent.insert_assets(self.graph.assets, target_id)
+        assets = await persistent.get_assets(target_id)
+        self.assertEqual(
+            set(self.graph.assets),
+            set(assets),
+        )
+        await persistent.delete_assets(
+            [a.asset_id for a in self.graph.assets], target_id,
+        )
+        assets = await persistent.get_assets(target_id)
         self.assertEqual(0, len(assets))
 
-    def test_crud_links(self):
-        persistent = ORMGraphPersistent("sqlite:///:memory:")
+    async def test_crd_links(self):
         target_id = uuid.uuid4()
-        persistent.insert_graph(target_id, "test")
-        graph_name = persistent.get_graph_name(target_id)
-        self.assertEqual("test", graph_name)
-
-        # Must insert assets first
-        persistent.insert_assets(self.graph.assets, target_id)
-        persistent.insert_links(self.graph.links, target_id)
-        links = persistent.get_links(target_id)
-        links.sort(key=lambda x: x.link_id)
-        target_links = self.graph.links
-        target_links.sort(key=lambda x: x.link_id)
-        for target_link, link in zip(target_links, links):
-            self.assertEqual(target_link.link_id, link.link_id)
-            self.assertEqual(target_link.source_id, link.source_id)
-            self.assertEqual(target_link.destination_id, link.destination_id)
-
-        link_ids = [link.link_id for link in links]
-        persistent.delete_links(link_ids, target_id)
-        links = persistent.get_links(target_id)
+        persistent = await async_persistent(self.uri)
+        await persistent.insert_graph(target_id, "test")
+        await persistent.insert_assets(self.graph.assets, target_id)
+        await persistent.insert_links(self.graph.links, target_id)
+        links = await persistent.get_links(target_id)
+        self.assertEqual(
+            set(self.graph.links),
+            set(links),
+        )
+        await persistent.delete_links(
+            [link.link_id for link in self.graph.links],
+            target_id,
+        )
+        links = await persistent.get_links(target_id)
         self.assertEqual(0, len(links))
 
-    def test_cr_asset_aspect(self):
-        graph_id = uuid.uuid4()
-        self.persistent.insert_graph(graph_id, "test")
-        self.persistent.insert_assets(self.graph.assets, graph_id)
-        for asset in self.graph.assets:
-            self.persistent.insert_asset_aspects(asset.aspects, asset.asset_id)
-            aspects = self.persistent.get_asset_aspects(asset.asset_id, asset.type)
-            self.assertEqual(set(asset.aspects), set(aspects))
-
-    def test_cr_link_aspect(self):
-        graph_id = uuid.uuid4()
-        self.persistent.insert_graph(graph_id, "test")
-        self.persistent.insert_assets(self.graph.assets, graph_id)
-        self.persistent.insert_links(self.graph.links, graph_id)
-        for link in self.graph.links:
-            self.persistent.insert_link_aspects(link.aspects, link.link_id)
-            aspects = self.persistent.get_link_aspects(link.link_id, link.type)
-            self.assertEqual(set(link.aspects), set(aspects))
-
-    def test_save_load_graph(self):
+    async def test_crd_asset_aspect(self):
         target_id = uuid.uuid4()
-        self.persistent.save_graph(target_id, "test", self.graph)
-        graph = self.persistent.load_graph(target_id)
-        self.assertEqual(self.graph, graph)
-        self.persistent.delete_graph(target_id)
-        assets = self.persistent.get_assets(target_id)
-        self.assertEqual(0, len(assets))
+        persistent = await async_persistent(self.uri)
+        await persistent.insert_graph(target_id, "test")
+        target_asset = self.graph.assets[0]
+        await persistent.insert_assets([target_asset], target_id)
+        await persistent.insert_asset_aspects(
+            target_asset.aspects, target_asset.asset_id,
+        )
+        aspects = await persistent.get_asset_aspects(
+            target_asset.asset_id, AssetType.RTABLE,
+        )
+        self.assertEqual(
+            target_asset.aspects,
+            aspects
+        )
+
+    async def test_crd_link_aspect(self):
+        target_id = uuid.uuid4()
+        persistent = await async_persistent(self.uri)
+        await persistent.insert_graph(target_id, "test")
+        source_asset = self.graph.assets[0]
+        dest_asset = self.graph.assets[3]
+        target_link = self.graph.links[0]
+        await persistent.insert_assets([source_asset, dest_asset], target_id)
+        await persistent.insert_links([target_link], target_id)
+        await persistent.insert_link_aspects(target_link.aspects, target_link.link_id)
+        aspects = await persistent.get_link_aspects(
+            source_asset.asset_id, LinkType.CONTAIN,
+        )
+        self.assertEqual(
+            target_link.aspects,
+            aspects
+        )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

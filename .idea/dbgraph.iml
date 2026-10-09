@@ -8,6 +8,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
-    <option name="format" value="PLAIN" />
+    <option name="format" value="GOOGLE" />
   </component>
 </module>
