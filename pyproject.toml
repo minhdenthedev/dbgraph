@@ -4,11 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "dbgraph"
-version = "0.2.11"
+version = "0.2.13"
 description = "dbgraph is a database profiling tool which model the database as a graph"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "aiosqlite>=0.22.1",
     "bm25s==0.3.11",
     "build==1.6.1",
     "grip>=4.6.2",
@@ -28,7 +29,7 @@ dependencies = [
     "pystemmer>=3.1.0",
     "python-dotenv==1.2.3",
     "rustworkx==0.18.1",
-    "sqlalchemy==2.0.54",
+    "sqlalchemy[asyncio]==2.0.54",
     "tqdm==4.70.1",
     "trino==0.340.0",
 ]
