@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from uuid import UUID
+
 from dbgraph import LinkType
 from dbgraph.entity.asset import Asset
 from dbgraph.entity.asset_type import AssetType
@@ -14,7 +16,7 @@ class RDatabaseGraph(DatabaseGraph):
     def from_graph(graph: DatabaseGraph) -> RDatabaseGraph:
         return RDatabaseGraph(graph.assets, graph.links)
 
-    def get_columns(self, table_id: str) -> list[Asset]:
+    def get_columns(self, table_id: UUID) -> list[Asset]:
         """Get list of assets which are columns belong to this table
 
         Args:
@@ -34,7 +36,7 @@ class RDatabaseGraph(DatabaseGraph):
         """Get all foreign keys in the graph"""
         return [link for link in self.links if link.type == LinkType.FOREIGN_KEY]
 
-    def get_connected_tables(self, table_id: str) -> list[Asset]:
+    def get_connected_tables(self, table_id: UUID) -> list[Asset]:
         """Get all connected table
 
         Args:
@@ -46,7 +48,7 @@ class RDatabaseGraph(DatabaseGraph):
         neighbors = self.get_neighbors(table_id)
         return [n for n in neighbors if n.type == AssetType.RTABLE]
 
-    def select_connected_tables(self, table_id: str) -> RDatabaseGraph:
+    def select_connected_tables(self, table_id: UUID) -> RDatabaseGraph:
         """Get references tables with their columns
 
         Args:

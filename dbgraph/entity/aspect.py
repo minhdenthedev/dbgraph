@@ -1,3 +1,4 @@
+from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from enum import StrEnum
@@ -12,6 +13,12 @@ class Aspect:
     """
 
     name: str
+
+    def __hash__(self) -> int:
+        return hash(self.name)
+
+    def __eq__(self, value: object, /) -> bool:
+        return isinstance(value, Aspect) and value.name == self.name
 
 
 @dataclass
@@ -127,6 +134,7 @@ class RColumnStatisticsAspect(Aspect):
 
     non_null_count: int
     null_count: int
+    is_textual: bool = False
     numerical_stats: RNumericalStatistics | None = None
     categorical_stats: RCategoricalStatistics | None = None
     temporal_stats: RTemporalStatistics | None = None
